@@ -1,0 +1,1336 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Add One</title>
+<style>
+:root{--bg:#0b0d12;--panel:#121624;--panel2:#0d1020;--b:#1d2440;--b2:#2a355f;--t:#e9eefc;--m:#b8c2e0;--a:#2a3cff;--g:#2bd576;--r:#ff5c5c;--w:#ffcc66}
+*{box-sizing:border-box}html,body{height:100%}body{margin:0;background:var(--bg);color:var(--t);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.app{min-height:100%;display:flex;flex-direction:column}
+.top{position:sticky;top:0;z-index:10;padding:12px 14px calc(10px + env(safe-area-inset-top));background:linear-gradient(to bottom,rgba(11,13,18,.98),rgba(11,13,18,.86));border-bottom:1px solid rgba(29,36,64,.7);backdrop-filter:blur(10px)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.h1{margin:0;font-size:18px;font-weight:900}.sub{margin:0;color:var(--m);font-size:12px;line-height:1.25}
+.stats{display:flex;gap:10px;align-items:center}.stat{display:grid;gap:2px;text-align:right}.k{color:var(--m);font-size:11px}.v{font-weight:900;font-size:14px}
+.progress{margin-top:10px;display:flex;gap:6px;justify-content:center}
+.pip{width:16px;height:10px;border-radius:999px;border:1px solid rgba(42,53,95,.9);background:#11162a;opacity:.9}.pip.good{background:rgba(43,213,118,.22);border-color:rgba(43,213,118,.55);opacity:1}.pip.bad{background:rgba(255,92,92,.18);border-color:rgba(255,92,92,.55);opacity:1}.pip.active{outline:2px solid rgba(42,60,255,.45);outline-offset:2px}
+.main{flex:1;display:flex;flex-direction:column;align-items:center;padding:14px 14px 0}
+.card{width:min(520px,100%);background:var(--panel);border:1px solid var(--b);border-radius:16px;padding:14px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.hidden{display:none!important}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--b2);background:var(--panel2);border-radius:999px;padding:8px 10px;color:var(--m);font-size:12px}
+.actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:10px;position:relative;z-index:50;pointer-events:auto}
+button{cursor:pointer;border-radius:14px;border:1px solid var(--b2);background:#1a2140;color:var(--t);padding:12px 14px;font-weight:800;font-size:14px;touch-action:manipulation;-webkit-tap-highlight-color:transparent;position:relative;z-index:51;pointer-events:auto}
+button.primary{background:var(--a);border-color:var(--a)}button.success{background:rgba(43,213,118,.18);border-color:rgba(43,213,118,.55)}button.ghost{background:transparent}button:disabled{opacity:.55;cursor:not-allowed}
+
+#homeIcon{position:fixed;left:14px;top:calc(78px + env(safe-area-inset-top));z-index:200;width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;padding:0}
+@media (min-width:520px){#homeIcon{left:20px;top:calc(86px + env(safe-area-inset-top));}}
+
+.clues{display:grid;gap:8px;margin-top:10px}.clue{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:center;background:var(--panel2);border:1px solid var(--b);border-radius:14px;padding:10px}.badge{width:22px;height:22px;border-radius:9px;display:grid;place-items:center;background:#1a2140;border:1px solid var(--b2);font-weight:950}
+.board{display:grid;gap:14px;margin-top:14px}.rowb{display:grid;gap:8px;cursor:pointer}.lbl{font-size:11px;color:var(--m);display:flex;justify-content:space-between;align-items:center}
+.tiles{display:flex;gap:8px;justify-content:center}
+.tile{
+  width:clamp(28px,8.5vw,52px);
+  height:clamp(36px,10vw,62px);
+  border-radius:12px;
+  border:2px solid var(--b2);
+  background:var(--panel2);
+  display:grid;
+  place-items:center;
+  font-weight:950;
+  font-size:clamp(16px,4.5vw,24px);
+  letter-spacing:1px;
+  text-transform:uppercase;
+  user-select:none;
+  position:relative;
+  flex-shrink:1;
+}
+.tile.filled{border-color:#3b4a86}.tile.active{outline:3px solid rgba(42,60,255,.35);outline-offset:2px}.tile.plus{background:#1a2140;border-color:var(--a);color:#aab3ff}
+@keyframes pop{0%{transform:scale(.96)}60%{transform:scale(1.06)}100%{transform:scale(1)}}.tile.pop{animation:pop 120ms ease-out}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}.shake{animation:shake 320ms ease-in-out}
+@keyframes bounce{0%{transform:translateY(0)}30%{transform:translateY(-8px)}60%{transform:translateY(0)}80%{transform:translateY(-4px)}100%{transform:translateY(0)}}.tile.bounce{animation:bounce 420ms cubic-bezier(.2,.9,.2,1)}
+@keyframes glow{0%{box-shadow:0 0 0 rgba(43,213,118,0)}35%{box-shadow:0 0 22px rgba(43,213,118,.35)}100%{box-shadow:0 0 0 rgba(43,213,118,0)}}.tile.glow{animation:glow 700ms ease-out}
+@keyframes plusPing{0%{transform:scale(1)}40%{transform:scale(1.06)}100%{transform:scale(1)}}.tile.plus.ping{animation:plusPing 220ms ease-out}
+@keyframes fadeIn{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}.flash{animation:fadeIn 260ms ease-out}
+
+.feedback{min-height:26px;margin-top:12px;color:var(--m);text-align:center;font-size:13px}.feedback.good{color:var(--g)}.feedback.bad{color:var(--r)}.feedback.warn{color:var(--w)}
+.timer-danger{color:var(--r)!important;animation:timerPulse .8s infinite}
+@keyframes timerPulse{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
+.row-locked .tile{border-color:var(--g);background:rgba(43,213,118,.12)}
+.row-locked .lbl{color:var(--g)}
+.kbwrap{position:sticky;bottom:0;z-index:9;padding:10px 8px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(to top,rgba(11,13,18,.98),rgba(11,13,18,.86));border-top:1px solid rgba(29,36,64,.7);backdrop-filter:blur(10px)}
+.kb{width:min(520px,100%);margin:0 auto;display:grid;gap:8px}.krow{display:flex;gap:6px;justify-content:center}
+.key{flex:1;max-width:42px;min-width:28px;height:46px;border-radius:12px;border:1px solid var(--b2);background:#151c35;color:var(--t);font-weight:900;font-size:14px;display:grid;place-items:center;user-select:none;-webkit-tap-highlight-color:transparent}.key.wide{max-width:84px;flex:1.7;font-size:12px}.key:active{transform:scale(.98)}
+.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:999}.c{position:absolute;top:-12px;width:10px;height:14px;border-radius:3px;opacity:.95;animation:fall 900ms linear forwards}@keyframes fall{to{transform:translate3d(var(--dx),calc(100vh + 40px),0) rotate(420deg);opacity:.98}}
+.fly{position:fixed;z-index:1000;font-weight:950;letter-spacing:1px;text-transform:uppercase;width:42px;height:54px;border-radius:12px;border:2px solid rgba(43,213,118,.55);background:rgba(43,213,118,.12);display:grid;place-items:center;pointer-events:none;animation:fly 420ms cubic-bezier(.2,.9,.2,1) forwards}@keyframes fly{to{transform:translate3d(var(--tx),var(--ty),0) scale(1.03)}}
+
+/* How-to demo */
+.howTile{width:clamp(34px,9.6vw,48px);height:clamp(42px,11vw,58px)}
+@keyframes howPulse{0%{transform:scale(1)}40%{transform:scale(1.06)}100%{transform:scale(1)}}
+.howPlus{animation:howPulse 520ms ease-in-out infinite}
+
+.modal{position:fixed;inset:0;z-index:997;background:rgba(0,0,0,.6);display:grid;place-items:center;padding:18px}
+.sheet{width:min(520px,100%);background:var(--panel);border:1px solid var(--b);border-radius:18px;padding:14px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.sheet h2{margin:0 0 6px 0;font-size:16px}.big{font-weight:950;font-size:26px;margin:6px 0}
+.miniGrid{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.mini{width:18px;height:18px;border-radius:6px;border:1px solid rgba(42,53,95,.9);background:#11162a}.mini.good{background:rgba(43,213,118,.22);border-color:rgba(43,213,118,.55)}.mini.bad{background:rgba(255,92,92,.18);border-color:rgba(255,92,92,.55)}
+summary{color:var(--m);cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}
+input,textarea,select{width:100%;padding:10px;border-radius:14px;border:1px solid var(--b2);background:var(--panel2);color:var(--t);font-size:14px;outline:none}
+</style>
+
+<script>
+  // Inline click fallback. If the main script fails, users still get feedback.
+  window.__AOL_UI_CLICK = function(mode){
+    try{
+      if(typeof window.__AOL_START === 'function') return window.__AOL_START(mode);
+      alert('⚠️ App is still loading (or a script error occurred). Please reload.');
+    }catch(e){
+      alert('⚠️ Click error: '+(e && e.message ? e.message : String(e)));
+    }
+  };
+</script>
+</head>
+<body>
+<div class="app">
+  <div class="top">
+    <div class="row">
+      <div>
+        <div class="h1">Add One</div>
+        <p class="sub">Turn one word into another by adding a single letter.</p>
+      </div>
+      <div class="stats" id="stats">
+        <div class="stat"><div class="k">Total</div><div class="v" id="total">0</div></div>
+        <div class="stat"><div class="k">Puzzle</div><div class="v" id="num">0/10</div></div>
+        <div class="stat"><div class="k">Time</div><div class="v" id="time">60.0</div></div>
+      </div>
+    </div>
+    <div class="progress" id="prog"></div>
+  </div>
+
+  <div class="main">
+    <div id="home" class="card">
+      <div class="actions" style="justify-content:flex-end;margin-top:0">
+        <button id="how" class="ghost" style="padding:10px 12px">How to play</button>
+      </div>
+      <div class="pill">Goal: solve <b>10</b> • <b>60s</b> each • retries allowed</div>
+      <p class="sub" style="margin-top:10px">Two clues → solve two words. Word 2 is Word 1 with <b>one or two extra letters</b> inserted. The “+” tile shows where.</p>
+      <div class="actions" style="align-items:center">
+        <select id="diff" style="padding:12px 12px;border-radius:14px;border:1px solid var(--b2);background:var(--panel2);color:var(--t);font-weight:800">
+          <option value="mix" selected>Mixed</option>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+        <button id="play" class="primary" onclick="__AOL_UI_CLICK('run')">Classic</button>
+        <button id="daily" class="success" onclick="__AOL_UI_CLICK('daily')">Daily</button>
+        <button id="sudden" class="ghost" onclick="__AOL_UI_CLICK('sudden')">Sudden Death</button>
+        <button id="statsBtn" class="ghost" onclick="__AOL_UI_CLICK('stats')">Stats</button>
+        <button id="leader" class="ghost" onclick="__AOL_UI_CLICK('leader')">Leaderboard</button>
+      </div>
+      <p class="sub" style="margin-top:10px">Daily mode tracks your streak. Sudden Death ends on your first mistake.</p>
+    </div>
+
+    <div id="howModal" class="modal hidden" aria-hidden="true">
+      <div class="sheet">
+        <div class="row"><h2 style="margin:0">How it works</h2><button id="howClose" class="ghost">Close</button></div>
+        <div class="sub" style="margin-top:6px">Word 2 is Word 1 with <b>one or two extra letters</b> inserted. The “+” tile shows the spot.</div>
+
+        <div style="margin-top:12px;background:var(--panel2);border:1px solid var(--b);border-radius:16px;padding:12px">
+          <div class="sub" style="margin-bottom:8px">Example:</div>
+          <div class="lbl" style="margin-bottom:8px"><span>Word 1</span><span class="hint">(type it)</span></div>
+          <div class="tiles" id="howT1"></div>
+          <div class="lbl" style="margin:12px 0 8px"><span>Word 2</span><span class="hint">(same letters + 1 or 2)</span></div>
+          <div class="tiles" id="howT2"></div>
+          <div class="feedback" id="howMsg" style="margin-top:10px">Watch the letters slide into Word 2.</div>
+        </div>
+
+        <div class="actions" style="margin-top:12px">
+          <button id="howReplay" class="ghost">Replay</button>
+          <button id="howGot" class="primary">Got it</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="game" class="card hidden">
+      <div class="actions" style="margin-top:0">
+        <button id="give" class="ghost">Give up</button>
+        <button id="next" class="success" disabled>Next word</button>
+      </div>
+      <div class="clues">
+        <div class="clue"><span class="badge">1</span><span id="cl1"></span></div>
+        <div class="clue"><span class="badge">2</span><span id="cl2"></span></div>
+      </div>
+      <div class="board">
+        <div class="rowb" id="row1"><div class="lbl"><span>Word 1</span><span class="hint" id="h1"></span></div><div id="t1" class="tiles"></div></div>
+        <div class="rowb" id="row2"><div class="lbl"><span>Word 2</span><span class="hint" id="h2"></span></div><div id="t2" class="tiles"></div></div>
+      </div>
+      <div id="fb" class="feedback"></div>
+      <div class="actions"><button id="sub" class="primary">Submit</button></div>
+    </div>
+  </div>
+
+  <div class="kbwrap"><div class="kb"><div class="krow" id="kr1"></div><div class="krow" id="kr2"></div><div class="krow" id="kr3"></div></div></div>
+</div>
+
+<button id="homeIcon" class="ghost" aria-label="Home">⌂</button>
+<div id="conf" class="confetti hidden" aria-hidden="true"></div>
+
+<div id="modal" class="modal hidden" aria-hidden="true">
+  <div class="sheet">
+    <div class="row"><h2 style="margin:0">Run complete</h2><button id="close" class="ghost">Close</button></div>
+    <div class="big" id="mscore">0</div>
+    <div class="sub" id="mmeta"></div>
+    <div class="miniGrid" id="mgrid"></div>
+    <div class="actions">
+      <button id="again" class="primary">Play again</button>
+      <button id="submitScoreBtn" class="success">Submit score</button>
+      <button id="copy" class="ghost">Copy results</button>
+      <button id="mhome" class="ghost">Home</button>
+    </div>
+  </div>
+</div>
+
+<div id="lbmodal" class="modal hidden" aria-hidden="true">
+  <div class="sheet">
+    <div class="row"><h2 style="margin:0">Leaderboard</h2><button id="lbclose" class="ghost">Close</button></div>
+    <div class="sub" style="margin-top:6px">Top scores saved on this device.</div>
+    <div style="display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap">
+      <select id="lbfilter" style="flex:1;min-width:140px">
+  <option value="all" selected>All</option>
+  <option value="run">Classic</option>
+  <option value="daily">Daily</option>
+  <option value="sudden">Sudden Death</option>
+</select>
+      <button id="lbclear" class="ghost">Clear</button>
+    </div>
+    <div id="lblist" style="margin-top:10px"></div>
+  </div>
+</div>
+
+<script>
+(()=>{
+  const $=id=>document.getElementById(id);
+  const mem=Object.create(null);
+  const store={
+    get:k=>{try{return localStorage?localStorage.getItem(k):mem[k]??null}catch{return mem[k]??null}},
+    set:(k,v)=>{try{localStorage?localStorage.setItem(k,v):mem[k]=v}catch{mem[k]=v}}
+  };
+
+  // -------------------- Config --------------------
+  const ROUND_RUN=60000;
+  const ROUND_SUDDEN=15000;
+  const BASE=1000;
+  const LSK_PUZ='aol_puz_cache';
+  const LSK_LEAD='aol_lead';
+  const LSK_DAILY_DONE='aol_daily_done';
+  const LSK_STATS='aol_stats_v1';
+  const HOW_KEY='aol_how_seen_v1';
+
+  // Fallback only
+  const FALLBACK=[
+    {s:'FOUR',l:'FLOUR',c1:'After three',c2:'Bread ingredient',adds:1,insertPattern:'middle',difficulty:'medium'},
+    {s:'CAT',l:'CHAT',c1:'Pet that purrs',c2:'Talk casually',adds:1,insertPattern:'middle',difficulty:'easy'},
+    {s:'ROE',l:'ROME',c1:'Fish eggs',c2:'Capital of Italy',adds:1,insertPattern:'end',difficulty:'easy'},
+    {s:'SCARE',l:'SCARCE',c1:'Frighten',c2:'In short supply',adds:1,insertPattern:'middle',difficulty:'hard'},
+  ];
+
+  // -------------------- Helpers --------------------
+  const norm=w=>(w||'').trim().toUpperCase().replace(/[^A-Z]/g,'');
+
+  function insIdxs(s,l){
+    if(!s||!l) return null;
+    const diff=l.length-s.length;
+    if(diff<1||diff>2) return null;
+    let i=0,j=0;
+    const misses=[];
+    while(i<s.length&&j<l.length){
+      if(s[i]===l[j]){ i++; j++; continue; }
+      misses.push(j); j++;
+      if(misses.length>diff) return null;
+    }
+    while(j<l.length){
+      misses.push(j); j++;
+      if(misses.length>diff) return null;
+    }
+    if(i!==s.length||misses.length!==diff) return null;
+    return misses;
+  }
+
+  const insIdx=(s,l)=>{
+    const xs=insIdxs(s,l);
+    return xs&&xs.length===1 ? xs[0] : null;
+  };
+
+  function derivePattern(xs,len){
+    if(!Array.isArray(xs)||!xs.length||!len) return 'middle';
+    if(xs.every(x=>x===0)) return 'start';
+    if(xs.every(x=>x===len-1 || x===len-2)) return 'end';
+    if(xs.length===1){
+      if(xs[0]===0) return 'start';
+      if(xs[0]===len-1) return 'end';
+    }
+    return 'middle';
+  }
+
+  function autoDiff(s,l,adds=0){
+    if(adds>=2) return 'hard';
+    const sl=(s||'').length;
+    const ll=(l||'').length;
+    if((sl<=3&&ll<=4) || (sl<=4&&ll<=5)) return 'easy';
+    if(ll===6) return 'medium';
+    return 'hard';
+  }
+
+  function comp(p){
+    const s=norm(p.s), l=norm(p.l);
+    const xs=(Array.isArray(p.insertIndexes) && p.insertIndexes.length)
+      ? p.insertIndexes.slice()
+      : insIdxs(s,l);
+    const c1=(p.c1||'').trim();
+    const c2=(p.c2||'').trim();
+    const adds=Number.isInteger(p.adds)?p.adds:(xs?xs.length:0);
+    const insertPattern=(p.insertPattern||derivePattern(xs,l.length)).toLowerCase();
+    const d=(p.difficulty||p.d||autoDiff(s,l,adds)).toLowerCase();
+    const ok = !!xs && xs.length===adds && !!c1 && !!c2;
+    return {s,l,c1,c2,d,xs,x:xs?xs[0]:null,adds,insertPattern,sl:s.length,ll:l.length,ok};
+  }
+
+  const escapeHtml=s=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  const set=(id,txt)=>$(id).textContent=txt;
+
+  function todayLondon(){
+    try{
+      const fmt=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/London',year:'numeric',month:'2-digit',day:'2-digit'});
+      return fmt.format(new Date());
+    }catch{return new Date().toISOString().slice(0,10)}
+  }
+  function ydayLondon(){
+    const d=new Date(); d.setDate(d.getDate()-1);
+    try{
+      const fmt=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/London',year:'numeric',month:'2-digit',day:'2-digit'});
+      return fmt.format(d);
+    }catch{return d.toISOString().slice(0,10)}
+  }
+
+  function xmur3(str){let h=1779033703^str.length;for(let i=0;i<str.length;i++){h=Math.imul(h^str.charCodeAt(i),3432918353);h=(h<<13)|(h>>>19);}return function(){h=Math.imul(h^(h>>>16),2246822507);h=Math.imul(h^(h>>>13),3266489909);return (h^=h>>>16)>>>0;};}
+  function mulberry32(a){return function(){let t=a+=0x6D2B79F5;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return ((t^(t>>>14))>>>0)/4294967296;};}
+  function seededPick(list,n,seedStr){
+    const seed=xmur3(seedStr)();
+    const rnd=mulberry32(seed);
+    const a=list.slice();
+    for(let i=a.length-1;i>0;i--){
+      const j=Math.floor(rnd()*(i+1));
+      [a[i],a[j]]=[a[j],a[i]];
+    }
+    return a.slice(0,n);
+  }
+  function pick(list,n){
+    const a=list.slice();
+    for(let i=a.length-1;i>0;i--){
+      const j=Math.floor(Math.random()*(i+1));
+      [a[i],a[j]]=[a[j],a[i]];
+    }
+    return a.slice(0,n);
+  }
+
+  // -------------------- UI bits --------------------
+  const fb=(msg,cls='')=>{const el=$('fb'); if(!el) return; el.className='feedback'+(cls?' '+cls:''); el.textContent=msg;};
+  const hints=(a='',b='')=>{set('h1',a);set('h2',b);};
+
+  // Keyboard
+  const KEYS=['QWERTYUIOP'.split(''),'ASDFGHJKL'.split(''),['ENTER',...'ZXCVBNM'.split(''),'DEL']];
+  function key(k){/* assigned later */}
+  function mkKey(k){const d=document.createElement('div');d.className='key'+((k==='ENTER'||k==='DEL')?' wide':'');d.textContent=k;d.role='button';d.tabIndex=0;d.onclick=()=>key(k);return d;}
+  [['kr1',0],['kr2',1],['kr3',2]].forEach(([id,i])=>{const el=$(id);if(!el) return;el.innerHTML='';KEYS[i].forEach(k=>el.appendChild(mkKey(k)));});
+
+  function confetti(){
+    const root=$('conf'); if(!root) return;
+    root.classList.remove('hidden');root.innerHTML='';
+    for(let i=0;i<26;i++){
+      const p=document.createElement('div');p.className='c';
+      p.style.left=(Math.random()*100)+'vw';
+      p.style.setProperty('--dx',((Math.random()*220-110)|0)+'px');
+      p.style.background=`hsl(${(Math.random()*360)|0} 85% 60%)`;
+      p.style.animationDelay=(Math.random()*140)+'ms';
+      root.appendChild(p);
+    }
+    setTimeout(()=>{root.classList.add('hidden');root.innerHTML='';},1200);
+  }
+
+  // -------------------- Puzzle loading --------------------
+  let all=[];
+  function loadCached(){
+    const raw=store.get(LSK_PUZ);
+    if(!raw) return FALLBACK.map(comp).filter(p=>p.ok);
+    try{
+      const a=JSON.parse(raw);
+      const list=(Array.isArray(a)?a:[]).map(comp).filter(p=>p.ok);
+      return list.length?list:FALLBACK.map(comp).filter(p=>p.ok);
+    }catch{ return FALLBACK.map(comp).filter(p=>p.ok); }
+  }
+
+  async function loadMaster(){
+    // Start with cached immediately for instant play
+    all = loadCached();
+
+    const candidates = ['master-bank.json','master-puzzles.json'];
+    for(const file of candidates){
+      try{
+        const res = await fetch(file, { cache: 'no-store' });
+        if(!res.ok) throw new Error('HTTP '+res.status);
+        const data = await res.json();
+        if(!Array.isArray(data)) throw new Error('Not an array');
+        const fetched = data.map(comp).filter(p=>p.ok);
+        if(fetched.length){
+          store.set(LSK_PUZ, JSON.stringify(fetched.map(p=>({s:p.s,l:p.l,c1:p.c1,c2:p.c2,adds:p.adds,insertIndexes:p.xs,insertPattern:p.insertPattern,difficulty:p.d}))));
+          all = fetched;
+          return;
+        }
+      }catch(e){
+        console.warn('Master load failed for', file, e);
+      }
+    }
+    // If both fail, keep cache/fallback.
+  }
+
+  function diffPool(diff){
+    let pool = all;
+    if(diff && diff!=='mix') pool = all.filter(p=>p.d===diff);
+    if(pool.length<10) pool = all;
+    return pool;
+  }
+
+function buildRun(pool, take, seedBase = null) {
+  console.log(`buildRun: mode=${currentDiff}, target=${take}`);
+
+  const useSeeded = !!seedBase;
+
+  const shuffleAll = (arr, seedTag = '') => {
+    if (useSeeded) return seededPick(arr, arr.length, seedBase + seedTag);
+    return pick(arr, arr.length);
+  };
+
+  // ─── Source selection ────────────────────────────────────────
+  let source = pool;
+
+  if (currentDiff === 'hard') {
+    source = pool.filter(p => 
+      String(p.d || p.difficulty || '').toLowerCase() === 'hard'
+    );
+    console.log(`Hard filter → ${source.length} puzzles`);
+  } else if (currentDiff === 'mix') {
+    const two = pool.filter(p => p.adds === 2);
+    const one  = pool.filter(p => p.adds === 1);
+    source = shuffleAll([...two, ...one]);
+    console.log(`Mix → ${two.length} adds=2 + ${one.length} adds=1`);
+  }
+
+  // Fallback if too few
+  if (source.length < take) {
+    console.warn(`Only ${source.length} after filter → using full pool`);
+    source = pool;
+  }
+
+  // ─── Shuffle once ────────────────────────────────────────────
+  source = shuffleAll(source);
+
+  // ─── Deduplicate ─────────────────────────────────────────────
+  const seen = new Set();
+  source = source.filter(p => {
+    const key = `${p.s}|${p.l}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+
+  // ─── Avoid recent (soft limit) ───────────────────────────────
+  const recent = new Set(JSON.parse(sessionStorage.getItem('aol_recent_pairs') || '[]'));
+  let selection = source.filter(p => !recent.has(`${p.s}|${p.l}`));
+
+  // If recent avoidance killed too much, fall back
+  if (selection.length < take / 2) {
+    console.warn(`Recent avoidance left only ${selection.length} → ignoring recent`);
+    selection = source;
+  }
+
+  // ─── Take target amount ──────────────────────────────────────
+  selection = selection.slice(0, take);
+
+  // ─── Final padding if still short ────────────────────────────
+  if (selection.length < take) {
+    console.warn(`Still short (${selection.length}/${take}) → padding from source`);
+    const alreadyUsed = new Set(selection.map(p => `${p.s}|${p.l}`));
+    const extra = source
+      .filter(p => !alreadyUsed.has(`${p.s}|${p.l}`))
+      .slice(0, take - selection.length);
+    selection = selection.concat(extra);
+  }
+
+  // ─── Log final result ────────────────────────────────────────
+  console.log(`Final run: ${selection.length} puzzles`);
+
+  // ─── Remember for next time ──────────────────────────────────
+  const remember = selection.map(p => `${p.s}|${p.l}`);
+  const prev = JSON.parse(sessionStorage.getItem('aol_recent_pairs') || '[]');
+  sessionStorage.setItem('aol_recent_pairs', JSON.stringify([...prev, ...remember].slice(-50)));
+
+  return selection;
+}
+  // -------------------- Leaderboard (local) --------------------
+  function loadLead(){try{const raw=store.get(LSK_LEAD);const a=raw?JSON.parse(raw):[];return Array.isArray(a)?a:[];}catch{return []}}
+  function saveLead(list){store.set(LSK_LEAD,JSON.stringify(list.slice(0,60)))}
+  function addLead(e){const list=loadLead();list.push(e);list.sort((a,b)=>b.score-a.score||(a.ms??1e15)-(b.ms??1e15));saveLead(list)}
+
+  // -------------------- Stats & streak --------------------
+  function getStats(){ try{const raw=store.get(LSK_STATS);return raw?JSON.parse(raw)||{}:{};}catch{return {}} }
+  function setStats(o){store.set(LSK_STATS, JSON.stringify(o||{}));}
+
+  function updateDailyStreak(){
+    const st=getStats();
+    const today=todayLondon();
+    const yday=ydayLondon();
+
+    if(st.lastDailyDate===today) return {streak:st.dailyStreak||1, milestone:false};
+
+    let newStreak=1;
+    if(st.lastDailyDate===yday) newStreak=(st.dailyStreak||0)+1;
+
+    st.dailyStreak=newStreak;
+    st.dailyLongestStreak=Math.max(st.dailyLongestStreak||0, newStreak);
+    st.lastDailyDate=today;
+    setStats(st);
+
+    const milestones=[3,7,14,30,50,100];
+    return {streak:newStreak, milestone:milestones.includes(newStreak)};
+  }
+
+  function dailyDoneKey(diff){ return `${todayLondon()}|${diff}`; }
+  function isDailyDone(diff){
+    try{const raw=store.get(LSK_DAILY_DONE);const o=raw?JSON.parse(raw)||{}:{};return !!o[dailyDoneKey(diff)];}catch{return false}
+  }
+  function markDailyDone(diff){
+    let o={};
+    try{const raw=store.get(LSK_DAILY_DONE);o=raw?JSON.parse(raw)||{}:{};}catch{o={};}
+    o[dailyDoneKey(diff)]=true;
+    store.set(LSK_DAILY_DONE, JSON.stringify(o));
+  }
+
+  // -------------------- Game state --------------------
+  let run=[], idx=0, total=0, res=[], timer=null, t0=0;
+  let inRun=false, nexting=false, size=10;
+  let mode='run';
+  let currentDiff='mix';
+  let runStartMs=0;
+  let canAdvanceAt=0;
+
+  let aw=0, sChars=[], lChars=[];
+
+  function roundLimit(){ return mode==='sudden' ? ROUND_SUDDEN : ROUND_RUN; }
+  function leftMs(){ return Math.max(0, roundLimit() - (Date.now()-t0)); }
+
+  function header(which){
+    if(which==='home'){ $('stats').classList.add('hidden'); $('prog').classList.add('hidden'); }
+    else { $('stats').classList.remove('hidden'); $('prog').classList.remove('hidden'); }
+  }
+
+  function statsHeader(){
+    set('total', String(total));
+    if(mode==='sudden') set('num', `SD ${Math.max(0,idx)}`);
+    else set('num', `${inRun?Math.min(idx+1,size):0}/${size}`);
+  }
+
+function tick(){
+  const l=leftMs();
+  set('time', (l/1000).toFixed(1));
+
+  const timeEl=$('time');
+  if(l<=10000) timeEl.classList.add('timer-danger');
+  else timeEl.classList.remove('timer-danger');
+
+  if(l<=0){
+    timeEl.classList.remove('timer-danger');
+    stop();
+    finish({timedOut:true});
+  }
+}
+  function startTimer(){ stop(); t0=Date.now(); tick(); timer=setInterval(tick,50); }
+  function stop(){ if(timer) clearInterval(timer); timer=null; }
+
+  function renderProg(){
+    const p=$('prog');
+    p.innerHTML='';
+    if(mode==='sudden'){
+      res.slice(-10).forEach(r=>{
+        const d=document.createElement('div');
+        d.className='pip '+(r.correct?'good':'bad');
+        p.appendChild(d);
+      });
+      return;
+    }
+    for(let i=0;i<size;i++){
+      const d=document.createElement('div');
+      d.className='pip';
+      if(inRun&&i===idx) d.classList.add('active');
+      if(res[i]) d.classList.add(res[i].correct?'good':'bad');
+      p.appendChild(d);
+    }
+  }
+
+  function tiles(el,len,arr,plus=null,word=0){
+    el.innerHTML='';
+    const pluses=Array.isArray(plus)?plus:(plus==null?[]:[plus]);
+    for(let i=0;i<len;i++){
+      const d=document.createElement('div');
+      const isP=pluses.includes(i);
+      d.className='tile'+(isP?' plus':'')+(arr[i]?' filled':'');
+      d.textContent=isP?(arr[i]||'+'):(arr[i]||'');
+      d.onclick=()=>{
+        if(!inRun||nexting) return;
+        aw=word;
+        const target=(word===0)?sChars:lChars;
+        for(let j=i;j<target.length;j++) target[j]='';
+        const pz=run[idx];
+        tiles($('t1'),pz.sl,sChars,null,0);
+        tiles($('t2'),pz.ll,lChars,pz.xs||pz.x,1);
+        fb(word===0?'Editing Word 1.':'Editing Word 2.');
+        requestAnimationFrame(highlight);
+      };
+      el.appendChild(d);
+    }
+  }
+
+  function highlight(){
+    document.querySelectorAll('.tile').forEach(t=>t.classList.remove('active'));
+    const pz=run[idx]; if(!pz) return;
+    const t1=[...$('t1').children], t2=[...$('t2').children];
+    if(aw===0) t1[Math.min(sChars.filter(Boolean).length,pz.sl-1)]?.classList.add('active');
+    else t2[Math.min(lChars.filter(Boolean).length,pz.ll-1)]?.classList.add('active');
+  }
+
+  function mapShortIndexToLong(pz,i){
+    const xs=(pz?.xs||[]).slice().sort((a,b)=>a-b);
+    let offset=0;
+    for(const x of xs){
+      if(i+offset>=x) offset++;
+    }
+    return i+offset;
+  }
+
+  function pingPlus(){
+    const pz=run[idx]; if(!pz) return;
+    const pluses=(pz.xs||[pz.x]).filter(x=>x!=null);
+    pluses.forEach(pos=>{
+      const t=[...$('t2').children][pos];
+      if(!t) return;
+      t.classList.remove('ping'); void t.offsetWidth; t.classList.add('ping');
+    });
+  }
+
+  function slide(){
+    const pz=run[idx]; if(!pz) return;
+    const st=[...$('t1').children], lt=[...$('t2').children];
+    for(let i=0;i<pz.sl;i++){
+      const src=st[i], dst=lt[mapShortIndexToLong(pz,i)]; if(!src||!dst) continue;
+      const s=src.getBoundingClientRect(), d=dst.getBoundingClientRect();
+      const sx=s.left+s.width/2, sy=s.top+s.height/2;
+      const dx=d.left+d.width/2, dy=d.top+d.height/2;
+      const f=document.createElement('div');
+      f.className='fly';
+      f.textContent=(sChars[i]||src.textContent||'').trim();
+      f.style.left=(sx-21)+'px';
+      f.style.top=(sy-27)+'px';
+      f.style.setProperty('--tx',(dx-sx)+'px');
+      f.style.setProperty('--ty',(dy-sy)+'px');
+      f.style.animationDelay=(i*25)+'ms';
+      document.body.appendChild(f);
+      setTimeout(()=>f.remove(),700);
+    }
+    setTimeout(pingPlus,420);
+  }
+
+function celebrate(got, streakMult=1, clutch=false){
+  canAdvanceAt=Date.now()+900;
+  slide();
+
+  const tilesAll=[...$('t1').children,...$('t2').children];
+  tilesAll.forEach((t,i)=>{
+    t.classList.remove('bounce','glow');
+    setTimeout(()=>{
+      t.classList.add('bounce');
+      t.classList.add('glow');
+    }, i*40);
+  });
+
+  confetti();
+
+  const streakTxt = window.streak > 1 ? ` • 🔥 x${streakMult.toFixed(2)} streak` : '';
+  const clutchTxt = clutch ? ' • ⚡ CLUTCH!' : '';
+
+  if(mode==='sudden') fb(`✅ Correct! +${got}${streakTxt}${clutchTxt}. Next puzzle…`,'good');
+  else fb(`🎉 Correct! +${got} points${streakTxt}${clutchTxt}. Next word (or ENTER).`,'good');
+}
+
+  const pts=ms=>Math.round(BASE*Math.max(0,1-Math.min(roundLimit(),ms)/roundLimit()));
+
+  function reveal(pz){
+    sChars=pz.s.split('');
+    lChars=pz.l.split('');
+    tiles($('t1'),pz.sl,sChars,null,0);
+    tiles($('t2'),pz.ll,lChars,pz.xs||pz.x,1);
+  }
+
+  function setPuzzle(i){
+    idx=i;
+    const pz=run[i];
+    if(!pz) return endRun();
+
+    nexting=false;
+    $('next').disabled=true;
+    $('next').style.display = (mode==='sudden') ? 'none' : '';
+
+hints('','');
+$('row1').classList.remove('row-locked');
+$('row2').classList.remove('row-locked');
+set('cl1',pz.c1);
+set('cl2',pz.c2);
+
+    sChars=Array(pz.sl).fill('');
+    lChars=Array(pz.ll).fill('');
+    aw=0;
+
+    tiles($('t1'),pz.sl,sChars,null,0);
+    tiles($('t2'),pz.ll,lChars,pz.xs||pz.x,1);
+
+    const gc=$('game'); gc.classList.remove('flash'); void gc.offsetWidth; gc.classList.add('flash');
+    fb(mode==='sudden' ? `Sudden Death — Puzzle ${idx+1}` : `Puzzle ${idx+1}/${size} — go!`);
+
+    statsHeader();
+    renderProg();
+    startTimer();
+    requestAnimationFrame(highlight);
+  }
+
+  function shake(msg){
+    $('game').classList.remove('shake'); void $('game').offsetWidth; $('game').classList.add('shake');
+    fb(msg,'warn');
+  }
+
+  function attempt(){
+    const pz=run[idx];
+    if(!pz||nexting) return;
+
+    if(sChars.some(c=>!c) || lChars.some(c=>!c)) return shake('Fill all tiles (or Give up).');
+
+    const s=sChars.join(''), l=lChars.join('');
+    const sOk=s===pz.s, lOk=l===pz.l;
+
+    if(mode==='sudden'){
+      if(sOk && lOk) return finish({});
+      return finish({failed:true});
+    }
+
+    if(sOk && lOk) return finish({});
+
+if(sOk && !lOk){
+  hints('✅ locked','');
+  $('row1').classList.add('row-locked');
+  $('row2').classList.remove('row-locked');
+  aw=1;
+  fb('✅ Word 1 locked in! Finish Word 2.','good');
+  pingPlus();
+}
+else if(!sOk && lOk){
+  hints('', '✅ locked');
+  $('row2').classList.add('row-locked');
+  $('row1').classList.remove('row-locked');
+  aw=0;
+  fb('✅ Word 2 locked in! Finish Word 1.','good');
+}
+else{
+  hints('','');
+  $('row1').classList.remove('row-locked');
+  $('row2').classList.remove('row-locked');
+  fb('Not quite — try again.','warn');
+}
+
+    requestAnimationFrame(highlight);
+  }
+
+function ensureSuddenBuffer(){
+  if(mode!=='sudden') return;
+  if(idx < run.length-12) return;
+
+  const pool = diffPool(currentDiff);
+  const used = new Set(run.map(p => `${p.s}|${p.l}`));
+
+  let more = buildRun(pool.filter(p => !used.has(`${p.s}|${p.l}`)), Math.min(200, pool.length));
+
+  if(!more.length){
+    more = buildRun(pool, Math.min(200, pool.length));
+  }
+
+  run = run.concat(more);
+}
+
+  function nextWord(){
+    if(!inRun) return;
+    if(Date.now()<canAdvanceAt) return;
+    const n=idx+1;
+    if(mode==='sudden') ensureSuddenBuffer();
+    if(mode!=='sudden' && n>=size) return endRun();
+    setPuzzle(n);
+  }
+
+  function finish({timedOut=false,giveUp=false,failed=false}={}){
+    const pz=run[idx];
+    if(!pz||nexting) return;
+
+    stop();
+    const ms=Date.now()-t0;
+
+    const complete=!sChars.some(c=>!c)&&!lChars.some(c=>!c);
+    const correct=!timedOut&&!giveUp&&!failed&&complete&&sChars.join('')===pz.s&&lChars.join('')===pz.l;
+
+reveal(pz);
+$('row1').classList.remove('row-locked');
+$('row2').classList.remove('row-locked');
+
+let got = 0;
+let mult = 1;
+let clutch = false;
+
+if(correct){
+  const timeLeft = leftMs();
+  clutch = timeLeft < 5000;
+
+  if(typeof window.streak === 'undefined') window.streak = 0;
+  window.streak++;
+
+  mult = 1 + (window.streak * 0.1);
+
+  got = Math.round(pts(ms) * mult);
+
+  if(clutch) got += 150;
+}
+else{
+  window.streak = 0;
+}
+
+total += got;
+
+res.push({correct,points:got,ms});
+statsHeader();
+renderProg();
+
+nexting=true;
+
+if(correct){
+  celebrate(got, mult, clutch);
+      if(mode==='sudden'){
+        setTimeout(()=>{ if(inRun) nextWord(); }, Math.max(950, canAdvanceAt-Date.now()+30));
+        return;
+      }
+      $('next').disabled=true;
+      setTimeout(()=>{ if(nexting) $('next').disabled=false; }, Math.max(0, canAdvanceAt-Date.now()));
+    }else{
+      $('next').disabled=false;
+      if(mode==='sudden'){
+        fb(timedOut?'⏰ Time! Run over.':'❌ Wrong! Run over.','bad');
+        return endRun();
+      }
+      if(timedOut) fb('⏰ Time! Answer shown. Next word (or ENTER).','bad');
+      else if(giveUp) fb('🏳️ Gave up. Answer shown. Next word (or ENTER).','bad');
+      else fb('❌ Not quite. Answer shown. Next word (or ENTER).','bad');
+    }
+  }
+
+  function endRun(){
+    inRun=false;
+    nexting=false;
+    $('give').disabled=true;
+    $('next').disabled=true;
+    set('time','—');
+    openEndModal();
+  }
+
+function modeLabel(){
+  if(mode==='daily') return `Daily (${todayLondon()})`;
+  if(mode==='sudden') return 'Sudden Death';
+  return 'Classic';
+}
+
+function copyResults(){
+
+  const url = location.href.split('?')[0];
+
+  const modeName =
+    mode === 'daily'
+      ? 'Daily'
+      : (mode === 'sudden' ? 'Sudden Death' : 'Classic');
+
+  const grid = res.map(r => r.correct ? '🟩' : '🟥').join('');
+
+  const text =
+`Add One
+${modeName} • Score ${total}
+
+${grid}
+
+Play: ${url}`;
+
+  navigator.clipboard.writeText(text);
+
+  alert("Results copied!");
+}
+  function runDurationMs(){ return Date.now()-runStartMs; }
+
+  function recordStatsOnEnd(){
+    const st=getStats();
+    const dur=runDurationMs();
+    const correctCount=res.filter(r=>r.correct).length;
+
+    if(mode==='run'){
+      st.runsPlayed=(st.runsPlayed||0)+1;
+      st.bestRunScore=Math.max(st.bestRunScore||0,total);
+      st.totalRunScore=(st.totalRunScore||0)+total;
+      st.totalRunTimeMs=(st.totalRunTimeMs||0)+dur;
+      st.totalRunCorrect=(st.totalRunCorrect||0)+correctCount;
+      st.totalRunPuzzles=(st.totalRunPuzzles||0)+res.length;
+    }
+
+    if(mode==='daily'){
+      st.dailiesPlayed=(st.dailiesPlayed||0)+1;
+      st.bestDailyScore=Math.max(st.bestDailyScore||0,total);
+      st.totalDailyScore=(st.totalDailyScore||0)+total;
+      st.totalDailyTimeMs=(st.totalDailyTimeMs||0)+dur;
+      st.totalDailyCorrect=(st.totalDailyCorrect||0)+correctCount;
+      st.totalDailyPuzzles=(st.totalDailyPuzzles||0)+res.length;
+    }
+
+    if(mode==='sudden'){
+      const solved=correctCount;
+      st.suddenPlayed=(st.suddenPlayed||0)+1;
+      st.suddenBestSolved=Math.max(st.suddenBestSolved||0, solved);
+      st.suddenBestScore=Math.max(st.suddenBestScore||0, total);
+      st.totalSuddenSolved=(st.totalSuddenSolved||0)+solved;
+    }
+
+    setStats(st);
+  }
+
+  function openEndModal(){
+    recordStatsOnEnd();
+
+    const dur=runDurationMs();
+    const sec=(dur/1000).toFixed(1);
+    set('mscore', String(total));
+
+    const metaParts=[modeLabel(), `• ${sec}s`];
+    if(mode!=='sudden') metaParts.push(`• Puzzles: ${size}`);
+    if(mode==='sudden') metaParts.push(`• Solved: ${res.filter(r=>r.correct).length}`);
+    metaParts.push(`• Difficulty: ${currentDiff}`);
+    set('mmeta', metaParts.join(' '));
+
+    const g=$('mgrid'); g.innerHTML='';
+    const shown = (mode==='sudden') ? res.slice(-12) : res;
+    shown.forEach(r=>{const d=document.createElement('div');d.className='mini '+(r.correct?'good':'bad');g.appendChild(d);});
+
+    $('modal').classList.remove('hidden');
+
+    if(mode==='daily'){
+      markDailyDone(currentDiff);
+      const {streak, milestone} = updateDailyStreak();
+      if(milestone){
+        setTimeout(()=>{ confetti(); fb(`🔥 ${streak}-day streak! Keep it going!`,'good'); }, 200);
+      }
+    }
+  }
+
+  const closeModal=()=>$('modal').classList.add('hidden');
+
+  function copyShare(){
+    const line = res.map(r=>r.correct?'🟩':'🟥').join('');
+    const dur=runDurationMs();
+    const sec=(dur/1000).toFixed(1);
+    const link = (location && location.origin) ? location.origin : '';
+
+    const solved = res.filter(r=>r.correct).length;
+    const extra = (mode==='sudden') ? `Solved: ${solved}\n` : '';
+
+    const head = `Add One — ${modeLabel()}`;
+    const txt = `${head}\nScore: ${total}\nTime: ${sec}s\n${extra}${line}\nDifficulty: ${currentDiff}${link?`\n${link}`:''}`;
+
+    (navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(txt):Promise.reject())
+      .then(()=>fb('Copied share text ✅','good'))
+      .catch(()=>fb("Couldn't copy.",'warn'));
+  }
+
+  function submitScore(){
+    const name=(prompt('Name for leaderboard?','')||'').trim().slice(0,20);
+    if(!name) return fb('No name entered.','warn');
+    addLead({
+      name,
+      score:total,
+      mode:mode,
+      diff:currentDiff,
+      when:(mode==='daily')?todayLondon():'',
+      ms:runDurationMs(),
+      solved:res.filter(r=>r.correct).length
+    });
+    fb('Submitted to leaderboard ✅','good');
+  }
+
+  // -------------------- Leaderboard UI --------------------
+  function openLead(){ $('lbmodal').classList.remove('hidden'); renderLead(); }
+  function closeLead(){ $('lbmodal').classList.add('hidden'); }
+  function renderLead(){
+    const filter=$('lbfilter').value||'all';
+    const list=loadLead().filter(x=>filter==='all'||x.mode===filter);
+    const box=$('lblist');
+    box.innerHTML='';
+    if(!list.length){
+      box.innerHTML='<div class="sub">No scores yet. Finish a mode and tap “Submit score”.</div>';
+      return;
+    }
+    list.slice(0,30).forEach((e,i)=>{
+      const meta=[
+  e.mode==='daily' ? 'Daily' : (e.mode==='sudden' ? 'Sudden Death' : 'Classic'),
+  e.diff ? ('• ' + e.diff) : '',
+  e.when ? ('• ' + e.when) : '',
+  (e.mode==='sudden' && e.solved!=null) ? (`• Solved ${e.solved}`) : ''
+].join(' ');
+      const div=document.createElement('div');
+      div.style.padding='10px';
+      div.style.border='1px solid var(--b)';
+      div.style.borderRadius='14px';
+      div.style.background='var(--panel2)';
+      div.style.marginTop='8px';
+      div.innerHTML=`<div><b>#${i+1} ${escapeHtml(e.name||'Player')}</b> <span class="sub">${escapeHtml(meta)}</span></div>
+      <div style="font-weight:950;font-size:18px;margin-top:2px">${e.score}</div>
+      <div class="sub">${e.ms!=null?`Time: ${(e.ms/1000).toFixed(1)}s`:''}</div>`;
+      box.appendChild(div);
+    });
+  }
+
+  // -------------------- Stats modal --------------------
+  function ensureStatsModal(){
+    if($('statsModal')) return;
+    const m=document.createElement('div');
+    m.id='statsModal';
+    m.className='modal hidden';
+    m.innerHTML=`
+      <div class="sheet">
+        <div class="row"><h2 style="margin:0">Stats</h2><button id="statsClose" class="ghost">Close</button></div>
+        <div class="sub" style="margin-top:6px">Your stats are saved on this device.</div>
+        <div id="statsBody" style="margin-top:12px"></div>
+        <div class="actions" style="margin-top:12px">
+          <button id="statsReset" class="ghost">Reset stats</button>
+        </div>
+      </div>`;
+    document.body.appendChild(m);
+    $('statsClose').onclick=()=>m.classList.add('hidden');
+    $('statsReset').onclick=()=>{ if(confirm('Reset all stats on this device?')){ setStats({}); renderStats(); } };
+  }
+
+  function fmtPct(a,b){ if(!b) return '—'; return `${Math.round((a/b)*100)}%`; }
+  function fmtSec(ms){ if(ms==null) return '—'; return (ms/1000).toFixed(1)+'s'; }
+
+  function renderStats(){
+    ensureStatsModal();
+    const st=getStats();
+    const body=$('statsBody');
+
+    const ds=st.dailyStreak||0;
+    const dl=st.dailyLongestStreak||0;
+
+    const runPlayed=st.runsPlayed||0;
+    const runBest=st.bestRunScore||0;
+    const runAvgScore=runPlayed?Math.round((st.totalRunScore||0)/runPlayed):0;
+    const runAvgTime=runPlayed?fmtSec((st.totalRunTimeMs||0)/runPlayed):'—';
+    const runAcc=fmtPct(st.totalRunCorrect||0, st.totalRunPuzzles||0);
+
+    const dPlayed=st.dailiesPlayed||0;
+    const dBest=st.bestDailyScore||0;
+    const dAvgScore=dPlayed?Math.round((st.totalDailyScore||0)/dPlayed):0;
+    const dAvgTime=dPlayed?fmtSec((st.totalDailyTimeMs||0)/dPlayed):'—';
+    const dAcc=fmtPct(st.totalDailyCorrect||0, st.totalDailyPuzzles||0);
+
+    const sPlayed=st.suddenPlayed||0;
+    const sBestSolved=st.suddenBestSolved||0;
+    const sBestScore=st.suddenBestScore||0;
+
+    body.innerHTML=`
+  <div style="display:grid;gap:10px">
+    <div style="padding:10px;border:1px solid var(--b);border-radius:14px;background:var(--panel2)"><b>Daily streak</b><div class="sub">Current: ${ds} • Best: ${dl}${st.lastDailyDate?` • Last: ${escapeHtml(st.lastDailyDate)}`:''}</div></div>
+    <div style="padding:10px;border:1px solid var(--b);border-radius:14px;background:var(--panel2)"><b>Classic</b><div class="sub">Played: ${runPlayed} • Best: ${runBest} • Avg score: ${runAvgScore}</div><div class="sub">Avg time: ${runAvgTime} • Accuracy: ${runAcc}</div></div>
+    <div style="padding:10px;border:1px solid var(--b);border-radius:14px;background:var(--panel2)"><b>Daily</b><div class="sub">Played: ${dPlayed} • Best: ${dBest} • Avg score: ${dAvgScore}</div><div class="sub">Avg time: ${dAvgTime} • Accuracy: ${dAcc}</div></div>
+    <div style="padding:10px;border:1px solid var(--b);border-radius:14px;background:var(--panel2)"><b>Sudden Death</b><div class="sub">Played: ${sPlayed} • Best solved: ${sBestSolved} • Best score: ${sBestScore}</div></div>
+  </div>`;
+  }
+
+  function openStats(){ renderStats(); $('statsModal').classList.remove('hidden'); }
+
+  // -------------------- How-to modal --------------------
+  const HOW_EX={s:'FOUR',l:'FLOUR',c1:'After three',c2:'Bread ingredient'};
+  function howTiles(el, word, plusIndex=null){
+    el.innerHTML='';
+    for(let i=0;i<word.length;i++){
+      const d=document.createElement('div');
+      const isPlus = plusIndex!=null && i===plusIndex;
+      d.className='tile howTile'+(isPlus?' plus howPlus':'');
+      d.textContent=isPlus?'+':word[i];
+      el.appendChild(d);
+    }
+  }
+  function openHow(){ $('howModal').classList.remove('hidden'); $('howModal').setAttribute('aria-hidden','false'); replayHow(); }
+  function closeHow(){
+    $('howModal').classList.add('hidden');
+    $('howModal').setAttribute('aria-hidden','true');
+    document.querySelectorAll('.fly.how').forEach(n=>n.remove());
+  }
+  function replayHow(){
+    const s=HOW_EX.s, l=HOW_EX.l;
+    const x=insIdx(s,l);
+    howTiles($('howT1'), s, null);
+    $('howT2').innerHTML='';
+    for(let i=0;i<l.length;i++){
+      const d=document.createElement('div');
+      const isPlus=i===x;
+      d.className='tile howTile'+(isPlus?' plus howPlus':'');
+      d.textContent=isPlus?'+':'';
+      $('howT2').appendChild(d);
+    }
+    $('howMsg').textContent='Word 1 → Word 2 (same letters, + one extra)';
+
+    const st=[...$('howT1').children], lt=[...$('howT2').children];
+    const tgt=i=>i<x?i:i+1;
+    document.querySelectorAll('.fly.how').forEach(n=>n.remove());
+    for(let i=0;i<s.length;i++){
+      const src=st[i], dst=lt[tgt(i)];
+      const sb=src.getBoundingClientRect(), db=dst.getBoundingClientRect();
+      const sx=sb.left+sb.width/2, sy=sb.top+sb.height/2;
+      const dx=db.left+db.width/2, dy=db.top+db.height/2;
+      const f=document.createElement('div');
+      f.className='fly how';
+      f.textContent=s[i];
+      f.style.left=(sx-21)+'px';
+      f.style.top=(sy-27)+'px';
+      f.style.setProperty('--tx',(dx-sx)+'px');
+      f.style.setProperty('--ty',(dy-sy)+'px');
+      f.style.animationDelay=(i*120)+'ms';
+      document.body.appendChild(f);
+      setTimeout(()=>f.remove(), 900 + i*120);
+      setTimeout(()=>{ if(dst) { dst.textContent=s[i]; dst.classList.add('filled'); dst.classList.remove('plus'); } }, 420 + i*120);
+    }
+    setTimeout(()=>{
+      const plus=lt[x];
+      if(plus){ plus.classList.remove('howPlus'); plus.textContent=l[x]; plus.classList.add('filled'); }
+      $('howMsg').textContent=`Now Word 2 has an extra letter (${l[x]}) in the “+” spot.`;
+      confetti();
+    }, 420 + s.length*120 + 160);
+  }
+
+  // -------------------- Home / navigation --------------------
+  function showHome(){
+    stop();
+    inRun=false;
+    nexting=false;
+    closeModal();
+    closeLead();
+    $('home').classList.remove('hidden');
+    $('game').classList.add('hidden');
+    header('home');
+    set('time', (ROUND_RUN/1000).toFixed(1));
+    set('num','0/10');
+    set('total','0');
+    $('prog').innerHTML='';
+  }
+  function showGame(){ $('home').classList.add('hidden'); $('game').classList.remove('hidden'); header('game'); }
+
+  function uniqueTake(list, n){
+    const m=new Map();
+    for(const p of list){
+      const k=p.s+'|'+p.l;
+      if(!m.has(k)) m.set(k,p);
+      if(m.size>=n) break;
+    }
+    return Array.from(m.values());
+  }
+
+function startMode(which){
+  mode=which;
+  currentDiff=$('diff').value || 'mix';
+  total=0; res=[]; idx=0; nexting=false;
+
+  window.streak = 0;
+  $('time').classList.remove('timer-danger');
+
+  let pool=diffPool(currentDiff);
+  if(pool.length<10) pool = all;
+
+  console.log('currentDiff =', currentDiff);
+  console.log('all.length =', all.length);
+  console.log('pool.length =', pool.length);
+
+  if(mode==='daily'){
+    if(isDailyDone(currentDiff)){
+      const ok=confirm(`You’ve already completed today’s Daily (${todayLondon()}) for ${currentDiff}. Replay anyway?`);
+      if(!ok) return;
+    }
+    size=Math.min(10, pool.length);
+    const seedBase=`aol|${todayLondon()}|${currentDiff}`;
+    run = buildRun(pool, size, seedBase);
+  }else if(mode==='sudden'){
+    size=999999;
+    run = buildRun(pool, Math.min(300, pool.length));
+  }else{
+    size=Math.min(10, pool.length);
+    run = buildRun(pool, size);
+  }
+
+  inRun=true;
+  runStartMs=Date.now();
+
+  showGame();
+  renderProg();
+  $('give').disabled=false;
+  setPuzzle(0);
+}
+  // Expose minimal API for inline fallback
+  window.__AOL_START = function(which){
+    if(which==='stats') return openStats();
+    if(which==='leader') return openLead();
+    return startMode(which);
+  };
+
+  function closeLead(){ $('lbmodal').classList.add('hidden'); }
+  function homeHandler(force=false){
+    closeModal(); closeLead();
+    if(inRun && !force){
+      const ok=confirm('Return to Home? Your current game will end.');
+      if(!ok) return;
+    }
+    inRun=false; nexting=false; stop();
+    showHome();
+  }
+
+  // -------------------- Input handling --------------------
+  key=function(k){
+    if(!inRun) return;
+
+    if(nexting){ if(k==='ENTER') return nextWord(); return; }
+    if(k==='ENTER') return attempt();
+
+    const pz=run[idx];
+    if(!pz) return;
+
+    if(k==='DEL'){
+      const anyL=lChars.some(Boolean);
+      if(aw===1 && !anyL) aw=0;
+      const target=(aw===0)?sChars:lChars;
+      for(let i=target.length-1;i>=0;i--) if(target[i]){target[i]=''; break;}
+      tiles($('t1'),pz.sl,sChars,null,0);
+      tiles($('t2'),pz.ll,lChars,pz.xs||pz.x,1);
+      requestAnimationFrame(highlight);
+      return;
+    }
+
+    if(!/^[A-Z]$/.test(k)) return;
+
+    if(aw===0 && !sChars.some(c=>!c)) aw=1;
+
+    const target=(aw===0)?sChars:lChars;
+    const max=(aw===0)?pz.sl:pz.ll;
+    const i=target.findIndex(x=>!x);
+    if(i===-1||i>=max) return;
+
+    target[i]=k;
+    const cell=(aw===0?$('t1').children[i]:$('t2').children[i]);
+    if(cell){cell.classList.remove('pop');void cell.offsetWidth;cell.classList.add('pop');}
+
+    tiles($('t1'),pz.sl,sChars,null,0);
+    tiles($('t2'),pz.ll,lChars,pz.xs||pz.x,1);
+    requestAnimationFrame(highlight);
+  };
+
+  window.addEventListener('keydown',e=>{
+    const k=e.key;
+    if(k==='Enter') return key('ENTER');
+    if(k==='Backspace') return key('DEL');
+    if(/^[a-zA-Z]$/.test(k)) return key(k.toUpperCase());
+  });
+
+  // -------------------- Buttons --------------------
+  function on(id, fn){
+    const el=$(id);
+    if(!el) return;
+    el.addEventListener('click', fn);
+  }
+
+  on('play', ()=>startMode('run'));
+  on('daily', ()=>startMode('daily'));
+  on('sudden', ()=>startMode('sudden'));
+  on('leader', openLead);
+  on('statsBtn', openStats);
+  on('how', openHow);
+  on('howClose', closeHow);
+  on('howReplay', replayHow);
+  on('howGot', ()=>{ store.set(HOW_KEY,'1'); closeHow(); });
+
+  on('sub', attempt);
+  on('give', ()=>finish({giveUp:true}));
+  on('next', nextWord);
+
+  on('close', ()=>$('modal').classList.add('hidden'));
+  on('again', ()=>{ $('modal').classList.add('hidden'); startMode(mode); });
+  on('copy', copyShare);
+  on('submitScoreBtn', submitScore);
+  on('mhome', ()=>homeHandler(true));
+
+  on('lbclose', closeLead);
+  on('lbclear', ()=>{ if(confirm('Clear leaderboard on this device?')){ saveLead([]); renderLead(); } });
+  const lbfilter=$('lbfilter'); if(lbfilter) lbfilter.onchange=renderLead;
+
+  on('homeIcon', ()=>homeHandler(false));
+
+  // -------------------- Self-tests (lightweight) --------------------
+  function runSelfTests(){
+    try{
+      console.assert(insIdx('FOUR','FLOUR')===1,'insIdx FOUR->FLOUR');
+      console.assert(insIdx('CAT','CHAT')===1,'insIdx CAT->CHAT');
+      console.assert(insIdx('ROE','ROME')===2,'insIdx ROE->ROME');
+      console.assert(insIdx('SCARE','SCARCE')===4,'insIdx SCARE->SCARCE');
+      console.assert(insIdx('ABC','ABCD')===3,'insIdx end insert');
+      console.assert(insIdx('ABC','XABC')===0,'insIdx start insert');
+      console.assert(insIdx('ABC','AXBC')===1,'insIdx mid insert');
+      console.assert(insIdx('ABC','ABDC')===2,'insIdx mid2 insert');
+      console.assert(insIdx('ABC','AB')===null,'insIdx length mismatch');
+      console.assert(insIdx('ABC','AABC')===1,'insIdx duplicate insert');
+    }catch(e){
+      console.warn('Self-tests error', e);
+    }
+  }
+
+// -------------------- Init --------------------
+  window.addEventListener('error', (e)=>{
+    console.error(e.error||e.message||e);
+    fb('⚠️ Error: '+(e.message||'Something went wrong')+'. Reload the page.','bad');
+  });
+
+  document.getElementById('copy').addEventListener('click', copyResults);
+
+  (async()=>{
+    runSelfTests();
+    await loadMaster();
+    showHome();
+    ensureStatsModal();
+    if(!store.get(HOW_KEY)) setTimeout(openHow, 260);
+  })();
+
+  setInterval(()=>{ if(inRun && mode==='sudden') ensureSuddenBuffer(); }, 500);
+
+  // -------------------- Missing functions referenced above (defined here to avoid hoist confusion) --------------------
+  function openLead(){ $('lbmodal').classList.remove('hidden'); renderLead(); }
+
+})();
+</script>
+</body>
+</html>
