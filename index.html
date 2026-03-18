@@ -393,7 +393,7 @@ input,textarea,select{width:100%;padding:10px;border-radius:14px;border:1px soli
   <div class="kbwrap"><div class="kb"><div class="krow" id="kr1"></div><div class="krow" id="kr2"></div><div class="krow" id="kr3"></div></div></div>
 </div>
 
-<button id="homeIcon" class="ghost" aria-label="Home">⌂</button>
+<button id="homeIcon" class="ghost hidden" aria-label="Home">⌂</button>
 <div id="conf" class="confetti hidden" aria-hidden="true"></div>
 
 <div id="modal" class="modal hidden" aria-hidden="true">
@@ -1421,15 +1421,22 @@ function showHome(){
   closeLead();
   $('home').classList.remove('hidden');
   $('game').classList.add('hidden');
+  $('homeIcon').classList.add('hidden');
   header('home');
   set('time', (ROUND_RUN/1000).toFixed(1));
   set('num','0/10');
   set('total','0');
   $('prog').innerHTML='';
 
-  updateHintButton(); // 👈 ADD THIS LINE
+  updateHintButton();
 }
-  function showGame(){ $('home').classList.add('hidden'); $('game').classList.remove('hidden'); header('game'); }
+
+function showGame(){
+  $('home').classList.add('hidden');
+  $('game').classList.remove('hidden');
+  $('homeIcon').classList.remove('hidden');
+  header('game');
+}
 
   function uniqueTake(list, n){
     const m=new Map();
