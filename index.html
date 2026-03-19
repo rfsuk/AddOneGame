@@ -74,9 +74,26 @@
 .pip.bad{background:rgba(255,92,92,.18);border-color:rgba(255,92,92,.55);opacity:1}
 .pip.active{outline:2px solid rgba(42,60,255,.45);outline-offset:2px}
 
-:root[data-theme="light"] .pip{
-  background:#cfd8f3;
-  border-color:#aebee8;
+:root[data-theme="light"] .pip.good{
+  background:rgba(22,179,100,.18);
+  border-color:rgba(22,179,100,.45);
+}
+
+:root[data-theme="light"] .pip.bad{
+  background:rgba(229,72,77,.14);
+  border-color:rgba(229,72,77,.40);
+}
+
+@media (prefers-color-scheme: light){
+  :root:not([data-theme]) .pip.good{
+    background:rgba(22,179,100,.18);
+    border-color:rgba(22,179,100,.45);
+  }
+
+  :root:not([data-theme]) .pip.bad{
+    background:rgba(229,72,77,.14);
+    border-color:rgba(229,72,77,.40);
+  }
 }
 
 @media (prefers-color-scheme: light){
@@ -1234,7 +1251,9 @@ function modeLabel(){
     const line = res.map(r=>r.correct?'🟩':'🟥').join('');
     const dur=runDurationMs();
     const sec=(dur/1000).toFixed(1);
-    const link = (location && location.origin) ? location.origin : '';
+    const link = (location && location.origin && location.pathname)
+  ? location.origin + location.pathname
+  : '';
 
     const solved = res.filter(r=>r.correct).length;
     const extra = (mode==='sudden') ? `Solved: ${solved}\n` : '';
