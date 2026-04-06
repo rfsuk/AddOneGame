@@ -74,6 +74,12 @@
 .pip.bad{background:rgba(255,92,92,.18);border-color:rgba(255,92,92,.55);opacity:1}
 .pip.active{outline:2px solid rgba(42,60,255,.45);outline-offset:2px}
 
+/* Light mode overrides */
+:root[data-theme="light"] .pip{
+  background:#cfd8f3;
+  border-color:#aebee8;
+}
+
 :root[data-theme="light"] .pip.good{
   background:rgba(22,179,100,.18);
   border-color:rgba(22,179,100,.45);
@@ -322,6 +328,125 @@ button:disabled{opacity:.55;cursor:not-allowed}
 .miniGrid{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.mini{width:18px;height:18px;border-radius:6px;border:1px solid rgba(42,53,95,.9);background:#11162a}.mini.good{background:rgba(43,213,118,.22);border-color:rgba(43,213,118,.55)}.mini.bad{background:rgba(255,92,92,.18);border-color:rgba(255,92,92,.55)}
 summary{color:var(--m);cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}
 input,textarea,select{width:100%;padding:10px;border-radius:14px;border:1px solid var(--b2);background:var(--panel2);color:var(--t);font-size:14px;outline:none}
+.statsGrid{
+  display:grid;
+  gap:10px;
+}
+
+.statsHero{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+
+.statChip{
+  padding:10px;
+  border:1px solid var(--b);
+  border-radius:14px;
+  background:var(--panel2);
+  text-align:center;
+}
+
+.statChip .bigNum{
+  font-size:18px;
+  font-weight:950;
+  color:var(--t);
+}
+
+.statChip .smallLbl{
+  margin-top:2px;
+  font-size:11px;
+  color:var(--m);
+}
+
+.insightCard{
+  padding:12px;
+  border:1px solid var(--b);
+  border-radius:16px;
+  background:var(--panel2);
+}
+
+.insightTitle{
+  font-weight:900;
+  font-size:14px;
+  margin-bottom:10px;
+}
+
+.timeHeat{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  margin-bottom:10px;
+}
+
+.heatSlot{
+  min-height:58px;
+  border-radius:14px;
+  border:1px solid var(--b2);
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  padding:8px 6px;
+  font-size:11px;
+  font-weight:800;
+  position:relative;
+}
+
+.heatSlot span{
+  position:relative;
+  z-index:1;
+}
+
+.heatSlot small{
+  position:absolute;
+  top:7px;
+  right:8px;
+  font-size:10px;
+  color:var(--m);
+}
+
+.heat0{ background:rgba(42,60,255,.04); }
+.heat1{ background:rgba(42,60,255,.10); }
+.heat2{ background:rgba(42,60,255,.18); }
+.heat3{ background:rgba(42,60,255,.28); }
+.heat4{
+  background:rgba(42,60,255,.40);
+  border-color:var(--a);
+  box-shadow:0 0 0 2px rgba(42,60,255,.12);
+}
+
+.insightText{
+  font-size:13px;
+  font-weight:700;
+  color:var(--t);
+}
+
+.insightMeta{
+  margin-top:4px;
+  font-size:11px;
+  color:var(--m);
+}
+
+.modeCard{
+  padding:10px;
+  border:1px solid var(--b);
+  border-radius:14px;
+  background:var(--panel2);
+}
+
+.modeCardTitle{
+  font-weight:900;
+  margin-bottom:6px;
+}
+
+.modeRows{
+  display:grid;
+  gap:4px;
+}
+
+.modeRows .sub{
+  font-size:12px;
+}
 </style>
 
 
@@ -459,11 +584,12 @@ input,textarea,select{width:100%;padding:10px;border-radius:14px;border:1px soli
   const ROUND_SUDDEN=15000;
   const BASE=1000;
   const LSK_PUZ='aol_puz_cache';
-  const LSK_LEAD='aol_lead';
-  const LSK_DAILY_DONE='aol_daily_done';
-  const LSK_STATS='aol_stats_v1';
-  const HOW_KEY='aol_how_seen_v1';
+const LSK_LEAD='aol_lead';
+const LSK_DAILY_DONE='aol_daily_done';
+const LSK_STATS='aol_stats_v1';
+const HOW_KEY='aol_how_seen_v1';
 const LSK_THEME='aol_theme';
+const LSK_HISTORY='aol_history_v1';
 
   // Fallback only
   const FALLBACK=[
@@ -752,6 +878,119 @@ function buildRun(pool, take, seedBase = null) {
   // -------------------- Stats & streak --------------------
   function getStats(){ try{const raw=store.get(LSK_STATS);return raw?JSON.parse(raw)||{}:{};}catch{return {}} }
   function setStats(o){store.set(LSK_STATS, JSON.stringify(o||{}));}
+
+function getHistory(){
+  try{
+    const raw=store.get(LSK_HISTORY);
+    const arr=raw?JSON.parse(raw):[];
+    return Array.isArray(arr)?arr:[];
+  }catch{
+    return [];
+  }
+}
+
+function setHistory(arr){
+  store.set(LSK_HISTORY, JSON.stringify((arr||[]).slice(-400)));
+}
+
+function addHistory(entry){
+  const hist=getHistory();
+  hist.push(entry);
+  setHistory(hist);
+}
+
+function getTimeBucket(hour){
+  if(hour < 12) return 'Morning';
+  if(hour < 15) return 'Early';
+  if(hour < 18) return 'Late';
+  return 'Evening';
+}
+
+function bucketShortLabel(bucket){
+  if(bucket === 'Morning') return 'Morn';
+  if(bucket === 'Early') return 'Early';
+  if(bucket === 'Late') return 'Late';
+  return 'Eve';
+}
+
+function getDailyTimeInsights(){
+  const hist = getHistory().filter(x =>
+    x &&
+    x.mode === 'daily' &&
+    typeof x.score === 'number' &&
+    typeof x.playedHourLocal === 'number'
+  );
+
+  const buckets = [
+    { key:'Morning', runs:0, total:0, avg:0, heat:0 },
+    { key:'Early', runs:0, total:0, avg:0, heat:0 },
+    { key:'Late', runs:0, total:0, avg:0, heat:0 },
+    { key:'Evening', runs:0, total:0, avg:0, heat:0 }
+  ];
+
+  hist.forEach(h=>{
+    const full = getTimeBucket(h.playedHourLocal);
+    const key = full === 'Morning' ? 'Morning'
+      : full === 'Early' ? 'Early'
+      : full === 'Late' ? 'Late'
+      : 'Evening';
+
+    const slot = buckets.find(b=>b.key===key);
+    if(slot){
+      slot.runs++;
+      slot.total += h.score;
+    }
+  });
+
+  buckets.forEach(b=>{
+    b.avg = b.runs ? Math.round(b.total / b.runs) : 0;
+  });
+
+  const used = buckets.filter(b=>b.runs > 0);
+
+  if(!used.length){
+    return {
+      buckets,
+      best:null,
+      totalRuns:0,
+      insight:'Not enough Daily data yet to suggest a best time.'
+    };
+  }
+
+  const max = Math.max(...used.map(b=>b.avg));
+  const min = Math.min(...used.map(b=>b.avg));
+
+  buckets.forEach(b=>{
+    if(!b.runs){
+      b.heat = 0;
+    }else if(max === min){
+      b.heat = 2;
+    }else{
+      const t = (b.avg - min) / (max - min);
+      b.heat = Math.max(1, Math.min(4, Math.round(t * 3) + 1));
+    }
+  });
+
+  const best = used.slice().sort((a,b)=>b.avg-a.avg)[0];
+  const overallAvg = Math.round(
+    used.reduce((n,b)=>n+b.total,0) / used.reduce((n,b)=>n+b.runs,0)
+  );
+  const diffPct = overallAvg ? Math.round(((best.avg - overallAvg) / overallAvg) * 100) : 0;
+
+  let insight = `You tend to score highest in the ${best.key.toLowerCase()}.`;
+  if(best.runs < 3){
+    insight = `Early signal: your ${best.key.toLowerCase()} runs look strongest so far.`;
+  }else if(diffPct > 0){
+    insight = `You tend to score highest in the ${best.key.toLowerCase()} (${diffPct}% above your average).`;
+  }
+
+  return {
+    buckets,
+    best,
+    totalRuns: hist.length,
+    insight
+  };
+}
 
   function updateDailyStreak(){
     const st=getStats();
@@ -1217,8 +1456,20 @@ function modeLabel(){
     setStats(st);
   }
 
-  function openEndModal(){
-    recordStatsOnEnd();
+function openEndModal(){
+  recordStatsOnEnd();
+
+  addHistory({
+    mode,
+    diff: currentDiff,
+    score: total,
+    durationMs: runDurationMs(),
+    correct: res.filter(r=>r.correct).length,
+    totalPuzzles: res.length,
+    completedAt: new Date().toISOString(),
+    playedHourLocal: new Date().getHours(),
+    dailyDate: mode === 'daily' ? todayLondon() : ''
+  });
 
     const dur=runDurationMs();
     const sec=(dur/1000).toFixed(1);
@@ -1321,7 +1572,7 @@ function modeLabel(){
     m.className='modal hidden';
     m.innerHTML=`
       <div class="sheet">
-        <div class="row"><h2 style="margin:0">Stats</h2><button id="statsClose" class="ghost">Close</button></div>
+        <div class="row"><h2 style="margin:0">Stats & Insights</h2><button id="statsClose" class="ghost">Close</button></div>
         <div class="sub" style="margin-top:6px">Your stats are saved on this device.</div>
         <div id="statsBody" style="margin-top:12px"></div>
         <div class="actions" style="margin-top:12px">
@@ -1330,44 +1581,104 @@ function modeLabel(){
       </div>`;
     document.body.appendChild(m);
     $('statsClose').onclick=()=>m.classList.add('hidden');
-    $('statsReset').onclick=()=>{ if(confirm('Reset all stats on this device?')){ setStats({}); renderStats(); } };
+    $('statsReset').onclick=()=>{
+  if(confirm('Reset all stats on this device?')){
+    setStats({});
+    setHistory([]);
+    renderStats();
+  }
+};
   }
 
   function fmtPct(a,b){ if(!b) return '—'; return `${Math.round((a/b)*100)}%`; }
   function fmtSec(ms){ if(ms==null) return '—'; return (ms/1000).toFixed(1)+'s'; }
 
-  function renderStats(){
-    ensureStatsModal();
-    const st=getStats();
-    const body=$('statsBody');
+function renderStats(){
+  ensureStatsModal();
+  const st=getStats();
+  const body=$('statsBody');
+  const ti=getDailyTimeInsights();
 
-    const ds=st.dailyStreak||0;
-    const dl=st.dailyLongestStreak||0;
+  const ds=st.dailyStreak||0;
+  const dl=st.dailyLongestStreak||0;
 
-    const runPlayed=st.runsPlayed||0;
-    const runBest=st.bestRunScore||0;
-    const runAvgScore=runPlayed?Math.round((st.totalRunScore||0)/runPlayed):0;
-    const runAvgTime=runPlayed?fmtSec((st.totalRunTimeMs||0)/runPlayed):'—';
-    const runAcc=fmtPct(st.totalRunCorrect||0, st.totalRunPuzzles||0);
+  const runPlayed=st.runsPlayed||0;
+  const runBest=st.bestRunScore||0;
+  const runAvgScore=runPlayed?Math.round((st.totalRunScore||0)/runPlayed):0;
+  const runAvgTime=runPlayed?fmtSec((st.totalRunTimeMs||0)/runPlayed):'—';
+  const runAcc=fmtPct(st.totalRunCorrect||0, st.totalRunPuzzles||0);
 
-    const dPlayed=st.dailiesPlayed||0;
-    const dBest=st.bestDailyScore||0;
-    const dAvgScore=dPlayed?Math.round((st.totalDailyScore||0)/dPlayed):0;
-    const dAvgTime=dPlayed?fmtSec((st.totalDailyTimeMs||0)/dPlayed):'—';
-    const dAcc=fmtPct(st.totalDailyCorrect||0, st.totalDailyPuzzles||0);
+  const dPlayed=st.dailiesPlayed||0;
+  const dBest=st.bestDailyScore||0;
+  const dAvgScore=dPlayed?Math.round((st.totalDailyScore||0)/dPlayed):0;
+  const dAvgTime=dPlayed?fmtSec((st.totalDailyTimeMs||0)/dPlayed):'—';
+  const dAcc=fmtPct(st.totalDailyCorrect||0, st.totalDailyPuzzles||0);
 
-    const sPlayed=st.suddenPlayed||0;
-    const sBestSolved=st.suddenBestSolved||0;
-    const sBestScore=st.suddenBestScore||0;
+  const sPlayed=st.suddenPlayed||0;
+  const sBestSolved=st.suddenBestSolved||0;
+  const sBestScore=st.suddenBestScore||0;
 
-    body.innerHTML=`
-  <div style="display:grid;gap:10px">
-    <div style="padding:10px;border:1px solid var(--b);border-radius:14px;background:var(--panel2)"><b>Daily streak</b><div class="sub">Current: ${ds} • Best: ${dl}${st.lastDailyDate?` • Last: ${escapeHtml(st.lastDailyDate)}`:''}</div></div>
-    <div style="padding:10px;border:1px solid var(--b);border-radius:14px;background:var(--panel2)"><b>Classic</b><div class="sub">Played: ${runPlayed} • Best: ${runBest} • Avg score: ${runAvgScore}</div><div class="sub">Avg time: ${runAvgTime} • Accuracy: ${runAcc}</div></div>
-    <div style="padding:10px;border:1px solid var(--b);border-radius:14px;background:var(--panel2)"><b>Daily</b><div class="sub">Played: ${dPlayed} • Best: ${dBest} • Avg score: ${dAvgScore}</div><div class="sub">Avg time: ${dAvgTime} • Accuracy: ${dAcc}</div></div>
-    <div style="padding:10px;border:1px solid var(--b);border-radius:14px;background:var(--panel2)"><b>Sudden Death</b><div class="sub">Played: ${sPlayed} • Best solved: ${sBestSolved} • Best score: ${sBestScore}</div></div>
-  </div>`;
-  }
+  const bestTimeLabel = ti.best ? ti.best.key : '—';
+
+  const heatHtml = ti.buckets.map(b => `
+    <div class="heatSlot heat${b.heat || 0}">
+      <small>${b.runs || 0}</small>
+      <span>${escapeHtml(bucketShortLabel(b.key))}</span>
+    </div>
+  `).join('');
+
+  body.innerHTML=`
+    <div class="statsGrid">
+
+      <div class="statsHero">
+        <div class="statChip">
+          <div class="bigNum">${ds}</div>
+          <div class="smallLbl">Current streak</div>
+        </div>
+        <div class="statChip">
+          <div class="bigNum">${dl}</div>
+          <div class="smallLbl">Best streak</div>
+        </div>
+        <div class="statChip">
+          <div class="bigNum">${escapeHtml(bestTimeLabel)}</div>
+          <div class="smallLbl">Best time</div>
+        </div>
+      </div>
+
+      <div class="insightCard">
+        <div class="insightTitle">Best time to play</div>
+        <div class="timeHeat">${heatHtml}</div>
+        <div class="insightText">${escapeHtml(ti.insight)}</div>
+        <div class="insightMeta">Based on ${ti.totalRuns} Daily run${ti.totalRuns===1?'':'s'} • number in corner = runs in that slot</div>
+      </div>
+
+      <div class="modeCard">
+        <div class="modeCardTitle">Daily</div>
+        <div class="modeRows">
+          <div class="sub">Played: ${dPlayed} • Best: ${dBest} • Avg score: ${dAvgScore}</div>
+          <div class="sub">Avg time: ${dAvgTime} • Accuracy: ${dAcc}</div>
+        </div>
+      </div>
+
+      <div class="modeCard">
+        <div class="modeCardTitle">Classic</div>
+        <div class="modeRows">
+          <div class="sub">Played: ${runPlayed} • Best: ${runBest} • Avg score: ${runAvgScore}</div>
+          <div class="sub">Avg time: ${runAvgTime} • Accuracy: ${runAcc}</div>
+        </div>
+      </div>
+
+      <div class="modeCard">
+        <div class="modeCardTitle">Sudden Death</div>
+        <div class="modeRows">
+          <div class="sub">Played: ${sPlayed} • Best solved: ${sBestSolved}</div>
+          <div class="sub">Best score: ${sBestScore}</div>
+        </div>
+      </div>
+
+    </div>
+  `;
+}
 
   function openStats(){ renderStats(); $('statsModal').classList.remove('hidden'); }
 
