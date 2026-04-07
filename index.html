@@ -112,7 +112,20 @@
 .card{width:min(520px,100%);background:var(--panel);border:1px solid var(--b);border-radius:16px;padding:14px;box-shadow:0 6px 20px rgba(30,60,140,.06)}
 .hidden{display:none!important}
 .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--b2);background:var(--panel2);border-radius:999px;padding:8px 10px;color:var(--m);font-size:12px}
-.actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:10px;position:relative;z-index:50;pointer-events:auto}
+.actions{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:10px;
+  position:relative;
+  z-index:50;
+  pointer-events:auto;
+}
+
+.dailyBtnWrap .success{
+  box-shadow:0 0 0 3px rgba(43,213,118,.10);
+}
 
 button{
   cursor:pointer;
@@ -392,9 +405,39 @@ input,textarea,select{width:100%;padding:10px;border-radius:14px;border:1px soli
   position:relative;
 }
 
+/* ⭐ Highlight best time slot */
+.bestSlot{
+  border-color:var(--g);
+  box-shadow:0 0 0 2px rgba(43,213,118,.25);
+}
+
+.heatSlot{
+  min-height:66px;
+  border-radius:14px;
+  border:1px solid var(--b2);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  padding:10px 6px 8px;
+  font-size:11px;
+  font-weight:800;
+  position:relative;
+}
+
 .heatSlot span{
   position:relative;
   z-index:1;
+  line-height:1.1;
+}
+
+.bestTag{
+  font-size:9px;
+  font-weight:900;
+  color:var(--g);
+  letter-spacing:.5px;
+  line-height:1;
 }
 
 .heatSlot small{
@@ -447,6 +490,63 @@ input,textarea,select{width:100%;padding:10px;border-radius:14px;border:1px soli
 .modeRows .sub{
   font-size:12px;
 }
+.dailyStatus{
+  margin-top:10px;
+  padding:10px 12px;
+  border-radius:14px;
+  border:1px solid var(--b2);
+  background:var(--panel2);
+  color:var(--t);
+  font-size:13px;
+  font-weight:800;
+}
+
+.dailyStatus.ready{
+  border-color:rgba(43,213,118,.55);
+  background:rgba(43,213,118,.10);
+}
+
+.dailyStatus.done{
+  border-color:var(--b);
+  background:var(--panel2);
+}
+
+.dailyBtnWrap{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.dailyBadge{
+  position:absolute;
+  top:4px;
+  right:4px;
+  min-width:18px;
+  height:18px;
+  padding:0 5px;
+  border-radius:999px;
+  display:grid;
+  place-items:center;
+  font-size:10px;
+  font-weight:900;
+  background:var(--r);
+  color:#fff;
+  border:2px solid var(--panel);
+  box-shadow:0 4px 10px rgba(0,0,0,.18);
+  z-index:3;
+  pointer-events:none;
+}
+
+.dailyPulse{
+  animation:dailyPulse 1.6s ease-in-out infinite;
+}
+
+@keyframes dailyPulse{
+  0%{transform:scale(1);box-shadow:0 0 0 0 rgba(43,213,118,.35)}
+  50%{transform:scale(1.03);box-shadow:0 0 0 8px rgba(43,213,118,0)}
+  100%{transform:scale(1);box-shadow:0 0 0 0 rgba(43,213,118,0)}
+}
 </style>
 
 
@@ -470,26 +570,37 @@ input,textarea,select{width:100%;padding:10px;border-radius:14px;border:1px soli
 
   <div class="main">
     <div id="home" class="card">
-      <div class="row" style="margin-bottom:4px">
+<div class="row" style="margin-bottom:4px">
   <button id="themeToggle" class="ghost iconBtn" aria-label="Switch theme" title="Switch theme">💡</button>
   <button id="how" class="ghost" style="padding:10px 12px">How to play</button>
 </div>
-      <div class="pill">Goal: solve <b>10</b> • <b>60s</b> each • retries allowed</div>
-      <p class="sub" style="margin-top:10px">Two clues → solve two words. Word 2 is Word 1 with <b>one or two extra letters</b> inserted. The “+” tile shows where.</p>
-      <div class="actions" style="align-items:center">
-        <select id="diff" style="padding:12px 12px;border-radius:14px;border:1px solid var(--b2);background:var(--panel2);color:var(--t);font-weight:800">
-          <option value="mix" selected>Mixed</option>
-          <option value="easy">Easy</option>
-          <option value="medium">Medium</option>
-          <option value="hard">Hard</option>
-        </select>
-<button id="play" class="primary">Classic</button>
-<button id="daily" class="success">Daily</button>
-<button id="sudden" class="ghost">Sudden Death</button>
-<button id="statsBtn" class="ghost">Stats</button>
-<button id="leader" class="ghost">Leaderboard</button>
-      </div>
-      <p class="sub" style="margin-top:10px">Daily mode tracks your streak. Sudden Death ends on your first mistake.</p>
+
+<div class="pill">Goal: solve <b>10</b> • <b>60s</b> each • retries allowed</div>
+
+<p class="sub" style="margin-top:10px">Two clues → solve two words. Word 2 is Word 1 with <b>one or two extra letters</b> inserted. The “+” tile shows where.</p>
+
+<div id="dailyStatus" class="dailyStatus hidden"></div>
+
+<div class="actions" style="align-items:center">
+  <select id="diff" style="padding:12px 12px;border-radius:14px;border:1px solid var(--b2);background:var(--panel2);color:var(--t);font-weight:800">
+    <option value="mix" selected>Mixed</option>
+    <option value="easy">Easy</option>
+    <option value="medium">Medium</option>
+    <option value="hard">Hard</option>
+  </select>
+
+  <div class="dailyBtnWrap">
+    <button id="daily" class="success">Daily</button>
+    <span id="dailyBadge" class="dailyBadge hidden"></span>
+  </div>
+
+  <button id="play" class="primary">Classic</button>
+  <button id="sudden" class="ghost">Sudden Death</button>
+  <button id="statsBtn" class="ghost">Stats</button>
+  <button id="leader" class="ghost">Leaderboard</button>
+</div>
+
+<p class="sub" style="margin-top:10px">Daily mode tracks your streak. Sudden Death ends on your first mistake.</p>
     </div>
 
     <div id="howModal" class="modal hidden" aria-hidden="true">
@@ -900,19 +1011,18 @@ function addHistory(entry){
 }
 
 function getTimeBucket(hour){
+  if(hour < 6) return 'Night';
   if(hour < 12) return 'Morning';
-  if(hour < 15) return 'Early';
-  if(hour < 18) return 'Late';
+  if(hour < 18) return 'Afternoon';
   return 'Evening';
 }
 
 function bucketShortLabel(bucket){
-  if(bucket === 'Morning') return 'Morn';
-  if(bucket === 'Early') return 'Early';
-  if(bucket === 'Late') return 'Late';
-  return 'Eve';
+  if(bucket === 'Night') return '🌙 0–6';
+  if(bucket === 'Morning') return '🌅 6–12';
+  if(bucket === 'Afternoon') return '☀️ 12–18';
+  return '🌆 18–24';
 }
-
 function getDailyTimeInsights(){
   const hist = getHistory().filter(x =>
     x &&
@@ -922,20 +1032,15 @@ function getDailyTimeInsights(){
   );
 
   const buckets = [
+    { key:'Night', runs:0, total:0, avg:0, heat:0 },
     { key:'Morning', runs:0, total:0, avg:0, heat:0 },
-    { key:'Early', runs:0, total:0, avg:0, heat:0 },
-    { key:'Late', runs:0, total:0, avg:0, heat:0 },
+    { key:'Afternoon', runs:0, total:0, avg:0, heat:0 },
     { key:'Evening', runs:0, total:0, avg:0, heat:0 }
   ];
 
   hist.forEach(h=>{
-    const full = getTimeBucket(h.playedHourLocal);
-    const key = full === 'Morning' ? 'Morning'
-      : full === 'Early' ? 'Early'
-      : full === 'Late' ? 'Late'
-      : 'Evening';
-
-    const slot = buckets.find(b=>b.key===key);
+    const key = getTimeBucket(h.playedHourLocal);
+    const slot = buckets.find(b => b.key === key);
     if(slot){
       slot.runs++;
       slot.total += h.score;
@@ -991,7 +1096,6 @@ function getDailyTimeInsights(){
     insight
   };
 }
-
   function updateDailyStreak(){
     const st=getStats();
     const today=todayLondon();
@@ -1021,7 +1125,41 @@ function getDailyTimeInsights(){
     o[dailyDoneKey(diff)]=true;
     store.set(LSK_DAILY_DONE, JSON.stringify(o));
   }
+function prettyDiffLabel(diff){
+  if(diff === 'easy') return 'Easy';
+  if(diff === 'medium') return 'Medium';
+  if(diff === 'hard') return 'Hard';
+  return 'Mixed';
+}
 
+function updateDailyUI(){
+  const diff = $('diff') ? $('diff').value : 'mix';
+  const diffLabel = prettyDiffLabel(diff);
+  const done = isDailyDone(diff);
+
+  const status = $('dailyStatus');
+  const badge = $('dailyBadge');
+  const dailyBtn = $('daily');
+
+  if(!status || !badge || !dailyBtn) return;
+
+  status.classList.remove('hidden','ready','done');
+  badge.classList.remove('hidden');
+  dailyBtn.classList.remove('dailyPulse');
+
+  if(done){
+    status.classList.add('done');
+    status.textContent = `✅ You’ve already completed today’s Daily Puzzle on ${diffLabel}.`;
+    badge.classList.add('hidden');
+    dailyBtn.textContent = 'Daily ✓';
+  }else{
+    status.classList.add('ready');
+    status.textContent = `✨ Today’s Daily Puzzle is ready — ${diffLabel} difficulty. Keep your streak going.`;
+    badge.textContent = '!';
+    dailyBtn.textContent = 'Daily';
+    dailyBtn.classList.add('dailyPulse');
+  }
+}
   // -------------------- Game state --------------------
 let run=[], idx=0, total=0, res=[], timer=null, t0=0;
 let inRun=false, nexting=false, size=10;
@@ -1487,13 +1625,14 @@ function openEndModal(){
 
     $('modal').classList.remove('hidden');
 
-    if(mode==='daily'){
-      markDailyDone(currentDiff);
-      const {streak, milestone} = updateDailyStreak();
-      if(milestone){
-        setTimeout(()=>{ confetti(); fb(`🔥 ${streak}-day streak! Keep it going!`,'good'); }, 200);
-      }
-    }
+if(mode==='daily'){
+  markDailyDone(currentDiff);
+  updateDailyUI();
+  const {streak, milestone} = updateDailyStreak();
+  if(milestone){
+    setTimeout(()=>{ confetti(); fb(`🔥 ${streak}-day streak! Keep it going!`,'good'); }, 200);
+  }
+}
   }
 
   const closeModal=()=>$('modal').classList.add('hidden');
@@ -1620,12 +1759,17 @@ function renderStats(){
 
   const bestTimeLabel = ti.best ? ti.best.key : '—';
 
-  const heatHtml = ti.buckets.map(b => `
-    <div class="heatSlot heat${b.heat || 0}">
+const heatHtml = ti.buckets.map(b => {
+  const isBest = ti.best && ti.best.key === b.key;
+
+  return `
+    <div class="heatSlot heat${b.heat || 0} ${isBest ? 'bestSlot' : ''}">
       <small>${b.runs || 0}</small>
       <span>${escapeHtml(bucketShortLabel(b.key))}</span>
+      ${isBest ? '<div class="bestTag">BEST</div>' : ''}
     </div>
-  `).join('');
+  `;
+}).join('');
 
   body.innerHTML=`
     <div class="statsGrid">
@@ -1759,6 +1903,7 @@ function showHome(){
   $('prog').innerHTML='';
 
   updateHintButton();
+  updateDailyUI();
 }
 
 function showGame(){
@@ -1911,6 +2056,8 @@ on('hintBtn', useHint);
   on('lbclose', closeLead);
   on('lbclear', ()=>{ if(confirm('Clear leaderboard on this device?')){ saveLead([]); renderLead(); } });
   const lbfilter=$('lbfilter'); if(lbfilter) lbfilter.onchange=renderLead;
+const diffSel=$('diff');
+if(diffSel) diffSel.onchange=updateDailyUI;
 
   on('homeIcon', ()=>homeHandler(false));
 
@@ -1945,6 +2092,7 @@ on('hintBtn', useHint);
   await loadMaster();
   showHome();
   ensureStatsModal();
+  updateDailyUI();
   if(!store.get(HOW_KEY)) setTimeout(openHow, 260);
 })();
 
