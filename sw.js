@@ -1,4 +1,4 @@
-const CACHE_NAME='add-one-v8-install';
+const CACHE_NAME='add-one-v9-collection-layout';
 const CORE_ASSETS=[
   './',
   './index.html',

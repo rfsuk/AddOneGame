@@ -17,6 +17,13 @@ button.installGame:hover:not(:disabled){color:var(--t)}
 #shareText:focus-visible,.archiveSheet input:focus-visible{outline:2px solid var(--a);outline-offset:3px}
 .tryFinish{margin-top:12px;width:100%}.earnedDate{display:block;margin-top:12px;color:var(--m)}
 .finishPreview .previewWord{gap:5px}.finishPreview .previewWord .sampleTile{min-width:0;flex:1;max-width:52px}
+@media(max-width:650px){
+  .finishPreview{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .finishPreview>h3{overflow-wrap:anywhere}
+  .finishPreview>#equipFinish{grid-column:2;grid-row:6;min-height:44px;white-space:normal}
+  .finishPreview>.tryFinish{grid-column:1/-1;grid-row:7;min-height:44px;margin-top:12px}
+  .finishPreview>.earnedDate{grid-column:1/-1;grid-row:8;margin-top:8px}
+}
 .difficultyRow>span{letter-spacing:.04em}
 .game-active .stat:nth-child(2){display:none}
 body.game-active .app{height:100dvh;min-height:100dvh}
