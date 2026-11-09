@@ -1,4 +1,4 @@
-const CACHE_NAME='add-one-v6-sensory';
+const CACHE_NAME='add-one-v8-install';
 const CORE_ASSETS=[
   './',
   './index.html',
@@ -10,6 +10,8 @@ const CORE_ASSETS=[
   './motion.css',
   './feel.js',
   './sound.js',
+  './social.js',
+  './install.js',
   './master-bank.json',
   './manifest.webmanifest',
   './icon.svg'
@@ -55,7 +57,7 @@ self.addEventListener('fetch',event=>{
     return;
   }
 
-  if(url.pathname.endsWith('/master-bank.json') || /\/(?:polish\.css|finishes\.css|finishes\.js|feel\.css|chill\.css|motion\.css|feel\.js|sound\.js)$/.test(url.pathname)){
+  if(url.pathname.endsWith('/master-bank.json') || /\/(?:polish\.css|finishes\.css|finishes\.js|feel\.css|chill\.css|motion\.css|feel\.js|sound\.js|social\.js)$/.test(url.pathname)){
     event.respondWith(
       fetch(request)
         .then(response=>{

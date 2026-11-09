@@ -136,8 +136,10 @@
   <div id="modeDesc" class="modeDesc"></div>
   <button id="startSelected" class="primary">Play today’s puzzle →</button>
 </div>
-<div class="homeLinks"><button id="practice" class="ghost">Try a practice puzzle</button><button id="statsBtn" class="ghost">Your progress</button><button id="leader" class="ghost">Local scores</button></div>
+<div id="challengeInvitation" class="challengeInvitation hidden" role="status"></div>
+<div class="homeLinks"><button id="practice" class="ghost">Try a practice puzzle</button><button id="archiveBtn" class="ghost">Daily archive</button><button id="statsBtn" class="ghost">Your progress</button><button id="leader" class="ghost">Local scores</button></div>
 <button id="openCollection" class="collectionLaunch ghost"><span class="collectionLaunchTiles" aria-hidden="true"><i>A</i><i>+</i><i>B</i></span><span><b>Tile collection</b><small id="equippedFinish">Paper equipped</small></span><span class="collectionLaunchCount"><b id="collectionCount"></b><small>Explore →</small></span></button>
+<div class="installHome"><button id="installGame" class="installGame hidden" aria-describedby="installNote">↓ Install Add One</button><span id="installNote" class="hidden">Your home screen. One tap to play.</span><p id="installHelp" class="hidden" role="status" aria-live="polite"></p></div>
 <p class="homeNote">ONE WORD. A FEW LETTERS. A NEW PERSPECTIVE.</p>
     </div>
 
@@ -210,6 +212,7 @@
       <button id="mhome" class="ghost">Home</button>
     </div>
     <div id="shareStatus" class="shareStatus" role="status" aria-live="polite"></div>
+    <div id="shareFallback" class="hidden"><label for="shareText">Your spoiler-free result</label><textarea id="shareText" readonly rows="8"></textarea><button id="copyText" class="ghost">Copy result text</button></div>
   </div>
 </div>
 
@@ -222,6 +225,8 @@
   <option value="all" selected>All</option>
   <option value="run">Classic</option>
   <option value="daily">Daily</option>
+  <option value="dailyQuick">Quick Daily</option>
+  <option value="archive">Archive</option>
   <option value="chill">Chill</option>
   <option value="sudden">Sudden Death</option>
 </select>
@@ -234,6 +239,8 @@
 <script src="finishes.js"></script>
 <script src="feel.js"></script>
 <script src="sound.js"></script>
+<script src="social.js"></script>
+<script src="install.js"></script>
 <script>
 (()=>{
   const $=id=>document.getElementById(id);
@@ -299,10 +306,10 @@ function refreshRitual(){
   const date=new Intl.DateTimeFormat('en-GB',{weekday:'long',day:'numeric',month:'short',timeZone:'Europe/London'}).format(new Date());
   set('dailyDate',date);
   const done=isDailyDone(selectedDifficulty());
-  set('dailyHeadline',done?'Daily complete. Nicely done.':'Your daily challenge.');
+  set('dailyHeadline',done?'Daily complete. Nicely done.':isDailyDone(selectedDifficulty(),5)?'Quick Daily complete. Nicely done.':'Your daily challenge.');
   const current=st.lastDailyDate===todayLondon() || st.lastDailyDate===ydayLondon();
   const days=current?(st.dailyStreak||0):0;
-  set('dailyRitual',done?'Today’s set is complete. Ten new puzzles tomorrow.':days>0?days+'-day daily streak. Keep it going.':'Ten word transformations. One fresh challenge.');
+  set('dailyRitual',done?'Today’s full set is complete. New puzzles tomorrow.':days>0?days+'-day daily streak. Five puzzles keeps it going.':'Finish after five, or stay for all ten.');
   renderFinishes();
 }
 
@@ -371,6 +378,18 @@ function renderCollection(){
     [...$('collectionGrid').children].find(b=>b.dataset.finish===finish.id)?.focus({preventScroll:true});
     set('collectionStatus',finish.name+' equipped.');
   };
+  const tryFinish=document.createElement('button');tryFinish.className='ghost tryFinish';tryFinish.textContent='Try the transformation ↗';
+  tryFinish.onclick=()=>{
+    const word=preview.querySelector('.previewWord');word.replaceChildren();
+    for(const letter of ['F','L','O','U','R']){const tile=document.createElement('span');tile.className='sampleTile '+(letter==='L'?'added':'finishSurface');tile.textContent=letter;word.appendChild(tile);}
+    if(!prefersReducedMotion()) word.children[1].animate([{opacity:0,transform:'translateY(-12px) scale(.75)'},{opacity:1,transform:'none'}],{duration:360,easing:'cubic-bezier(.2,.8,.2,1)'});
+    sfx('lock');set('collectionStatus','FOUR becomes FLOUR. Previewing '+finish.name+'.');
+  };
+  preview.appendChild(tryFinish);
+  if(open && finish.metric!=='free'){
+    const date=new Date(earned[finish.id]);
+    if(!Number.isNaN(date.getTime())){const note=document.createElement('small');note.className='earnedDate';note.textContent='Earned '+date.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});preview.appendChild(note);}
+  }
   const filters=$('collectionFilters');filters.innerHTML='';
   for(const group of ['All',...new Set(AddOneFinishes.catalog.map(f=>f.group))]){
     const btn=document.createElement('button');btn.textContent=group;btn.setAttribute('aria-pressed',String(group===collectionFilter));
@@ -409,7 +428,7 @@ function renderResultDetails({perfect,newBest,newAchievements,correctCount,newFi
   const fastest=solved.length?Math.min(...solved.map(r=>r.ms)):0;
   const highlight=bestDiscovery();
   const breakdown=resultBreakdown();
-  const headline=mode==='tutorial'?'You’ve got it.':perfect?'Perfect ten.':newBest?'A new personal best.':correctCount>=7?'You found your flow.':correctCount>0?'A few words wiser.':'Next run, fresh start.';
+  const headline=mode==='tutorial'?'You’ve got it.':res.length===5?(correctCount===5?'Five for five.':'Quick Daily complete.'):perfect?'Perfect ten.':newBest?'A new personal best.':correctCount>=7?'You found your flow.':correctCount>0?'A few words wiser.':'Next run, fresh start.';
   set('resultTitle',headline);
   const award=$('maward');
   award.textContent=perfect&&newBest?'New personal best':perfect&&mode==='daily'?'Daily complete':'';
@@ -516,10 +535,10 @@ function saveResultCard(){
   [['SOLVED',solved.length+'/'+res.length],['BEST STREAK',String(runBestStreak)],[mode==='chill'?'YOUR PACE':'FASTEST',mode==='chill'?'Untimed':fastest]].forEach(([label,value],i)=>{const x=72+i*320;text(value,x,758,53);text(label,x,806,19,'#b2beb9');});
   const best=bestDiscovery();
   rect(72,870,936,240,20,'#233236');
-  text(best?'STANDOUT SOLVE':'THE NEXT RUN STARTS HERE',540,927,21,'#b2beb9','Segoe UI','center');
-  if(best){text(best.short+' → '+best.long,540,1015,best.long.length>8?43:57,'#f6b48b','Georgia','center');text('+'+best.points+' points'+(mode==='chill'?'':' · '+(best.ms/1000).toFixed(1)+' seconds'),540,1062,23,'#b2beb9','Segoe UI','center');}
-  else text('New words. Another chance.',540,1015,38,'#f6b48b','Georgia','center');
-  text('SMALL ADDITION. NEW POSSIBILITIES.',540,1226,23,'#b2beb9','Segoe UI','center');
+  text('YOUR NEXT WORD IS WAITING',540,927,21,'#b2beb9','Segoe UI','center');
+  text('Can you find the connection?',540,1015,42,'#f6b48b','Georgia','center');
+  text('No answers shared. Just the challenge.',540,1062,23,'#b2beb9','Segoe UI','center');
+  text('rfsuk.github.io/AddOneGame',540,1226,26,'#b2beb9','Segoe UI','center');
   try{
     const url=canvas.toDataURL('image/png');
     let preview=$('cardPreview');
@@ -1137,6 +1156,7 @@ function getDailyTimeInsights(){
   const hist = getHistory().filter(x =>
     x &&
     x.mode === 'daily' &&
+    x.totalPuzzles === 10 &&
     typeof x.score === 'number' &&
     typeof x.playedHourLocal === 'number'
   );
@@ -1226,13 +1246,13 @@ function getDailyTimeInsights(){
   }
 
   function dailyDoneKey(diff){ return `${todayLondon()}|${diff}`; }
-  function isDailyDone(diff){
-    try{const raw=store.get(LSK_DAILY_DONE);const o=raw?JSON.parse(raw)||{}:{};return !!o[dailyDoneKey(diff)];}catch{return false}
+  function isDailyDone(diff,count=10){
+    try{const raw=store.get(LSK_DAILY_DONE);const o=raw?JSON.parse(raw)||{}:{};return !!o[dailyDoneKey(diff)+(count===5?'|quick':'')];}catch{return false}
   }
-  function markDailyDone(diff){
+  function markDailyDone(diff,count=10,date=todayLondon()){
     let o={};
     try{const raw=store.get(LSK_DAILY_DONE);o=raw?JSON.parse(raw)||{}:{};}catch{o={};}
-    o[dailyDoneKey(diff)]=true;
+    o[`${date}|${diff}${count===5?'|quick':''}`]=true;
     store.set(LSK_DAILY_DONE, JSON.stringify(o));
   }
 function prettyDiffLabel(diff){
@@ -1262,7 +1282,7 @@ function modeInfo(which){
   if(which==='daily') return {
     title:'Daily',
     button:'Play today’s puzzle →',
-    text:'Ten puzzles, 60 seconds each. The same daily puzzles for everyone on your difficulty.'
+    text:'Start with five. Finish there or continue to ten. 60 seconds per puzzle. The same set for everyone on your difficulty.'
   };
   if(which==='sudden') return {
     title:'Sudden Death',
@@ -1335,6 +1355,7 @@ let run=[], idx=0, total=0, res=[], timer=null, t0=0;
 let inRun=false, nexting=false, size=10;
 let mode='run';
 let currentDiff='mix';
+let runDate='',selectedChallenge=null,checkpointPassed=false;
 let runStartMs=0;
 let pausedAt=0;
 let pausedTotalMs=0;
@@ -1956,6 +1977,21 @@ function ensureSuddenBuffer(){
   run = run.concat(more);
 }
 
+  function dailyCheckpoint(){
+    let dialog=$('checkpointModal');
+    if(!dialog){
+      dialog=document.createElement('div');dialog.id='checkpointModal';dialog.className='modal hidden';
+      dialog.setAttribute('role','dialog');dialog.setAttribute('aria-modal','true');dialog.setAttribute('aria-hidden','true');dialog.setAttribute('aria-labelledby','checkpointTitle');
+      dialog.innerHTML='<div class="sheet checkpointSheet" tabindex="-1"><div class="eyebrow">FIVE DOWN</div><h2 id="checkpointTitle">A good place to pause.</h2><p id="checkpointSummary"></p><p>Finish with a Quick Daily result, or keep going for the full ten. Either choice counts towards today’s streak.</p><div class="actions"><button id="finishQuick" class="primary">Finish & share five</button><button id="continueDaily" class="ghost">Continue for five more →</button></div></div>';
+      document.body.appendChild(dialog);
+      $('finishQuick').onclick=()=>{hideDialog(dialog);size=5;endRun();};
+      $('continueDaily').onclick=()=>{hideDialog(dialog);checkpointPassed=true;nextWord(true);};
+    }
+    set('checkpointSummary',res.filter(r=>r.correct).length+'/5 solved · '+total.toLocaleString()+' points.');
+    dialog.querySelector('p+p').textContent=mode==='archive'?'Finish with a Quick result, or continue to ten. Archive play is separate from today’s streak.':'Finish with a Quick Daily result, or keep going for the full ten. Either choice counts towards today’s streak.';
+    showDialog(dialog,'#finishQuick');
+  }
+
   function nextWord(queueIfWaiting=false){
     if(!inRun || puzzleTransitioning) return;
     if(mode==='sudden' && runFailed) return endRun();
@@ -1969,6 +2005,7 @@ function ensureSuddenBuffer(){
     }
     advanceQueued=false;
     const n=idx+1;
+    if((mode==='daily'||mode==='archive') && n===5 && !checkpointPassed && size>5) return dailyCheckpoint();
     if(mode==='sudden') ensureSuddenBuffer();
     if(mode!=='sudden' && n>=size) return endRun();
     puzzleTransitioning=true;
@@ -2068,7 +2105,7 @@ function endRun(){
 }
 
 function modeLabel(){
-  if(mode==='daily') return `Daily (${todayLondon()})`;
+  if(mode==='daily'||mode==='archive') return `${res.length===5?'Quick Daily':'Full Daily'} (${runDate})${mode==='archive'?' · Archive':''}`;
   if(mode==='chill') return 'Chill';
   if(mode==='sudden') return 'Sudden Death';
   if(mode==='tutorial') return 'Guided Practice';
@@ -2120,12 +2157,22 @@ function hideDialog(dialog){
     }
 
     if(mode==='daily'){
-      st.dailiesPlayed=(st.dailiesPlayed||0)+1;
-      st.bestDailyScore=Math.max(st.bestDailyScore||0,total);
-      st.totalDailyScore=(st.totalDailyScore||0)+total;
-      st.totalDailyTimeMs=(st.totalDailyTimeMs||0)+dur;
+      if(res.length===5){
+        st.quickDailiesPlayed=(st.quickDailiesPlayed||0)+1;
+        st.bestQuickDailyScore=Math.max(st.bestQuickDailyScore||0,total);
+      }else{
+        st.dailiesPlayed=(st.dailiesPlayed||0)+1;
+        st.bestDailyScore=Math.max(st.bestDailyScore||0,total);
+        st.totalDailyScore=(st.totalDailyScore||0)+total;
+        st.totalDailyTimeMs=(st.totalDailyTimeMs||0)+dur;
+      }
       st.totalDailyCorrect=(st.totalDailyCorrect||0)+correctCount;
       st.totalDailyPuzzles=(st.totalDailyPuzzles||0)+res.length;
+    }
+
+    if(mode==='archive'){
+      st.archivesPlayed=(st.archivesPlayed||0)+1;
+      st.totalArchiveCorrect=(st.totalArchiveCorrect||0)+correctCount;
     }
 
     if(mode==='sudden'){
@@ -2148,6 +2195,7 @@ function hideDialog(dialog){
 function openEndModal(){
   set('shareStatus','');
   $('cardPreview')?.remove();
+  $('shareFallback').classList.add('hidden');
   $('saveCard').classList.toggle('hidden',mode==='tutorial');
   set('resultTitle',mode==='tutorial'?'Practice complete.':'Run complete');
   const tutorialRun=mode==='tutorial';
@@ -2156,20 +2204,20 @@ function openEndModal(){
   if($('again')) $('again').textContent=tutorialRun?'Practise again':'Play again';
   const previousStats=getStats();
   const correctCount=res.filter(r=>r.correct).length;
-  const perfect = mode!=='sudden' && mode!=='tutorial' && res.length===size && correctCount===size;
+  const perfect = mode!=='sudden' && mode!=='tutorial' && res.length===10 && correctCount===10;
   const newBest =
     (mode==='chill' && total > (previousStats.bestChillScore||0)) ||
     (mode==='run' && total > (previousStats.bestRunScore||0)) ||
-    (mode==='daily' && total > (previousStats.bestDailyScore||0)) ||
+    (mode==='daily' && total > (res.length===5?(previousStats.bestQuickDailyScore||0):(previousStats.bestDailyScore||0))) ||
     (mode==='sudden' && (correctCount > (previousStats.suddenBestSolved||0) || total > (previousStats.suddenBestScore||0)));
 
   const finishesBefore=earnedFinishes();
   if(mode!=='tutorial') recordStatsOnEnd();
   let dailyOutcome={streak:0,milestone:false};
   if(mode==='daily'){
-    markDailyDone(currentDiff);
+    markDailyDone(currentDiff,res.length,runDate);
     updateDailyUI();
-    dailyOutcome=updateDailyStreak();
+    if(runDate===todayLondon()) dailyOutcome=updateDailyStreak();
   }
   const newAchievements=mode==='tutorial' ? [] : unlockAchievements({
     perfect,
@@ -2190,7 +2238,7 @@ function openEndModal(){
     totalPuzzles: res.length,
     completedAt: new Date().toISOString(),
     playedHourLocal: new Date().getHours(),
-    dailyDate: mode === 'daily' ? todayLondon() : ''
+    dailyDate: (mode === 'daily'||mode==='archive') ? runDate : ''
   });
 
     const dur=runDurationMs();
@@ -2214,6 +2262,7 @@ function openEndModal(){
 
     set('mmeta', [modeLabel(),prettyDiffLabel(currentDiff),mode==='chill'?'No timer':sec+'s'].join(' · '));
     renderResultDetails({perfect,newBest,newAchievements,correctCount,newFinishes});
+    renderFriendComparison();
 
     const g=$('mgrid'); g.innerHTML='';
     const shown = (mode==='sudden') ? res.slice(-12) : res;
@@ -2230,23 +2279,12 @@ if(dailyOutcome.milestone){
   const closeModal=()=>hideDialog($('modal'));
 
   async function copyShare(){
-    const line = res.map(r=>r.correct?'🟩':'⬜').join('');
-    const dur=runDurationMs();
-    const sec=(dur/1000).toFixed(1);
-    const link = (location && location.origin && location.pathname)
-  ? location.origin + location.pathname
-  : '';
-
-    const solved = res.filter(r=>r.correct).length;
-    const extra = (mode==='sudden') ? `Solved: ${solved}\n` : '';
-
-    const head = `Add One — ${modeLabel()}`;
-    const timing=mode==='chill'?'No timer\n':`Time: ${sec}s\n`;
-    const txt = `${head}\nScore: ${total}\n${timing}${extra}${line}\nDifficulty: ${currentDiff}${link?`\n${link}`:''}`;
-
+    const share=AddOneSocial.shareResult({mode,date:runDate,diff:currentDiff,score:total,results:res,durationMs:runDurationMs()});
+    $('shareText').value=share.text;
+    $('shareFallback').classList.remove('hidden');
     if(navigator.share){
       try{
-        await navigator.share({title:head,text:txt});
+        await navigator.share({title:share.title,text:share.text});
         set('shareStatus','Results shared.');
         return;
       }catch(error){
@@ -2255,11 +2293,53 @@ if(dailyOutcome.milestone){
     }
     try{
       if(!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
-      await navigator.clipboard.writeText(txt);
+      await navigator.clipboard.writeText(share.text);
       set('shareStatus','Results copied. Ready to paste.');
     }catch{
-      set('shareStatus','Sharing is unavailable here. You can save your result card instead.');
+      $('shareText').focus();$('shareText').select();
+      set('shareStatus','Select and copy your result below, or save a result card.');
     }
+  }
+
+  function renderFriendComparison(){
+    const challenge=selectedChallenge;
+    if(!challenge?.friend||!['daily','archive'].includes(mode)||challenge.date!==runDate||challenge.diff!==currentDiff) return;
+    const note=document.createElement('p');note.className='friendComparison';
+    note.textContent=challenge.length!==res.length?'Your friend shared a '+challenge.length+'-puzzle result. Your '+res.length+'-puzzle score is kept separate.':
+      'Same challenge · You: '+total.toLocaleString()+' points · Friend: '+challenge.friend.score.toLocaleString()+' points ('+challenge.friend.solved+'/'+challenge.length+' solved). Friend results are self-reported.';
+    $('resultDetails').appendChild(note);
+  }
+
+  function displayChallenge(){
+    const box=$('challengeInvitation');box.replaceChildren();box.classList.toggle('hidden',!selectedChallenge);
+    if(!selectedChallenge) return;
+    const c=selectedChallenge;
+    const copy=document.createElement('p');copy.textContent=(c.friend?'A friend’s challenge':'Archive challenge')+' · '+c.date+' · '+prettyDiffLabel(c.diff)+(c.friend?' · '+c.length+' puzzles · '+c.friend.score.toLocaleString()+' points':'');
+    const play=document.createElement('button');play.className='primary';play.textContent='Play this challenge →';play.onclick=()=>{setDifficulty(c.diff);startMode(c.date===todayLondon()?'daily':'archive');};
+    const dismiss=document.createElement('button');dismiss.className='ghost';dismiss.textContent='Back to today';dismiss.onclick=()=>{selectedChallenge=null;displayChallenge();};
+    box.append(copy,play,dismiss);
+  }
+
+  function openArchive(){
+    let dialog=$('archiveModal');
+    if(!dialog){
+      dialog=document.createElement('div');dialog.id='archiveModal';dialog.className='modal hidden';
+      dialog.setAttribute('role','dialog');dialog.setAttribute('aria-modal','true');dialog.setAttribute('aria-hidden','true');dialog.setAttribute('aria-labelledby','archiveTitle');
+      dialog.innerHTML='<div class="sheet archiveSheet" tabindex="-1"><div class="row"><h2 id="archiveTitle">Another day. Another set.</h2><button id="archiveClose" class="ghost">Close</button></div><p>Revisit a date with the current puzzle collection. Archive play earns tile progress, with results separate from today’s Daily and streak.</p><label for="archiveDate">Choose a date</label><input id="archiveDate" type="date"><p id="archiveStatus" role="status"></p><button id="playArchive" class="primary">Play archive →</button><h3>Recent Daily results</h3><div id="archiveHistory"></div></div>';
+      document.body.appendChild(dialog);
+      $('archiveClose').onclick=()=>hideDialog(dialog);
+      $('playArchive').onclick=()=>{
+        const date=$('archiveDate').value;
+        if(!AddOneSocial.validDate(date,todayLondon())||date===todayLondon()){set('archiveStatus','Choose a past date from '+AddOneSocial.firstDate+' onwards.');return;}
+        selectedChallenge={date,diff:selectedDifficulty(),length:10,friend:null};displayChallenge();hideDialog(dialog);startMode('archive');
+      };
+    }
+    $('archiveDate').min=AddOneSocial.firstDate;$('archiveDate').max=ydayLondon();$('archiveDate').value=ydayLondon();set('archiveStatus','');
+    const history=getHistory().filter(r=>r.mode==='daily'||r.mode==='archive').slice(-14).reverse();
+    const list=$('archiveHistory');list.replaceChildren();
+    if(!history.length) list.textContent='Your Daily and archive results will appear here.';
+    for(const r of history){const row=document.createElement('p');row.className='archiveResult';row.textContent=(r.dailyDate||r.completedAt.slice(0,10))+' · '+prettyDiffLabel(r.diff)+' · '+(r.totalPuzzles===5?'Quick':'Full')+' · '+r.correct+'/'+r.totalPuzzles+' · '+r.score.toLocaleString()+' pts'+(r.mode==='archive'?' · Archive':'');list.appendChild(row);}
+    showDialog(dialog,'#archiveDate');
   }
 
   function submitScore(){
@@ -2268,9 +2348,9 @@ if(dailyOutcome.milestone){
     addLead({
       name,
       score:total,
-      mode:mode,
+      mode:mode==='daily'&&res.length===5?'dailyQuick':mode,
       diff:currentDiff,
-      when:(mode==='daily')?todayLondon():'',
+      when:(mode==='daily'||mode==='archive')?runDate:'',
       ms:mode==='chill'?null:runDurationMs(),
       solved:res.filter(r=>r.correct).length
     });
@@ -2291,7 +2371,7 @@ if(dailyOutcome.milestone){
     }
     list.slice(0,30).forEach((e,i)=>{
       const meta=[
-  e.mode==='daily' ? 'Daily' : e.mode==='chill'?'Chill':(e.mode==='sudden' ? 'Sudden Death' : 'Classic'),
+  e.mode==='daily' ? 'Full Daily' : e.mode==='dailyQuick'?'Quick Daily (5)':e.mode==='archive'?'Archive':e.mode==='chill'?'Chill':(e.mode==='sudden' ? 'Sudden Death' : 'Classic'),
   e.diff ? ('• ' + e.diff) : '',
   e.when ? ('• ' + e.when) : '',
   (e.mode==='sudden' && e.solved!=null) ? (`• Solved ${e.solved}`) : ''
@@ -2403,6 +2483,7 @@ const heatHtml = ti.buckets.map(b => {
 
   body.innerHTML=`
     <div class="statsGrid">
+      <div class="modeStatsCard"><div class="modeCardTitle">Quick Daily & archive</div><p>${st.quickDailiesPlayed||0} Quick Dailies · Best ${st.bestQuickDailyScore||0} points</p><p>${st.archivesPlayed||0} archive runs · ${st.totalArchiveCorrect||0} archive solves</p><small>Quick and full Daily scores are recorded separately. Five puzzles counts towards your Daily streak.</small></div>
 
       <div class="statsHero">
         <div class="statChip">
@@ -2609,6 +2690,9 @@ function startMode(which){
   runFailed=false;
   mode=which;
   currentDiff=selectedDifficulty();
+  checkpointPassed=false;
+  runDate=(which==='archive'||which==='daily')?(selectedChallenge?.date||todayLondon()):'';
+  if(which==='daily' && runDate<todayLondon()) mode='archive';
   total=0; res=[]; idx=0; nexting=false; advanceQueued=false; puzzleTransitioning=false;
   runPausedTotalMs=0; pausedAt=0; pausedTotalMs=0;
 hintsLeft = startingHints(currentDiff, mode);
@@ -2624,13 +2708,13 @@ hintStage = 0;
   if(pool.length<10) pool = all;
 
 
-  if(mode==='daily'){
-    if(isDailyDone(currentDiff)){
+  if(mode==='daily'||mode==='archive'){
+    if(mode==='daily' && isDailyDone(currentDiff)){
       const ok=confirm(`You’ve already completed today’s Daily (${todayLondon()}) for ${currentDiff}. Replay anyway?`);
       if(!ok) return;
     }
     size=Math.min(10, pool.length);
-    const seedBase=`aol|${todayLondon()}|${currentDiff}`;
+    const seedBase=`aol|${runDate}|${currentDiff}`;
     run = buildRun(pool, size, seedBase);
   }else if(mode==='sudden'){
     size=999999;
@@ -2737,11 +2821,13 @@ hintStage = 0;
         else if(openDialog.id==='statsModal') hideDialog(openDialog);
         else if(openDialog.id==='collectionModal') closeCollection();
         else if(openDialog.id==='unlockModal') finishUnlockReveals();
+        else if(openDialog.id==='checkpointModal') {hideDialog(openDialog);checkpointPassed=true;nextWord(true);}
+        else if(openDialog.id==='archiveModal') hideDialog(openDialog);
         else closeModal();
         return;
       }
       if(e.key==='Tab'){
-        const focusable=[...openDialog.querySelectorAll('button,[href],input,select,[tabindex]:not([tabindex="-1"])')]
+        const focusable=[...openDialog.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])')]
           .filter(el=>!el.disabled && el.offsetParent!==null);
         if(focusable.length){
           const first=focusable[0],last=focusable[focusable.length-1];
@@ -2777,12 +2863,17 @@ hintStage = 0;
 
   on('openCollection',()=>openCollection());
   on('practice', startGuidedPuzzle);
+  on('archiveBtn',openArchive);
+  on('copyText',async()=>{
+    try{await navigator.clipboard.writeText($('shareText').value);set('shareStatus','Results copied. Ready to paste.');}
+    catch{$('shareText').focus();$('shareText').select();set('shareStatus','Your text is selected. Copy it using your device’s copy command.');}
+  });
   on('saveCard', saveResultCard);
   document.querySelectorAll('[data-mode]').forEach(btn=>btn.addEventListener('click',()=>{ $('modeSelect').value=btn.dataset.mode; updateModeUI(); }));
   on('play', ()=>startMode('run'));
   on('daily', ()=>startMode('daily'));
   on('sudden', ()=>startMode('sudden'));
-  on('startSelected', ()=>startMode(($('modeSelect') && $('modeSelect').value) || 'run'));
+  on('startSelected', ()=>{selectedChallenge=null;displayChallenge();startMode(($('modeSelect') && $('modeSelect').value) || 'run');});
 on('themeToggle', toggleTheme);
 on('soundToggle', toggleSound);
 on('soundToggleGame', toggleSound);
@@ -2848,6 +2939,9 @@ if(modeSel) modeSel.onchange=updateModeUI;
   applySoundUI();
   runSelfTests();
   await loadMaster();
+  selectedChallenge=AddOneSocial.readChallenge(location.search,todayLondon());
+  if(selectedChallenge) setDifficulty(selectedChallenge.diff);
+  displayChallenge();
   showHome();
   ensureStatsModal();
   updateModeUI();

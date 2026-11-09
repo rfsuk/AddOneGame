@@ -30,12 +30,12 @@
     const perfectHistory=history.filter(r=>r.mode!=='sudden' && r.totalPuzzles===10 && r.correct===10);
     return {
       free:1,
-      games:Math.max((stats.runsPlayed||0)+(stats.dailiesPlayed||0)+(stats.suddenPlayed||0)+(stats.chillPlayed||0),achievements.first_finish?1:0),
-      solved:(stats.totalRunCorrect||0)+(stats.totalDailyCorrect||0)+(stats.totalSuddenSolved||0)+(stats.totalChillCorrect||0),
+      games:Math.max((stats.runsPlayed||0)+(stats.dailiesPlayed||0)+(stats.quickDailiesPlayed||0)+(stats.archivesPlayed||0)+(stats.suddenPlayed||0)+(stats.chillPlayed||0),achievements.first_finish?1:0),
+      solved:(stats.totalRunCorrect||0)+(stats.totalDailyCorrect||0)+(stats.totalSuddenSolved||0)+(stats.totalChillCorrect||0)+(stats.totalArchiveCorrect||0),
       perfect:Math.max(stats.perfectRuns||0,perfectHistory.length,achievements.perfect_ten?1:0),
       hardPerfect:Math.max(stats.hardPerfectRuns||0,perfectHistory.filter(r=>r.diff==='hard').length,achievements.hard_perfect?1:0),
       clean:stats.cleanPerfectRuns||0,
-      daily:stats.dailiesPlayed||0,
+      daily:(stats.dailiesPlayed||0)+(stats.quickDailiesPlayed||0),
       dailyStreak:Math.max(stats.dailyLongestStreak||0,stats.dailyStreak||0),
       streak:stats.longestSolveStreak||0,
       sudden:stats.suddenBestSolved||0,
