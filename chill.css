@@ -1,0 +1,23 @@
+.modeCards{grid-template-columns:repeat(4,minmax(0,1fr))}
+.modeCard[data-mode="chill"][aria-pressed="true"]{border-color:var(--g)!important;background:color-mix(in srgb,var(--g) 8%,transparent)!important}
+.modeCard[data-mode="chill"][aria-pressed="true"] span{color:var(--g)!important}
+body[data-mode="chill"] .stat:last-child{display:none}
+.modeTag{align-self:center;white-space:nowrap;line-height:1.1;color:var(--g);font-size:10px;font-weight:650;padding:4px 6px;border:1px solid var(--b);border-radius:6px;margin-left:3px}
+body[data-mode="chill"] .pip.bad{color:var(--a)!important;border-color:var(--a)!important}
+body[data-mode="chill"] #mgrid .mini.bad{background:var(--a)}
+.revelation{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:16px;padding:13px 14px;border:1px solid var(--b);border-radius:12px;background:var(--panel)}
+.revelation .eyebrow{font-size:8px;letter-spacing:.15em;color:var(--g)}
+.revelation p{font-size:12px;line-height:1.5;margin:5px 0 0;color:var(--t)}
+.revelation button{flex-shrink:0;min-height:33px;font-size:10px;padding:6px 9px}
+.gameCard[data-stage="reveal"] .clue{opacity:.85}
+.gameCard[data-stage="reveal"] .clue:nth-child(3) .badge{background:var(--a);color:var(--accent-ink)}
+.gameCard[data-stage="reveal"] #row1,.gameCard[data-stage="reveal"] #row2{opacity:1}
+.gameCard[data-stage="reveal"] #row1 .lbl{color:var(--m)}
+.gameCard[data-stage="reveal"] .feedback{color:var(--m)}
+.reveal-source .tile{animation:sourceReveal .3s ease-out both}
+.tile.reveal-added{animation:answerReveal .55s cubic-bezier(.16,1,.3,1) both}
+@keyframes sourceReveal{from{opacity:.3;transform:translateY(5px)}to{opacity:1;transform:none}}
+@keyframes answerReveal{0%{opacity:.15;transform:translateY(-8px) scale(.94)}60%{opacity:1;transform:translateY(2px) scale(1.025)}100%{opacity:1;transform:none}}
+@media(max-width:520px){.modeCards{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.modeCard{min-height:67px;padding:10px 12px}.modeCard span{font-size:13px}.modeCard small{font-size:10px}.revelation{padding:10px 11px;margin-top:13px;gap:8px}.revelation p{font-size:11px}.revelation button{font-size:9px;padding:5px 8px}.modeTag{font-size:9px;padding:3px 5px}}
+@media(max-height:680px) and (max-width:520px){.revelation{margin-top:8px;padding:8px 9px}.revelation p{font-size:10px;margin-top:3px}.revelation .eyebrow{font-size:7px}}
+@media(prefers-reduced-motion:reduce){.reveal-source .tile,.tile.reveal-added{animation:none!important}}

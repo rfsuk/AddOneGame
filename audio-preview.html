@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Add One · Sound palette</title><style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;padding:40px 20px;background:#141d20;color:#f5f0e5;font:14px/1.5 system-ui,sans-serif}main{max-width:650px;margin:auto}a{color:#a4dbc0}h1{font:42px Georgia,serif;letter-spacing:-1px;margin:24px 0 12px}p{color:#b2beb9}.cues{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:25px 0}button{background:#233236;color:#f5f0e5;border:1px solid #506063;border-radius:12px;padding:15px 10px;font:inherit;cursor:pointer}button:hover{border-color:#f6b48b}button:focus-visible{outline:2px solid #f6b48b;outline-offset:3px}.primary{background:#f6b48b;color:#34291f;border-color:#f6b48b;width:100%;margin:8px 0}audio{width:100%;margin-top:15px}#result{margin-top:18px;color:#a4dbc0}#details{font-size:12px;color:#b2beb9;white-space:pre-wrap}.small{font-size:12px}button:disabled{opacity:.5;cursor:default}@media(max-width:400px){.cues{grid-template-columns:repeat(2,1fr)}}
+</style></head><body><main><a href="./">← Back to Add One</a><h1>A sound for every move.</h1><p>Soft taps, ceramic contacts, a dry stamp, and a warmer reward. Each sound comes from the same instruments used in the game.</p><div class="cues" id="cues"></div><button class="primary" id="render">Create a sound preview</button><p class="small">The preview plays typing, a word lock, a solve and stamp, a revelation, an unlock, and a perfect-run finish.</p><div id="result" role="status"></div><audio id="player" controls class="hidden" hidden></audio><p id="details"></p><a id="download" hidden>Save WAV</a></main><script src="sound.js"></script><script>
+let context,engine;
+if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
+const entries=[['key','Type'],['word1','Lock'],['solve','Solve'],['stamp','Stamp'],['reveal','Discover'],['unlock','Unlock']];
+for(const [kind,label] of entries){const b=document.createElement('button');b.textContent=label;b.onclick=async()=>{const Audio=window.AudioContext||window.webkitAudioContext;if(!context){context=new Audio();engine=AddOneSound.createEngine(context);}await context.resume();engine.stop();engine.play(kind);};document.getElementById('cues').appendChild(b);}
+function wav(buffer){
+  const channels=buffer.numberOfChannels,length=buffer.length,bytes=44+length*channels*2,view=new DataView(new ArrayBuffer(bytes));
+  const text=(offset,value)=>{for(let i=0;i<value.length;i++)view.setUint8(offset+i,value.charCodeAt(i));};
+  text(0,'RIFF');view.setUint32(4,bytes-8,true);text(8,'WAVE');text(12,'fmt ');view.setUint32(16,16,true);view.setUint16(20,1,true);view.setUint16(22,channels,true);view.setUint32(24,buffer.sampleRate,true);view.setUint32(28,buffer.sampleRate*channels*2,true);view.setUint16(32,channels*2,true);view.setUint16(34,16,true);text(36,'data');view.setUint32(40,bytes-44,true);
+  let peak=0,sum=0,tailPeak=0;const data=Array.from({length:channels},(_,c)=>buffer.getChannelData(c));
+  for(let i=0;i<length;i++)for(let c=0;c<channels;c++){const value=data[c][i];if(!Number.isFinite(value))throw Error('Invalid audio sample');peak=Math.max(peak,Math.abs(value));sum+=value*value;if(i>length-buffer.sampleRate*.2)tailPeak=Math.max(tailPeak,Math.abs(value));view.setInt16(44+(i*channels+c)*2,Math.round(Math.max(-1,Math.min(1,value))*(value<0?32768:32767)),true);}
+  return {blob:new Blob([view.buffer],{type:'audio/wav'}),peak,rms:Math.sqrt(sum/(length*channels)),tailPeak};
+}
+document.getElementById('render').onclick=async()=>{
+  const button=document.getElementById('render'),status=document.getElementById('result');button.disabled=true;status.textContent='Creating preview…';
+  try{
+    const Offline=window.OfflineAudioContext||window.webkitOfflineAudioContext;const offline=new Offline(2,48000*10,48000),sound=AddOneSound.createEngine(offline);
+    for(const delay of [.1,.22,.34,.46,.58])sound.play('key',{delay,isolated:true});
+    for(const [kind,delay] of [['word1',1.1],['solve',2.2],['stamp',2.43],['reveal',3.6],['revealEnd',4.22],['unlock',5.5],['complete',7.5]])sound.play(kind,{delay,isolated:true});
+    const output=wav(await offline.startRendering());
+    if(output.peak>=.98||output.peak<.01||output.tailPeak>.001)throw Error('Audio level check failed');
+    const cancellation=new Offline(2,48000,48000),quiet=AddOneSound.createEngine(cancellation);
+    quiet.play('unlock',{delay:.005});quiet.stop();
+    if(wav(await cancellation.startRendering()).peak>.001)throw Error('Cancellation check failed');
+    const reader=new FileReader();reader.onload=()=>{const player=document.getElementById('player');player.src=reader.result;player.hidden=false;const link=document.getElementById('download');link.href=reader.result;link.download='add-one-sound-palette.wav';link.hidden=false;status.textContent='Preview ready';document.getElementById('details').textContent='10 seconds · stereo · 48 kHz\nPeak '+(20*Math.log10(output.peak)).toFixed(1)+' dBFS · RMS '+(20*Math.log10(output.rms)).toFixed(1)+' dBFS\nClean tail · no clipped or invalid samples';};reader.readAsDataURL(output.blob);
+  }catch(error){status.textContent='Preview failed: '+error.message;}finally{button.disabled=false;}
+};
+</script></body></html>

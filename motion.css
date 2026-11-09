@@ -1,0 +1,33 @@
+/* One physical language: press, slide, settle, stamp, turn. */
+.tile.filled{animation:none}
+.tile.pop,.tile.plus.ping{animation:tilePress 110ms ease-out}
+@keyframes tilePress{0%{transform:translateY(1px)}100%{transform:translateY(0)}}
+.tile.bounce,.tile.glow,.tile.lock-shimmer{animation:none}
+.tile.transfer-source{color:transparent!important}
+#row1,#row2{position:relative}#row2{z-index:2}#t1,#t2{overflow:visible}
+.key.hit{animation:keyPress 95ms ease-out}
+@keyframes keyPress{0%,45%{transform:translateY(1px)}100%{transform:translateY(0)}}
+.tile.insert-land{animation:insertSettle 240ms cubic-bezier(.2,.8,.25,1) both}
+.tile.word-settle{animation:referenceSettle 180ms ease-out both}
+@keyframes insertSettle{0%{transform:translateY(-3px)}58%{transform:translateY(1px)}100%{transform:translateY(0)}}
+@keyframes referenceSettle{0%{transform:translateY(0)}42%{transform:translateY(1px)}100%{transform:translateY(0)}}
+#t2.word-resolved::after{animation:wordResolve 320ms ease-out 100ms both;background:linear-gradient(110deg,transparent 35%,#ffffff30 49%,transparent 63%);background-size:250% 100%}
+.pip.stamped{animation:pressedStamp 200ms cubic-bezier(.2,.8,.25,1) calc(120ms + var(--stamp-offset,0ms)) both}
+@keyframes pressedStamp{0%{opacity:0;transform:translateY(-3px) scale(1.25) rotate(-7deg)}55%{opacity:1;transform:translateY(1px) scale(.96) rotate(1deg)}100%{opacity:1;transform:translateY(0) scale(1) rotate(0)}}
+.resultBar{position:relative;isolation:isolate;min-height:32px;margin-top:18px}
+.solveGain{position:absolute;bottom:calc(100% + 3px);left:0;right:0;text-align:center;pointer-events:none;font-size:15px;line-height:1.2;font-weight:650;color:var(--g);font-variant-numeric:tabular-nums}
+#game.puzzle-out{animation:trayOut 100ms ease-in both}
+#game.puzzle-in{animation:trayIn 180ms ease-out both}
+@keyframes trayOut{to{opacity:0;transform:translateY(-3px)}}
+@keyframes trayIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.revealTile{animation:materialTurn 720ms cubic-bezier(.16,1,.3,1) both}
+@keyframes materialTurn{0%{opacity:0;transform:translateY(12px) rotateY(-72deg) rotate(-7deg)}65%{opacity:1;transform:translateY(0) rotateY(3deg) rotate(-7deg)}100%{opacity:1;transform:translateY(0) rotateY(0) rotate(-7deg)}}
+.revealTile::after{animation:materialLight 850ms ease-out 120ms both}
+@keyframes materialLight{0%{opacity:0;background-position:140% 0}40%{opacity:.5}100%{opacity:0;background-position:-40% 0}}
+.reveal-source .tile{animation:sourceReveal 180ms ease-out both}
+.tile.reveal-added{animation:discoverySettle 280ms ease-out both}
+@keyframes discoverySettle{0%{opacity:.35;transform:translateY(-3px)}65%{opacity:1;transform:translateY(1px)}100%{opacity:1;transform:translateY(0)}}
+.transformRail.hot span{animation:none;color:var(--g)}
+.streakMeter.bump{animation:streakSettle 200ms ease-out}
+@keyframes streakSettle{0%{opacity:.65;transform:translateY(1px)}100%{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.tile,.key.hit,.pip.stamped,.revealTile,.revealTile::after,.streakMeter.bump,#game.puzzle-in,#game.puzzle-out{animation:none!important;transition:none!important}.solveGain{display:none!important}.tile.transfer-source{color:var(--skin-ink)!important}}
