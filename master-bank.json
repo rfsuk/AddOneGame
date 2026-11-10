@@ -259,25 +259,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "ARE",
-    "l": "CARE",
-    "c1": "Second-person 'to be'",
-    "c2": "Look after someone or something",
-    "adds": 1,
-    "insertIndexes": [
-      0
-    ],
-    "insertPattern": "start",
-    "difficulty": "easy",
-    "difficultyScore": 1.25,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion",
-      "broader clue"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "AREA",
     "l": "ARENA",
     "c1": "Region or space",
@@ -1024,24 +1005,6 @@
   },
   {
     "s": "BEE",
-    "l": "BEEN",
-    "c1": "Insect that makes honey",
-    "c2": "Existed",
-    "adds": 1,
-    "insertIndexes": [
-      3
-    ],
-    "insertPattern": "end",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "BEE",
     "l": "BEER",
     "c1": "Insect that makes honey",
     "c2": "Ale or lager",
@@ -1641,25 +1604,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "CAR",
-    "l": "CARE",
-    "c1": "Road vehicle with four wheels",
-    "c2": "Look after someone or something",
-    "adds": 1,
-    "insertIndexes": [
-      3
-    ],
-    "insertPattern": "end",
-    "difficulty": "easy",
-    "difficultyScore": 1.25,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion",
-      "broader clue"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "CARE",
     "l": "CARVE",
     "c1": "Look after someone or something",
@@ -2115,25 +2059,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "CLOSE",
-    "l": "CLOSER",
-    "c1": "Near or shut",
-    "c2": "Nearer",
-    "adds": 1,
-    "insertIndexes": [
-      5
-    ],
-    "insertPattern": "end",
-    "difficulty": "easy",
-    "difficultyScore": 1.25,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion",
-      "broader clue"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "COAT",
     "l": "COAST",
     "c1": "Jacket",
@@ -2155,23 +2080,6 @@
     "l": "COLD",
     "c1": "White fish often served with chips",
     "c2": "Chilly rather than warm",
-    "adds": 1,
-    "insertIndexes": [
-      2
-    ],
-    "insertPattern": "middle",
-    "difficulty": "easy",
-    "difficultyScore": 1,
-    "difficultyReasons": [
-      "1 added letter"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "COLD",
-    "l": "COULD",
-    "c1": "Chilly rather than warm",
-    "c2": "Was able to",
     "adds": 1,
     "insertIndexes": [
       2
@@ -2635,25 +2543,6 @@
   },
   {
     "s": "DIVE",
-    "l": "DIVER",
-    "c1": "Jump into water",
-    "c2": "Person who goes underwater",
-    "adds": 1,
-    "insertIndexes": [
-      4
-    ],
-    "insertPattern": "end",
-    "difficulty": "easy",
-    "difficultyScore": 1.85,
-    "difficultyReasons": [
-      "1 added letter",
-      "less familiar vocabulary",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "DIVE",
     "l": "DRIVE",
     "c1": "Jump into water",
     "c2": "Operate a road vehicle",
@@ -2684,23 +2573,6 @@
     "difficultyReasons": [
       "1 added letter",
       "less familiar vocabulary"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "DOLL",
-    "l": "DROLL",
-    "c1": "Toy shaped like a person",
-    "c2": "Funny in a quiet unusual way",
-    "adds": 1,
-    "insertIndexes": [
-      1
-    ],
-    "insertPattern": "middle",
-    "difficulty": "easy",
-    "difficultyScore": 1,
-    "difficultyReasons": [
-      "1 added letter"
     ],
     "insertionGroups": 1
   },
@@ -2778,24 +2650,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "DRIVE",
-    "l": "DRIVER",
-    "c1": "Operate a road vehicle",
-    "c2": "Person who operates vehicle",
-    "adds": 1,
-    "insertIndexes": [
-      5
-    ],
-    "insertPattern": "end",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "DUST",
     "l": "DUSTY",
     "c1": "Fine powder",
@@ -2828,42 +2682,6 @@
     "difficultyReasons": [
       "1 added letter",
       "less familiar vocabulary"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "EACH",
-    "l": "BEACH",
-    "c1": "Every one, considered separately",
-    "c2": "Sandy shore",
-    "adds": 1,
-    "insertIndexes": [
-      0
-    ],
-    "insertPattern": "start",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "EACH",
-    "l": "TEACH",
-    "c1": "Every one, considered separately",
-    "c2": "Help someone learn",
-    "adds": 1,
-    "insertIndexes": [
-      0
-    ],
-    "insertPattern": "start",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
     ],
     "insertionGroups": 1
   },
@@ -3151,24 +2969,6 @@
       0
     ],
     "insertPattern": "start",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "EVER",
-    "l": "EVERY",
-    "c1": "At any time",
-    "c2": "All of them",
-    "adds": 1,
-    "insertIndexes": [
-      4
-    ],
-    "insertPattern": "end",
     "difficulty": "easy",
     "difficultyScore": 0.6,
     "difficultyReasons": [
@@ -3702,60 +3502,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "FOR",
-    "l": "FORK",
-    "c1": "In support of",
-    "c2": "Eating utensil with several pointed ends",
-    "adds": 1,
-    "insertIndexes": [
-      3
-    ],
-    "insertPattern": "end",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "FOR",
-    "l": "FORM",
-    "c1": "In support of",
-    "c2": "Shape or structure",
-    "adds": 1,
-    "insertIndexes": [
-      3
-    ],
-    "insertPattern": "end",
-    "difficulty": "easy",
-    "difficultyScore": 1.25,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion",
-      "broader clue"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "FOR",
-    "l": "FOUR",
-    "c1": "In support of",
-    "c2": "Number immediately after three",
-    "adds": 1,
-    "insertIndexes": [
-      2
-    ],
-    "insertPattern": "middle",
-    "difficulty": "easy",
-    "difficultyScore": 1,
-    "difficultyReasons": [
-      "1 added letter"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "FOUR",
     "l": "FLOUR",
     "c1": "Number immediately after three",
@@ -3967,53 +3713,21 @@
     "insertionGroups": 1
   },
   {
-    "s": "HAD",
-    "l": "HAND",
-    "c1": "Possessed in the past",
-    "c2": "Part at the end of the arm",
+    "s": "GREED",
+    "l": "AGREED",
+    "c1": "Excessive desire",
+    "c2": "Reached the same view",
     "adds": 1,
     "insertIndexes": [
-      2
+      0
     ],
-    "insertPattern": "middle",
+    "insertPattern": "start",
     "difficulty": "easy",
-    "difficultyScore": 1,
+    "difficultyScore": 1.85,
     "difficultyReasons": [
-      "1 added letter"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "HAD",
-    "l": "HARD",
-    "c1": "Possessed in the past",
-    "c2": "Not soft",
-    "adds": 1,
-    "insertIndexes": [
-      2
-    ],
-    "insertPattern": "middle",
-    "difficulty": "easy",
-    "difficultyScore": 1,
-    "difficultyReasons": [
-      "1 added letter"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "HAD",
-    "l": "HEAD",
-    "c1": "Possessed in the past",
-    "c2": "Top of the body",
-    "adds": 1,
-    "insertIndexes": [
-      1
-    ],
-    "insertPattern": "middle",
-    "difficulty": "easy",
-    "difficultyScore": 1,
-    "difficultyReasons": [
-      "1 added letter"
+      "1 added letter",
+      "less familiar vocabulary",
+      "edge insertion"
     ],
     "insertionGroups": 1
   },
@@ -4128,6 +3842,25 @@
     "insertionGroups": 1
   },
   {
+    "s": "HASTE",
+    "l": "HASTEN",
+    "c1": "Great hurry",
+    "c2": "Move or act more quickly",
+    "adds": 1,
+    "insertIndexes": [
+      5
+    ],
+    "insertPattern": "end",
+    "difficulty": "easy",
+    "difficultyScore": 1.25,
+    "difficultyReasons": [
+      "1 added letter",
+      "edge insertion",
+      "broader clue"
+    ],
+    "insertionGroups": 1
+  },
+  {
     "s": "HAT",
     "l": "CHAT",
     "c1": "Headwear",
@@ -4177,24 +3910,6 @@
     "difficultyScore": 1,
     "difficultyReasons": [
       "1 added letter"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "HAT",
-    "l": "THAT",
-    "c1": "Headwear",
-    "c2": "The indicated thing",
-    "adds": 1,
-    "insertIndexes": [
-      0
-    ],
-    "insertPattern": "start",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
     ],
     "insertionGroups": 1
   },
@@ -4270,6 +3985,24 @@
     "insertionGroups": 1
   },
   {
+    "s": "HEAR",
+    "l": "HEARD",
+    "c1": "Perceive a sound",
+    "c2": "Noticed a sound",
+    "adds": 1,
+    "insertIndexes": [
+      4
+    ],
+    "insertPattern": "end",
+    "difficulty": "easy",
+    "difficultyScore": 0.6,
+    "difficultyReasons": [
+      "1 added letter",
+      "edge insertion"
+    ],
+    "insertionGroups": 1
+  },
+  {
     "s": "HEAT",
     "l": "HEART",
     "c1": "Warmth",
@@ -4305,41 +4038,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "HEN",
-    "l": "THEN",
-    "c1": "Female chicken",
-    "c2": "At that time",
-    "adds": 1,
-    "insertIndexes": [
-      0
-    ],
-    "insertPattern": "start",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "HER",
-    "l": "HEAR",
-    "c1": "Belonging to a female person",
-    "c2": "Perceive a sound",
-    "adds": 1,
-    "insertIndexes": [
-      2
-    ],
-    "insertPattern": "middle",
-    "difficulty": "easy",
-    "difficultyScore": 1,
-    "difficultyReasons": [
-      "1 added letter"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "HERD",
     "l": "HEARD",
     "c1": "Group of large animals",
@@ -4353,61 +4051,6 @@
     "difficultyScore": 1,
     "difficultyReasons": [
       "1 added letter"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "HERE",
-    "l": "THERE",
-    "c1": "In this place",
-    "c2": "In that place",
-    "adds": 1,
-    "insertIndexes": [
-      0
-    ],
-    "insertPattern": "start",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "HERE",
-    "l": "WHERE",
-    "c1": "In this place",
-    "c2": "In what place",
-    "adds": 1,
-    "insertIndexes": [
-      0
-    ],
-    "insertPattern": "start",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "HEREBY",
-    "l": "THEREBY",
-    "c1": "By this means (formal)",
-    "c2": "As a result of that",
-    "adds": 1,
-    "insertIndexes": [
-      0
-    ],
-    "insertPattern": "start",
-    "difficulty": "easy",
-    "difficultyScore": 1.1,
-    "difficultyReasons": [
-      "1 added letter",
-      "longer answer",
-      "edge insertion"
     ],
     "insertionGroups": 1
   },
@@ -4434,24 +4077,6 @@
     "l": "CHILL",
     "c1": "Raised area of land lower than a mountain",
     "c2": "An unpleasant feeling of cold",
-    "adds": 1,
-    "insertIndexes": [
-      0
-    ],
-    "insertPattern": "start",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "HIM",
-    "l": "WHIM",
-    "c1": "Pronoun referring to a male person",
-    "c2": "A sudden wish",
     "adds": 1,
     "insertIndexes": [
       0
@@ -4677,24 +4302,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "HOW",
-    "l": "SHOW",
-    "c1": "In what way",
-    "c2": "Display",
-    "adds": 1,
-    "insertIndexes": [
-      0
-    ],
-    "insertPattern": "start",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "HUE",
     "l": "HUGE",
     "c1": "A particular shade",
@@ -4803,6 +4410,24 @@
     "l": "NICE",
     "c1": "Frozen water",
     "c2": "Pleasant",
+    "adds": 1,
+    "insertIndexes": [
+      0
+    ],
+    "insertPattern": "start",
+    "difficulty": "easy",
+    "difficultyScore": 0.6,
+    "difficultyReasons": [
+      "1 added letter",
+      "edge insertion"
+    ],
+    "insertionGroups": 1
+  },
+  {
+    "s": "ICE",
+    "l": "RICE",
+    "c1": "Frozen water",
+    "c2": "Common grain",
     "adds": 1,
     "insertIndexes": [
       0
@@ -4934,24 +4559,6 @@
       0
     ],
     "insertPattern": "start",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "JOKE",
-    "l": "JOKER",
-    "c1": "Something said to make people laugh",
-    "c2": "Someone who likes making people laugh",
-    "adds": 1,
-    "insertIndexes": [
-      4
-    ],
-    "insertPattern": "end",
     "difficulty": "easy",
     "difficultyScore": 0.6,
     "difficultyReasons": [
@@ -5238,24 +4845,6 @@
       0
     ],
     "insertPattern": "start",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "LATE",
-    "l": "LATER",
-    "c1": "After the expected time",
-    "c2": "After the present time",
-    "adds": 1,
-    "insertIndexes": [
-      4
-    ],
-    "insertPattern": "end",
     "difficulty": "easy",
     "difficultyScore": 0.6,
     "difficultyReasons": [
@@ -5780,25 +5369,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "LOSE",
-    "l": "LOSER",
-    "c1": "Fail to keep",
-    "c2": "One who fails to win",
-    "adds": 1,
-    "insertIndexes": [
-      4
-    ],
-    "insertPattern": "end",
-    "difficulty": "easy",
-    "difficultyScore": 1.85,
-    "difficultyReasons": [
-      "1 added letter",
-      "less familiar vocabulary",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "LOSER",
     "l": "CLOSER",
     "c1": "One who fails to win",
@@ -6051,24 +5621,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "MAKE",
-    "l": "MAKER",
-    "c1": "Create",
-    "c2": "Person who makes things",
-    "adds": 1,
-    "insertIndexes": [
-      4
-    ],
-    "insertPattern": "end",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "MALE",
     "l": "MAPLE",
     "c1": "Man or boy",
@@ -6199,23 +5751,6 @@
     "adds": 1,
     "insertIndexes": [
       1
-    ],
-    "insertPattern": "middle",
-    "difficulty": "easy",
-    "difficultyScore": 1,
-    "difficultyReasons": [
-      "1 added letter"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "MAY",
-    "l": "MANY",
-    "c1": "Be allowed to",
-    "c2": "A lot of",
-    "adds": 1,
-    "insertIndexes": [
-      2
     ],
     "insertPattern": "middle",
     "difficulty": "easy",
@@ -6523,24 +6058,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "NOR",
-    "l": "NORM",
-    "c1": "Word paired with neither",
-    "c2": "Standard",
-    "adds": 1,
-    "insertIndexes": [
-      3
-    ],
-    "insertPattern": "end",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "NOSE",
     "l": "NOISE",
     "c1": "Smelling organ",
@@ -6554,42 +6071,6 @@
     "difficultyScore": 1,
     "difficultyReasons": [
       "1 added letter"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "NOT",
-    "l": "KNOT",
-    "c1": "Word that makes a statement negative",
-    "c2": "Fastening made by looping rope",
-    "adds": 1,
-    "insertIndexes": [
-      0
-    ],
-    "insertPattern": "start",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "NOT",
-    "l": "NOTE",
-    "c1": "Word that makes a statement negative",
-    "c2": "A short written message",
-    "adds": 1,
-    "insertIndexes": [
-      3
-    ],
-    "insertPattern": "end",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
     ],
     "insertionGroups": 1
   },
@@ -6831,6 +6312,24 @@
     "insertionGroups": 1
   },
   {
+    "s": "OLDER",
+    "l": "HOLDER",
+    "c1": "More advanced in age",
+    "c2": "Something that keeps an object in place",
+    "adds": 1,
+    "insertIndexes": [
+      0
+    ],
+    "insertPattern": "start",
+    "difficulty": "easy",
+    "difficultyScore": 0.6,
+    "difficultyReasons": [
+      "1 added letter",
+      "edge insertion"
+    ],
+    "insertionGroups": 1
+  },
+  {
     "s": "ORDER",
     "l": "BORDER",
     "c1": "Request or arrangement",
@@ -6846,79 +6345,6 @@
       "1 added letter",
       "edge insertion",
       "broader clue"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "OTHER",
-    "l": "MOTHER",
-    "c1": "Different one",
-    "c2": "Female parent",
-    "adds": 1,
-    "insertIndexes": [
-      0
-    ],
-    "insertPattern": "start",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "OUR",
-    "l": "FOUR",
-    "c1": "Belonging to us",
-    "c2": "Number immediately after three",
-    "adds": 1,
-    "insertIndexes": [
-      0
-    ],
-    "insertPattern": "start",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "OUR",
-    "l": "SOUR",
-    "c1": "Belonging to us",
-    "c2": "Sharp taste",
-    "adds": 1,
-    "insertIndexes": [
-      0
-    ],
-    "insertPattern": "start",
-    "difficulty": "easy",
-    "difficultyScore": 1.85,
-    "difficultyReasons": [
-      "1 added letter",
-      "less familiar vocabulary",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "OUR",
-    "l": "YOUR",
-    "c1": "Belonging to us",
-    "c2": "Possessive pronoun",
-    "adds": 1,
-    "insertIndexes": [
-      0
-    ],
-    "insertPattern": "start",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
     ],
     "insertionGroups": 1
   },
@@ -8135,25 +7561,6 @@
   },
   {
     "s": "RACE",
-    "l": "RACER",
-    "c1": "Contest to finish first",
-    "c2": "Fast competitor",
-    "adds": 1,
-    "insertIndexes": [
-      4
-    ],
-    "insertPattern": "end",
-    "difficulty": "easy",
-    "difficultyScore": 1.85,
-    "difficultyReasons": [
-      "1 added letter",
-      "less familiar vocabulary",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "RACE",
     "l": "TRACE",
     "c1": "Contest to finish first",
     "c2": "Small amount or follow a line",
@@ -8862,25 +8269,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "RIDE",
-    "l": "RIDER",
-    "c1": "Journey on a bike or horse",
-    "c2": "Person travelling on horseback or bike",
-    "adds": 1,
-    "insertIndexes": [
-      4
-    ],
-    "insertPattern": "end",
-    "difficulty": "easy",
-    "difficultyScore": 1.25,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion",
-      "broader clue"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "RIGHT",
     "l": "BRIGHT",
     "c1": "Correct",
@@ -9133,24 +8521,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "ROT",
-    "l": "TROT",
-    "c1": "Decay and become spoiled",
-    "c2": "Move at a steady pace between walking and running",
-    "adds": 1,
-    "insertIndexes": [
-      0
-    ],
-    "insertPattern": "start",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "ROUND",
     "l": "AROUND",
     "c1": "Circular or approximately",
@@ -9198,25 +8568,6 @@
       0
     ],
     "insertPattern": "start",
-    "difficulty": "easy",
-    "difficultyScore": 1.85,
-    "difficultyReasons": [
-      "1 added letter",
-      "less familiar vocabulary",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "ROVE",
-    "l": "ROVER",
-    "c1": "Wander",
-    "c2": "Wanderer",
-    "adds": 1,
-    "insertIndexes": [
-      4
-    ],
-    "insertPattern": "end",
     "difficulty": "easy",
     "difficultyScore": 1.85,
     "difficultyReasons": [
@@ -9656,42 +9007,6 @@
     "adds": 1,
     "insertIndexes": [
       1
-    ],
-    "insertPattern": "middle",
-    "difficulty": "easy",
-    "difficultyScore": 1,
-    "difficultyReasons": [
-      "1 added letter"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "SERVE",
-    "l": "SERVER",
-    "c1": "Bring food to a table",
-    "c2": "Computer or waiter",
-    "adds": 1,
-    "insertIndexes": [
-      5
-    ],
-    "insertPattern": "end",
-    "difficulty": "easy",
-    "difficultyScore": 1.25,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion",
-      "broader clue"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "SHE",
-    "l": "SHOE",
-    "c1": "Pronoun referring to a female person",
-    "c2": "Footwear",
-    "adds": 1,
-    "insertIndexes": [
-      2
     ],
     "insertPattern": "middle",
     "difficulty": "easy",
@@ -10978,23 +10293,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "TEN",
-    "l": "THEN",
-    "c1": "The number after nine",
-    "c2": "At that time",
-    "adds": 1,
-    "insertIndexes": [
-      1
-    ],
-    "insertPattern": "middle",
-    "difficulty": "easy",
-    "difficultyScore": 1,
-    "difficultyReasons": [
-      "1 added letter"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "TEND",
     "l": "TREND",
     "c1": "Be inclined to",
@@ -11008,42 +10306,6 @@
     "difficultyScore": 1,
     "difficultyReasons": [
       "1 added letter"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "THE",
-    "l": "THEN",
-    "c1": "Word introducing a specific thing",
-    "c2": "At that time",
-    "adds": 1,
-    "insertIndexes": [
-      3
-    ],
-    "insertPattern": "end",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "THE",
-    "l": "THEY",
-    "c1": "Word introducing a specific thing",
-    "c2": "Those people",
-    "adds": 1,
-    "insertIndexes": [
-      3
-    ],
-    "insertPattern": "end",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
     ],
     "insertionGroups": 1
   },
@@ -11062,43 +10324,6 @@
     "difficultyReasons": [
       "1 added letter",
       "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "THOUGH",
-    "l": "THOUGHT",
-    "c1": "Even if",
-    "c2": "Idea in the mind",
-    "adds": 1,
-    "insertIndexes": [
-      6
-    ],
-    "insertPattern": "end",
-    "difficulty": "easy",
-    "difficultyScore": 1.1,
-    "difficultyReasons": [
-      "1 added letter",
-      "longer answer",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "THOUGH",
-    "l": "THROUGH",
-    "c1": "Even if",
-    "c2": "From one side to other",
-    "adds": 1,
-    "insertIndexes": [
-      2
-    ],
-    "insertPattern": "middle",
-    "difficulty": "easy",
-    "difficultyScore": 1.5,
-    "difficultyReasons": [
-      "1 added letter",
-      "longer answer"
     ],
     "insertionGroups": 1
   },
@@ -11244,24 +10469,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "TIME",
-    "l": "TIMER",
-    "c1": "What clocks measure",
-    "c2": "Clock for counting down",
-    "adds": 1,
-    "insertIndexes": [
-      4
-    ],
-    "insertPattern": "end",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "TIMER",
     "l": "TIMBER",
     "c1": "Clock for counting down",
@@ -11361,24 +10568,6 @@
     "difficultyScore": 1,
     "difficultyReasons": [
       "1 added letter"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "TOUGH",
-    "l": "THOUGH",
-    "c1": "Difficult or strong",
-    "c2": "Even if",
-    "adds": 1,
-    "insertIndexes": [
-      1
-    ],
-    "insertPattern": "middle",
-    "difficulty": "easy",
-    "difficultyScore": 1.65,
-    "difficultyReasons": [
-      "1 added letter",
-      "broader clue"
     ],
     "insertionGroups": 1
   },
@@ -11525,24 +10714,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "TUNE",
-    "l": "TUNER",
-    "c1": "Melody",
-    "c2": "Device for adjusting frequency",
-    "adds": 1,
-    "insertIndexes": [
-      4
-    ],
-    "insertPattern": "end",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "URN",
     "l": "BURN",
     "c1": "Large vessel for serving hot drinks",
@@ -11599,24 +10770,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "VERY",
-    "l": "EVERY",
-    "c1": "Extremely",
-    "c2": "All of them",
-    "adds": 1,
-    "insertIndexes": [
-      0
-    ],
-    "insertPattern": "start",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "VET",
     "l": "VETO",
     "c1": "Doctor who treats animals",
@@ -11637,46 +10790,10 @@
     "insertionGroups": 1
   },
   {
-    "s": "VIA",
-    "l": "VISA",
-    "c1": "By way of",
-    "c2": "Permission to enter a country",
-    "adds": 1,
-    "insertIndexes": [
-      2
-    ],
-    "insertPattern": "middle",
-    "difficulty": "easy",
-    "difficultyScore": 1,
-    "difficultyReasons": [
-      "1 added letter"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "VIE",
     "l": "VIEW",
     "c1": "Compete for something",
     "c2": "Look or inspect",
-    "adds": 1,
-    "insertIndexes": [
-      3
-    ],
-    "insertPattern": "end",
-    "difficulty": "easy",
-    "difficultyScore": 1.25,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion",
-      "broader clue"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "WAR",
-    "l": "WARE",
-    "c1": "Fighting between countries",
-    "c2": "Goods or aware",
     "adds": 1,
     "insertIndexes": [
       3
@@ -11741,43 +10858,6 @@
     "difficultyScore": 1,
     "difficultyReasons": [
       "1 added letter"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "WARE",
-    "l": "AWARE",
-    "c1": "Goods or aware",
-    "c2": "Conscious or informed",
-    "adds": 1,
-    "insertIndexes": [
-      0
-    ],
-    "insertPattern": "start",
-    "difficulty": "easy",
-    "difficultyScore": 1.25,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion",
-      "broader clue"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "WAS",
-    "l": "WASP",
-    "c1": "Existed in the past",
-    "c2": "Flying insect with a narrow waist and a sting",
-    "adds": 1,
-    "insertIndexes": [
-      3
-    ],
-    "insertPattern": "end",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
     ],
     "insertionGroups": 1
   },
@@ -12161,42 +11241,6 @@
     "adds": 1,
     "insertIndexes": [
       5
-    ],
-    "insertPattern": "end",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "WRITE",
-    "l": "WRITER",
-    "c1": "Put words on a page",
-    "c2": "Person who writes",
-    "adds": 1,
-    "insertIndexes": [
-      5
-    ],
-    "insertPattern": "end",
-    "difficulty": "easy",
-    "difficultyScore": 0.6,
-    "difficultyReasons": [
-      "1 added letter",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "YOU",
-    "l": "YOUR",
-    "c1": "The person being addressed",
-    "c2": "Possessive pronoun",
-    "adds": 1,
-    "insertIndexes": [
-      3
     ],
     "insertPattern": "end",
     "difficulty": "easy",
@@ -12944,25 +11988,6 @@
     "insertionGroups": 2
   },
   {
-    "s": "ANIME",
-    "l": "ANYTIME",
-    "c1": "Japanese animation style",
-    "c2": "Whenever you like",
-    "adds": 2,
-    "insertIndexes": [
-      2,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 3.5,
-    "difficultyReasons": [
-      "2 added letters",
-      "longer answer"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "ANT",
     "l": "FAINT",
     "c1": "Small insect that lives in a colony",
@@ -13148,64 +12173,6 @@
       "2 added letters"
     ],
     "insertionGroups": 1
-  },
-  {
-    "s": "ARE",
-    "l": "ARMED",
-    "c1": "Second-person 'to be'",
-    "c2": "Equipped with weapons",
-    "adds": 2,
-    "insertIndexes": [
-      2,
-      4
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 3.75,
-    "difficultyReasons": [
-      "2 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "ARE",
-    "l": "CARED",
-    "c1": "Second-person 'to be'",
-    "c2": "Looked after",
-    "adds": 2,
-    "insertIndexes": [
-      0,
-      4
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 5,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "ARE",
-    "l": "CARVE",
-    "c1": "Second-person 'to be'",
-    "c2": "Shape wood by cutting it",
-    "adds": 2,
-    "insertIndexes": [
-      0,
-      3
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 3.75,
-    "difficultyReasons": [
-      "2 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
   },
   {
     "s": "ARENA",
@@ -13759,24 +12726,6 @@
       "broader clue"
     ],
     "insertionGroups": 2
-  },
-  {
-    "s": "AWAY",
-    "l": "ANYWAY",
-    "c1": "At a distance from here",
-    "c2": "Despite that",
-    "adds": 2,
-    "insertIndexes": [
-      1,
-      2
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 3,
-    "difficultyReasons": [
-      "2 added letters"
-    ],
-    "insertionGroups": 1
   },
   {
     "s": "AWE",
@@ -14524,26 +13473,6 @@
     "insertionGroups": 2
   },
   {
-    "s": "BEEN",
-    "l": "BEATEN",
-    "c1": "Existed",
-    "c2": "Defeated or struck",
-    "adds": 2,
-    "insertIndexes": [
-      2,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 4.9,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "broader clue"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "BEER",
     "l": "BEAVER",
     "c1": "Ale or lager",
@@ -14578,102 +13507,6 @@
     "difficultyReasons": [
       "2 added letters",
       "broader clue"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "BEG",
-    "l": "BEING",
-    "c1": "Ask desperately",
-    "c2": "Existing",
-    "adds": 2,
-    "insertIndexes": [
-      2,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 3,
-    "difficultyReasons": [
-      "2 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "BEING",
-    "l": "BEARING",
-    "c1": "Existing",
-    "c2": "Carrying or direction",
-    "adds": 2,
-    "insertIndexes": [
-      2,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 4.15,
-    "difficultyReasons": [
-      "2 added letters",
-      "longer answer",
-      "broader clue"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "BEING",
-    "l": "BEDDING",
-    "c1": "Existing",
-    "c2": "Sheets and blankets for a bed",
-    "adds": 2,
-    "insertIndexes": [
-      2,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 3.5,
-    "difficultyReasons": [
-      "2 added letters",
-      "longer answer"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "BEING",
-    "l": "BENDING",
-    "c1": "Existing",
-    "c2": "Curving",
-    "adds": 2,
-    "insertIndexes": [
-      2,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 4.75,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "longer answer"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "BEING",
-    "l": "BETTING",
-    "c1": "Existing",
-    "c2": "Risking money on an outcome",
-    "adds": 2,
-    "insertIndexes": [
-      2,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 3.5,
-    "difficultyReasons": [
-      "2 added letters",
-      "longer answer"
     ],
     "insertionGroups": 1
   },
@@ -14807,25 +13640,6 @@
   },
   {
     "s": "BIG",
-    "l": "BEING",
-    "c1": "Large in size",
-    "c2": "Existing",
-    "adds": 2,
-    "insertIndexes": [
-      1,
-      3
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 3.75,
-    "difficultyReasons": [
-      "2 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "BIG",
     "l": "BLING",
     "c1": "Large in size",
     "c2": "Showy personal accessories",
@@ -14872,25 +13686,6 @@
     "insertIndexes": [
       1,
       3
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 3.75,
-    "difficultyReasons": [
-      "2 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "BIN",
-    "l": "BEING",
-    "c1": "Container for waste",
-    "c2": "Existing",
-    "adds": 2,
-    "insertIndexes": [
-      1,
-      4
     ],
     "insertPattern": "split",
     "difficulty": "medium",
@@ -15499,25 +14294,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "BRAVE",
-    "l": "BRAVER",
-    "c1": "Courageous",
-    "c2": "More courageous",
-    "adds": 1,
-    "insertIndexes": [
-      5
-    ],
-    "insertPattern": "end",
-    "difficulty": "medium",
-    "difficultyScore": 3.1,
-    "difficultyReasons": [
-      "1 added letter",
-      "less familiar vocabulary",
-      "edge insertion"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "BRED",
     "l": "BURIED",
     "c1": "Raised, as animals",
@@ -15672,25 +14448,6 @@
       "separate insertion slots"
     ],
     "insertionGroups": 2
-  },
-  {
-    "s": "BUT",
-    "l": "BOUT",
-    "c1": "Word introducing a contrast",
-    "c2": "Short fight or period",
-    "adds": 1,
-    "insertIndexes": [
-      1
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 2.9,
-    "difficultyReasons": [
-      "1 added letter",
-      "less familiar vocabulary",
-      "broader clue"
-    ],
-    "insertionGroups": 1
   },
   {
     "s": "CAB",
@@ -17003,24 +15760,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "COD",
-    "l": "COULD",
-    "c1": "White fish often served with chips",
-    "c2": "Was able to",
-    "adds": 2,
-    "insertIndexes": [
-      2,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 3,
-    "difficultyReasons": [
-      "2 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "COIN",
     "l": "CODING",
     "c1": "Piece of money",
@@ -17483,26 +16222,6 @@
       "less familiar vocabulary"
     ],
     "insertionGroups": 1
-  },
-  {
-    "s": "COULD",
-    "l": "COUPLED",
-    "c1": "Was able to",
-    "c2": "Joined together",
-    "adds": 2,
-    "insertIndexes": [
-      3,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 4.25,
-    "difficultyReasons": [
-      "2 added letters",
-      "longer answer",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
   },
   {
     "s": "COVE",
@@ -18220,25 +16939,6 @@
     "insertionGroups": 2
   },
   {
-    "s": "DID",
-    "l": "DRIED",
-    "c1": "Performed an action in the past",
-    "c2": "Made less wet",
-    "adds": 2,
-    "insertIndexes": [
-      1,
-      3
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 3.75,
-    "difficultyReasons": [
-      "2 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
     "s": "DIET",
     "l": "DIGEST",
     "c1": "Eating plan",
@@ -18551,6 +17251,24 @@
     "insertionGroups": 2
   },
   {
+    "s": "DOLL",
+    "l": "DROLL",
+    "c1": "Toy shaped like a person",
+    "c2": "Funny in a quiet unusual way",
+    "adds": 1,
+    "insertIndexes": [
+      1
+    ],
+    "insertPattern": "middle",
+    "difficulty": "medium",
+    "difficultyScore": 3,
+    "difficultyReasons": [
+      "1 added letter",
+      "editorial vocabulary difficulty"
+    ],
+    "insertionGroups": 1
+  },
+  {
     "s": "DOME",
     "l": "DOOMED",
     "c1": "Rounded roof",
@@ -18805,43 +17523,6 @@
       "longer answer"
     ],
     "insertionGroups": 1
-  },
-  {
-    "s": "EACH",
-    "l": "PREACH",
-    "c1": "Every one, considered separately",
-    "c2": "Give advice in an overly serious way",
-    "adds": 2,
-    "insertIndexes": [
-      0,
-      1
-    ],
-    "insertPattern": "start",
-    "difficulty": "medium",
-    "difficultyScore": 3,
-    "difficultyReasons": [
-      "2 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "EACH",
-    "l": "SEARCH",
-    "c1": "Every one, considered separately",
-    "c2": "Look carefully for something",
-    "adds": 2,
-    "insertIndexes": [
-      0,
-      3
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 3.75,
-    "difficultyReasons": [
-      "2 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
   },
   {
     "s": "EAR",
@@ -19323,7 +18004,7 @@
   {
     "s": "EQUITY",
     "l": "EQUALITY",
-    "c1": "Fairness in value or ownership",
+    "c1": "Fairness in how people are treated",
     "c2": "State of being equal",
     "adds": 2,
     "insertIndexes": [
@@ -19332,11 +18013,10 @@
     ],
     "insertPattern": "middle",
     "difficulty": "medium",
-    "difficultyScore": 4.65,
+    "difficultyScore": 4,
     "difficultyReasons": [
       "2 added letters",
-      "longer answer",
-      "broader clue"
+      "longer answer"
     ],
     "insertionGroups": 1
   },
@@ -19364,24 +18044,6 @@
     "l": "EVENT",
     "c1": "The evening before an event",
     "c2": "Occasion",
-    "adds": 2,
-    "insertIndexes": [
-      3,
-      4
-    ],
-    "insertPattern": "end",
-    "difficulty": "medium",
-    "difficultyScore": 3,
-    "difficultyReasons": [
-      "2 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "EVE",
-    "l": "EVERY",
-    "c1": "The evening before an event",
-    "c2": "All of them",
     "adds": 2,
     "insertIndexes": [
       3,
@@ -20519,45 +19181,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "FOR",
-    "l": "FLOUR",
-    "c1": "In support of",
-    "c2": "Powder used to make bread",
-    "adds": 2,
-    "insertIndexes": [
-      1,
-      3
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 3.75,
-    "difficultyReasons": [
-      "2 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "FOR",
-    "l": "FORGE",
-    "c1": "In support of",
-    "c2": "Make fake or blacksmith shop",
-    "adds": 2,
-    "insertIndexes": [
-      3,
-      4
-    ],
-    "insertPattern": "end",
-    "difficulty": "medium",
-    "difficultyScore": 4.9,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "broader clue"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "FOREST",
     "l": "FORECAST",
     "c1": "Large wood",
@@ -21168,44 +19791,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "HAD",
-    "l": "AHEAD",
-    "c1": "Possessed in the past",
-    "c2": "In front",
-    "adds": 2,
-    "insertIndexes": [
-      0,
-      2
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 3.75,
-    "difficultyReasons": [
-      "2 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "HAD",
-    "l": "HEARD",
-    "c1": "Possessed in the past",
-    "c2": "Noticed a sound",
-    "adds": 2,
-    "insertIndexes": [
-      1,
-      3
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 3.75,
-    "difficultyReasons": [
-      "2 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
     "s": "HALT",
     "l": "HAMLET",
     "c1": "Stop",
@@ -21323,24 +19908,6 @@
     "insertionGroups": 2
   },
   {
-    "s": "HANG",
-    "l": "HAVING",
-    "c1": "Suspend from above",
-    "c2": "Possessing",
-    "adds": 2,
-    "insertIndexes": [
-      2,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 3,
-    "difficultyReasons": [
-      "2 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "HARD",
     "l": "HATRED",
     "c1": "Not soft",
@@ -21438,42 +20005,6 @@
       "separate insertion slots"
     ],
     "insertionGroups": 2
-  },
-  {
-    "s": "HAS",
-    "l": "HASTE",
-    "c1": "Possesses at the present time",
-    "c2": "Great hurry",
-    "adds": 2,
-    "insertIndexes": [
-      3,
-      4
-    ],
-    "insertPattern": "end",
-    "difficulty": "medium",
-    "difficultyScore": 3,
-    "difficultyReasons": [
-      "2 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "HAS",
-    "l": "HASTY",
-    "c1": "Possesses at the present time",
-    "c2": "Done with too much hurry",
-    "adds": 2,
-    "insertIndexes": [
-      3,
-      4
-    ],
-    "insertPattern": "end",
-    "difficulty": "medium",
-    "difficultyScore": 3,
-    "difficultyReasons": [
-      "2 added letters"
-    ],
-    "insertionGroups": 1
   },
   {
     "s": "HAT",
@@ -21610,7 +20141,7 @@
     "s": "HEAD",
     "l": "HERALD",
     "c1": "Top of the body",
-    "c2": "Messenger or newspaper",
+    "c2": "Messenger announcing important news",
     "adds": 2,
     "insertIndexes": [
       2,
@@ -21618,11 +20149,10 @@
     ],
     "insertPattern": "split",
     "difficulty": "medium",
-    "difficultyScore": 4.4,
+    "difficultyScore": 3.75,
     "difficultyReasons": [
       "2 added letters",
-      "separate insertion slots",
-      "broader clue"
+      "separate insertion slots"
     ],
     "insertionGroups": 2
   },
@@ -21667,7 +20197,7 @@
     "s": "HEAL",
     "l": "HERALD",
     "c1": "Become healthy after an injury",
-    "c2": "Messenger or newspaper",
+    "c2": "Messenger announcing important news",
     "adds": 2,
     "insertIndexes": [
       2,
@@ -21675,11 +20205,10 @@
     ],
     "insertPattern": "split",
     "difficulty": "medium",
-    "difficultyScore": 4.4,
+    "difficultyScore": 3.75,
     "difficultyReasons": [
       "2 added letters",
-      "separate insertion slots",
-      "broader clue"
+      "separate insertion slots"
     ],
     "insertionGroups": 2
   },
@@ -21780,7 +20309,7 @@
     "s": "HELD",
     "l": "HERALD",
     "c1": "Kept in the hand",
-    "c2": "Messenger or newspaper",
+    "c2": "Messenger announcing important news",
     "adds": 2,
     "insertIndexes": [
       2,
@@ -21788,10 +20317,9 @@
     ],
     "insertPattern": "middle",
     "difficulty": "medium",
-    "difficultyScore": 3.65,
+    "difficultyScore": 3,
     "difficultyReasons": [
-      "2 added letters",
-      "broader clue"
+      "2 added letters"
     ],
     "insertionGroups": 1
   },
@@ -21815,150 +20343,16 @@
     "insertionGroups": 2
   },
   {
-    "s": "HER",
-    "l": "CHEER",
-    "c1": "Belonging to a female person",
-    "c2": "Shout of joy",
-    "adds": 2,
-    "insertIndexes": [
-      0,
-      3
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 5,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "HER",
-    "l": "OTHER",
-    "c1": "Belonging to a female person",
-    "c2": "Different one",
-    "adds": 2,
-    "insertIndexes": [
-      0,
-      1
-    ],
-    "insertPattern": "start",
-    "difficulty": "medium",
-    "difficultyScore": 3,
-    "difficultyReasons": [
-      "2 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "HER",
-    "l": "SHEER",
-    "c1": "Belonging to a female person",
-    "c2": "Very steep or transparent",
-    "adds": 2,
-    "insertIndexes": [
-      0,
-      3
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 4.4,
-    "difficultyReasons": [
-      "2 added letters",
-      "separate insertion slots",
-      "broader clue"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "HER",
-    "l": "THERE",
-    "c1": "Belonging to a female person",
-    "c2": "In that place",
-    "adds": 2,
-    "insertIndexes": [
-      0,
-      4
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 3.75,
-    "difficultyReasons": [
-      "2 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "HER",
-    "l": "WHERE",
-    "c1": "Belonging to a female person",
-    "c2": "In what place",
-    "adds": 2,
-    "insertIndexes": [
-      0,
-      4
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 3.75,
-    "difficultyReasons": [
-      "2 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "HERB",
-    "l": "HEREBY",
-    "c1": "Plant used in cooking",
-    "c2": "By this means (formal)",
-    "adds": 2,
-    "insertIndexes": [
-      3,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 3.75,
-    "difficultyReasons": [
-      "2 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
     "s": "HERD",
     "l": "HERALD",
     "c1": "Group of large animals",
-    "c2": "Messenger or newspaper",
+    "c2": "Messenger announcing important news",
     "adds": 2,
     "insertIndexes": [
       3,
       4
     ],
     "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 3.65,
-    "difficultyReasons": [
-      "2 added letters",
-      "broader clue"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "HERE",
-    "l": "HEREBY",
-    "c1": "In this place",
-    "c2": "By this means (formal)",
-    "adds": 2,
-    "insertIndexes": [
-      4,
-      5
-    ],
-    "insertPattern": "end",
     "difficulty": "medium",
     "difficultyScore": 3,
     "difficultyReasons": [
@@ -22034,25 +20428,6 @@
     "insertIndexes": [
       0,
       5
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 3.75,
-    "difficultyReasons": [
-      "2 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "HIS",
-    "l": "WHISK",
-    "c1": "Belonging to a male person",
-    "c2": "Kitchen utensil used for beating eggs",
-    "adds": 2,
-    "insertIndexes": [
-      0,
-      4
     ],
     "insertPattern": "split",
     "difficulty": "medium",
@@ -22145,25 +20520,6 @@
     "l": "WHOLE",
     "c1": "Garden tool used to loosen soil",
     "c2": "Complete",
-    "adds": 2,
-    "insertIndexes": [
-      0,
-      3
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 3.75,
-    "difficultyReasons": [
-      "2 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "HOLD",
-    "l": "SHOULD",
-    "c1": "Keep in your hand",
-    "c2": "Ought to",
     "adds": 2,
     "insertIndexes": [
       0,
@@ -22391,25 +20747,6 @@
     "insertionGroups": 2
   },
   {
-    "s": "HOW",
-    "l": "SHOWN",
-    "c1": "In what way",
-    "c2": "Displayed",
-    "adds": 2,
-    "insertIndexes": [
-      0,
-      4
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 3.75,
-    "difficultyReasons": [
-      "2 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
     "s": "HUGE",
     "l": "HUNGER",
     "c1": "Very large",
@@ -22521,25 +20858,6 @@
       "2 added letters"
     ],
     "insertionGroups": 1
-  },
-  {
-    "s": "ICE",
-    "l": "SINCE",
-    "c1": "Frozen water",
-    "c2": "From that time",
-    "adds": 2,
-    "insertIndexes": [
-      0,
-      2
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 3.75,
-    "difficultyReasons": [
-      "2 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
   },
   {
     "s": "ICE",
@@ -24322,7 +22640,7 @@
     "s": "MALE",
     "l": "MANTLE",
     "c1": "Man or boy",
-    "c2": "Cloak or shelf over a fireplace",
+    "c2": "Loose sleeveless cloak",
     "adds": 2,
     "insertIndexes": [
       2,
@@ -24330,10 +22648,9 @@
     ],
     "insertPattern": "middle",
     "difficulty": "medium",
-    "difficultyScore": 4.9,
+    "difficultyScore": 3.65,
     "difficultyReasons": [
       "2 added letters",
-      "less familiar vocabulary",
       "broader clue"
     ],
     "insertionGroups": 1
@@ -24469,6 +22786,25 @@
       "less familiar vocabulary"
     ],
     "insertionGroups": 1
+  },
+  {
+    "s": "MATE",
+    "l": "MANTLE",
+    "c1": "Friend",
+    "c2": "Loose sleeveless cloak",
+    "adds": 2,
+    "insertIndexes": [
+      2,
+      4
+    ],
+    "insertPattern": "split",
+    "difficulty": "medium",
+    "difficultyScore": 3.75,
+    "difficultyReasons": [
+      "2 added letters",
+      "separate insertion slots"
+    ],
+    "insertionGroups": 2
   },
   {
     "s": "MATING",
@@ -25184,25 +23520,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "NONE",
-    "l": "ANYONE",
-    "c1": "Not one",
-    "c2": "Any person",
-    "adds": 2,
-    "insertIndexes": [
-      0,
-      2
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 3.75,
-    "difficultyReasons": [
-      "2 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
     "s": "NORM",
     "l": "INFORM",
     "c1": "Standard",
@@ -25546,25 +23863,6 @@
   },
   {
     "s": "OLD",
-    "l": "COULD",
-    "c1": "Having existed for a long time",
-    "c2": "Was able to",
-    "adds": 2,
-    "insertIndexes": [
-      0,
-      2
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 3.75,
-    "difficultyReasons": [
-      "2 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "OLD",
     "l": "SOLID",
     "c1": "Having existed for a long time",
     "c2": "Firm, not liquid",
@@ -25870,99 +24168,6 @@
       "broader clue"
     ],
     "insertionGroups": 2
-  },
-  {
-    "s": "OTHER",
-    "l": "ANOTHER",
-    "c1": "Different one",
-    "c2": "One more",
-    "adds": 2,
-    "insertIndexes": [
-      0,
-      1
-    ],
-    "insertPattern": "start",
-    "difficulty": "medium",
-    "difficultyScore": 3.5,
-    "difficultyReasons": [
-      "2 added letters",
-      "longer answer"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "OTHER",
-    "l": "BROTHER",
-    "c1": "Different one",
-    "c2": "Male sibling",
-    "adds": 2,
-    "insertIndexes": [
-      0,
-      1
-    ],
-    "insertPattern": "start",
-    "difficulty": "medium",
-    "difficultyScore": 3.5,
-    "difficultyReasons": [
-      "2 added letters",
-      "longer answer"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "OUR",
-    "l": "FLOUR",
-    "c1": "Belonging to us",
-    "c2": "Powder used to make bread",
-    "adds": 2,
-    "insertIndexes": [
-      0,
-      1
-    ],
-    "insertPattern": "start",
-    "difficulty": "medium",
-    "difficultyScore": 3,
-    "difficultyReasons": [
-      "2 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "OUR",
-    "l": "OUTER",
-    "c1": "Belonging to us",
-    "c2": "External",
-    "adds": 2,
-    "insertIndexes": [
-      2,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 3,
-    "difficultyReasons": [
-      "2 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "OUR",
-    "l": "SCOUR",
-    "c1": "Belonging to us",
-    "c2": "Scrub hard",
-    "adds": 2,
-    "insertIndexes": [
-      0,
-      1
-    ],
-    "insertPattern": "start",
-    "difficulty": "medium",
-    "difficultyScore": 4.25,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary"
-    ],
-    "insertionGroups": 1
   },
   {
     "s": "OUT",
@@ -28299,7 +26504,7 @@
     "s": "QUIT",
     "l": "EQUITY",
     "c1": "Stop doing something",
-    "c2": "Fairness in value or ownership",
+    "c2": "Fairness in how people are treated",
     "adds": 2,
     "insertIndexes": [
       0,
@@ -28307,11 +26512,10 @@
     ],
     "insertPattern": "split",
     "difficulty": "medium",
-    "difficultyScore": 4.4,
+    "difficultyScore": 3.75,
     "difficultyReasons": [
       "2 added letters",
-      "separate insertion slots",
-      "broader clue"
+      "separate insertion slots"
     ],
     "insertionGroups": 2
   },
@@ -32443,24 +30647,6 @@
     "insertionGroups": 2
   },
   {
-    "s": "SELF",
-    "l": "ITSELF",
-    "c1": "You as a person",
-    "c2": "That same thing",
-    "adds": 2,
-    "insertIndexes": [
-      0,
-      1
-    ],
-    "insertPattern": "start",
-    "difficulty": "medium",
-    "difficultyScore": 3,
-    "difficultyReasons": [
-      "2 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "SEND",
     "l": "SECOND",
     "c1": "Dispatch",
@@ -32573,95 +30759,25 @@
     "insertionGroups": 2
   },
   {
-    "s": "SHE",
-    "l": "SHARE",
-    "c1": "Pronoun referring to a female person",
-    "c2": "Part owned or divide with others",
+    "s": "SHARE",
+    "l": "SHARPER",
+    "c1": "Part owned or divide with others",
+    "c2": "Having a finer cutting edge",
     "adds": 2,
     "insertIndexes": [
-      2,
-      3
+      4,
+      6
     ],
-    "insertPattern": "middle",
+    "insertPattern": "split",
     "difficulty": "medium",
-    "difficultyScore": 3.65,
+    "difficultyScore": 4.9,
     "difficultyReasons": [
       "2 added letters",
+      "longer answer",
+      "separate insertion slots",
       "broader clue"
     ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "SHE",
-    "l": "SHEEP",
-    "c1": "Pronoun referring to a female person",
-    "c2": "Farm animal kept for wool",
-    "adds": 2,
-    "insertIndexes": [
-      3,
-      4
-    ],
-    "insertPattern": "end",
-    "difficulty": "medium",
-    "difficultyScore": 3,
-    "difficultyReasons": [
-      "2 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "SHE",
-    "l": "SHELF",
-    "c1": "Pronoun referring to a female person",
-    "c2": "Wall storage ledge",
-    "adds": 2,
-    "insertIndexes": [
-      3,
-      4
-    ],
-    "insertPattern": "end",
-    "difficulty": "medium",
-    "difficultyScore": 3,
-    "difficultyReasons": [
-      "2 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "SHE",
-    "l": "SHINE",
-    "c1": "Pronoun referring to a female person",
-    "c2": "Give off bright light",
-    "adds": 2,
-    "insertIndexes": [
-      2,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 3,
-    "difficultyReasons": [
-      "2 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "SHE",
-    "l": "SHORE",
-    "c1": "Pronoun referring to a female person",
-    "c2": "Land beside the sea",
-    "adds": 2,
-    "insertIndexes": [
-      2,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 3,
-    "difficultyReasons": [
-      "2 added letters"
-    ],
-    "insertionGroups": 1
+    "insertionGroups": 2
   },
   {
     "s": "SHED",
@@ -33191,45 +31307,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "SINCE",
-    "l": "SCIENCE",
-    "c1": "From that time",
-    "c2": "Systematic study",
-    "adds": 2,
-    "insertIndexes": [
-      1,
-      3
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 4.25,
-    "difficultyReasons": [
-      "2 added letters",
-      "longer answer",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "SINCE",
-    "l": "SILENCE",
-    "c1": "From that time",
-    "c2": "Absence of sound",
-    "adds": 2,
-    "insertIndexes": [
-      2,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 3.5,
-    "difficultyReasons": [
-      "2 added letters",
-      "longer answer"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "SING",
     "l": "ASKING",
     "c1": "Make music with your voice",
@@ -33736,25 +31813,6 @@
       "longer answer"
     ],
     "insertionGroups": 1
-  },
-  {
-    "s": "SOLD",
-    "l": "SHOULD",
-    "c1": "Exchanged for money",
-    "c2": "Ought to",
-    "adds": 2,
-    "insertIndexes": [
-      1,
-      3
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 3.75,
-    "difficultyReasons": [
-      "2 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
   },
   {
     "s": "SOLD",
@@ -35770,174 +33828,6 @@
     "insertionGroups": 2
   },
   {
-    "s": "THAT",
-    "l": "THREAT",
-    "c1": "The indicated thing",
-    "c2": "Promise of harm",
-    "adds": 2,
-    "insertIndexes": [
-      2,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 3,
-    "difficultyReasons": [
-      "2 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "THAT",
-    "l": "THROAT",
-    "c1": "The indicated thing",
-    "c2": "Part of the neck",
-    "adds": 2,
-    "insertIndexes": [
-      2,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 3,
-    "difficultyReasons": [
-      "2 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "THE",
-    "l": "OTHER",
-    "c1": "Word introducing a specific thing",
-    "c2": "Different one",
-    "adds": 2,
-    "insertIndexes": [
-      0,
-      4
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 3.75,
-    "difficultyReasons": [
-      "2 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "THE",
-    "l": "THERE",
-    "c1": "Word introducing a specific thing",
-    "c2": "In that place",
-    "adds": 2,
-    "insertIndexes": [
-      3,
-      4
-    ],
-    "insertPattern": "end",
-    "difficulty": "medium",
-    "difficultyScore": 3,
-    "difficultyReasons": [
-      "2 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "THE",
-    "l": "THREE",
-    "c1": "Word introducing a specific thing",
-    "c2": "Number after two",
-    "adds": 2,
-    "insertIndexes": [
-      2,
-      4
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 3.75,
-    "difficultyReasons": [
-      "2 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "THERE",
-    "l": "THEREBY",
-    "c1": "In that place",
-    "c2": "As a result of that",
-    "adds": 2,
-    "insertIndexes": [
-      5,
-      6
-    ],
-    "insertPattern": "end",
-    "difficulty": "medium",
-    "difficultyScore": 3.5,
-    "difficultyReasons": [
-      "2 added letters",
-      "longer answer"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "THERE",
-    "l": "THEREOF",
-    "c1": "In that place",
-    "c2": "Of that",
-    "adds": 2,
-    "insertIndexes": [
-      5,
-      6
-    ],
-    "insertPattern": "end",
-    "difficulty": "medium",
-    "difficultyScore": 3.5,
-    "difficultyReasons": [
-      "2 added letters",
-      "longer answer"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "THEY",
-    "l": "THEORY",
-    "c1": "Those people",
-    "c2": "An idea that explains how something works",
-    "adds": 2,
-    "insertIndexes": [
-      3,
-      4
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 3,
-    "difficultyReasons": [
-      "2 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "THOUGH",
-    "l": "THOROUGH",
-    "c1": "Even if",
-    "c2": "Complete and careful",
-    "adds": 2,
-    "insertIndexes": [
-      3,
-      4
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 5.25,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "longer answer"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "THROUGH",
     "l": "THOROUGH",
     "c1": "From one side to other",
@@ -36533,24 +34423,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "TOO",
-    "l": "TOKYO",
-    "c1": "More than is wanted",
-    "c2": "Capital of Japan",
-    "adds": 2,
-    "insertIndexes": [
-      2,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 3,
-    "difficultyReasons": [
-      "2 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "TORN",
     "l": "THORNY",
     "c1": "Ripped into pieces",
@@ -37017,6 +34889,26 @@
     "insertionGroups": 2
   },
   {
+    "s": "TROUT",
+    "l": "TURNOUT",
+    "c1": "Fish",
+    "c2": "Number of people attending an event",
+    "adds": 2,
+    "insertIndexes": [
+      1,
+      3
+    ],
+    "insertPattern": "split",
+    "difficulty": "medium",
+    "difficultyScore": 4.25,
+    "difficultyReasons": [
+      "2 added letters",
+      "longer answer",
+      "separate insertion slots"
+    ],
+    "insertionGroups": 2
+  },
+  {
     "s": "TRY",
     "l": "ENTRY",
     "c1": "Make an attempt",
@@ -37270,26 +35162,6 @@
     "insertionGroups": 2
   },
   {
-    "s": "UPON",
-    "l": "UPTOWN",
-    "c1": "On top of",
-    "c2": "Toward the upper part of a city",
-    "adds": 2,
-    "insertIndexes": [
-      2,
-      4
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 5,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
     "s": "USE",
     "l": "ABUSE",
     "c1": "Put something to work",
@@ -37506,43 +35378,6 @@
     "insertIndexes": [
       0,
       3
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 3.75,
-    "difficultyReasons": [
-      "2 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "VIA",
-    "l": "VILLA",
-    "c1": "By way of",
-    "c2": "Country house",
-    "adds": 2,
-    "insertIndexes": [
-      2,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 3,
-    "difficultyReasons": [
-      "2 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "VIA",
-    "l": "VITAL",
-    "c1": "By way of",
-    "c2": "Essential",
-    "adds": 2,
-    "insertIndexes": [
-      2,
-      4
     ],
     "insertPattern": "split",
     "difficulty": "medium",
@@ -37884,66 +35719,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "WARE",
-    "l": "BEWARE",
-    "c1": "Goods or aware",
-    "c2": "Be cautious",
-    "adds": 2,
-    "insertIndexes": [
-      0,
-      1
-    ],
-    "insertPattern": "start",
-    "difficulty": "medium",
-    "difficultyScore": 4.9,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "broader clue"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "WARE",
-    "l": "WARMER",
-    "c1": "Goods or aware",
-    "c2": "At a higher temperature",
-    "adds": 2,
-    "insertIndexes": [
-      3,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 4.4,
-    "difficultyReasons": [
-      "2 added letters",
-      "separate insertion slots",
-      "broader clue"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "WARE",
-    "l": "WARNED",
-    "c1": "Goods or aware",
-    "c2": "Alerted",
-    "adds": 2,
-    "insertIndexes": [
-      3,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "medium",
-    "difficultyScore": 4.4,
-    "difficultyReasons": [
-      "2 added letters",
-      "separate insertion slots",
-      "broader clue"
-    ],
-    "insertionGroups": 2
-  },
-  {
     "s": "WATER",
     "l": "WEATHER",
     "c1": "Clear liquid essential for life",
@@ -38056,24 +35831,6 @@
       "separate insertion slots"
     ],
     "insertionGroups": 2
-  },
-  {
-    "s": "WHO",
-    "l": "WHOLE",
-    "c1": "Which person",
-    "c2": "Complete",
-    "adds": 2,
-    "insertIndexes": [
-      3,
-      4
-    ],
-    "insertPattern": "end",
-    "difficulty": "medium",
-    "difficultyScore": 3,
-    "difficultyReasons": [
-      "2 added letters"
-    ],
-    "insertionGroups": 1
   },
   {
     "s": "WIDE",
@@ -39947,7 +37704,7 @@
     "s": "ANT",
     "l": "MANTLE",
     "c1": "Small insect that lives in a colony",
-    "c2": "Cloak or shelf over a fireplace",
+    "c2": "Loose sleeveless cloak",
     "adds": 3,
     "insertIndexes": [
       0,
@@ -39956,12 +37713,10 @@
     ],
     "insertPattern": "split",
     "difficulty": "hard",
-    "difficultyScore": 8.65,
+    "difficultyScore": 6.75,
     "difficultyReasons": [
       "3 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots",
-      "broader clue"
+      "separate insertion slots"
     ],
     "insertionGroups": 2
   },
@@ -40340,254 +38095,6 @@
       "separate insertion slots"
     ],
     "insertionGroups": 2
-  },
-  {
-    "s": "ARE",
-    "l": "AGREED",
-    "c1": "Second-person 'to be'",
-    "c2": "Reached the same view",
-    "adds": 3,
-    "insertIndexes": [
-      1,
-      4,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "ARE",
-    "l": "ARGUED",
-    "c1": "Second-person 'to be'",
-    "c2": "Spoke in disagreement",
-    "adds": 3,
-    "insertIndexes": [
-      2,
-      3,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "ARE",
-    "l": "BARRED",
-    "c1": "Second-person 'to be'",
-    "c2": "Blocked from entering",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      3,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 8,
-    "difficultyReasons": [
-      "3 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 3
-  },
-  {
-    "s": "ARE",
-    "l": "CARVED",
-    "c1": "Second-person 'to be'",
-    "c2": "Cut into shape",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      3,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 8,
-    "difficultyReasons": [
-      "3 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 3
-  },
-  {
-    "s": "ARE",
-    "l": "CHARGE",
-    "c1": "Second-person 'to be'",
-    "c2": "Demand payment",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      1,
-      4
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "ARE",
-    "l": "COARSE",
-    "c1": "Second-person 'to be'",
-    "c2": "Rough-textured",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      1,
-      4
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 8,
-    "difficultyReasons": [
-      "3 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "ARE",
-    "l": "DARKER",
-    "c1": "Second-person 'to be'",
-    "c2": "Less light",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      3,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 8,
-    "difficultyReasons": [
-      "3 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 3
-  },
-  {
-    "s": "ARE",
-    "l": "FARMER",
-    "c1": "Second-person 'to be'",
-    "c2": "Person who cultivates land",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      3,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 3
-  },
-  {
-    "s": "ARE",
-    "l": "FEARED",
-    "c1": "Second-person 'to be'",
-    "c2": "Was afraid of",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      1,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 8,
-    "difficultyReasons": [
-      "3 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "ARE",
-    "l": "GALORE",
-    "c1": "Second-person 'to be'",
-    "c2": "In great quantity",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      2,
-      3
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 8,
-    "difficultyReasons": [
-      "3 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "ARE",
-    "l": "GARNER",
-    "c1": "Second-person 'to be'",
-    "c2": "Collect or gather",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      3,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 8.65,
-    "difficultyReasons": [
-      "3 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots",
-      "broader clue"
-    ],
-    "insertionGroups": 3
-  },
-  {
-    "s": "ARE",
-    "l": "HARDER",
-    "c1": "Second-person 'to be'",
-    "c2": "More difficult",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      3,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 3
   },
   {
     "s": "AREA",
@@ -41162,6 +38669,26 @@
     "difficultyScore": 6,
     "difficultyReasons": [
       "3 added letters"
+    ],
+    "insertionGroups": 1
+  },
+  {
+    "s": "BAD",
+    "l": "BARRED",
+    "c1": "Not good",
+    "c2": "Blocked from entering",
+    "adds": 3,
+    "insertIndexes": [
+      2,
+      3,
+      4
+    ],
+    "insertPattern": "middle",
+    "difficulty": "hard",
+    "difficultyScore": 7.25,
+    "difficultyReasons": [
+      "3 added letters",
+      "less familiar vocabulary"
     ],
     "insertionGroups": 1
   },
@@ -41906,6 +39433,28 @@
   },
   {
     "s": "BEE",
+    "l": "BEATEN",
+    "c1": "Insect that makes honey",
+    "c2": "Defeated or struck",
+    "adds": 3,
+    "insertIndexes": [
+      2,
+      3,
+      5
+    ],
+    "insertPattern": "split",
+    "difficulty": "hard",
+    "difficultyScore": 8.65,
+    "difficultyReasons": [
+      "3 added letters",
+      "less familiar vocabulary",
+      "separate insertion slots",
+      "broader clue"
+    ],
+    "insertionGroups": 2
+  },
+  {
+    "s": "BEE",
     "l": "BEAVER",
     "c1": "Insect that makes honey",
     "c2": "Dam-building animal",
@@ -42061,27 +39610,6 @@
       "3 added letters"
     ],
     "insertionGroups": 1
-  },
-  {
-    "s": "BEING",
-    "l": "BREWING",
-    "c1": "Existing",
-    "c2": "Making beer",
-    "adds": 2,
-    "insertIndexes": [
-      1,
-      3
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 5.5,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "longer answer",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
   },
   {
     "s": "BEND",
@@ -42650,26 +40178,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "BODY",
-    "l": "ANYBODY",
-    "c1": "Physical form",
-    "c2": "Any person",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      1,
-      2
-    ],
-    "insertPattern": "start",
-    "difficulty": "hard",
-    "difficultyScore": 6.5,
-    "difficultyReasons": [
-      "3 added letters",
-      "longer answer"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "BOG",
     "l": "BELONG",
     "c1": "Very wet muddy ground",
@@ -42983,6 +40491,27 @@
     "insertionGroups": 1
   },
   {
+    "s": "BOY",
+    "l": "BOUNTY",
+    "c1": "A male child",
+    "c2": "Reward or abundance",
+    "adds": 3,
+    "insertIndexes": [
+      2,
+      3,
+      4
+    ],
+    "insertPattern": "middle",
+    "difficulty": "hard",
+    "difficultyScore": 7.9,
+    "difficultyReasons": [
+      "3 added letters",
+      "less familiar vocabulary",
+      "broader clue"
+    ],
+    "insertionGroups": 1
+  },
+  {
     "s": "BRAN",
     "l": "BAHRAIN",
     "c1": "Outer layer of grain used in breakfast cereal",
@@ -43273,15 +40802,36 @@
     "insertionGroups": 1
   },
   {
-    "s": "BUT",
+    "s": "BUS",
+    "l": "BUSTED",
+    "c1": "Large vehicle carrying passengers",
+    "c2": "Caught or broken",
+    "adds": 3,
+    "insertIndexes": [
+      3,
+      4,
+      5
+    ],
+    "insertPattern": "end",
+    "difficulty": "hard",
+    "difficultyScore": 7.9,
+    "difficultyReasons": [
+      "3 added letters",
+      "less familiar vocabulary",
+      "broader clue"
+    ],
+    "insertionGroups": 1
+  },
+  {
+    "s": "BUY",
     "l": "BEAUTY",
-    "c1": "Word introducing a contrast",
+    "c1": "Pay money to obtain something",
     "c2": "Quality of being lovely",
     "adds": 3,
     "insertIndexes": [
       1,
       2,
-      5
+      4
     ],
     "insertPattern": "split",
     "difficulty": "hard",
@@ -43291,88 +40841,6 @@
       "separate insertion slots"
     ],
     "insertionGroups": 2
-  },
-  {
-    "s": "BUT",
-    "l": "BOUNTY",
-    "c1": "Word introducing a contrast",
-    "c2": "Reward or abundance",
-    "adds": 3,
-    "insertIndexes": [
-      1,
-      3,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 8.65,
-    "difficultyReasons": [
-      "3 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots",
-      "broader clue"
-    ],
-    "insertionGroups": 3
-  },
-  {
-    "s": "BUT",
-    "l": "BUCKET",
-    "c1": "Word introducing a contrast",
-    "c2": "Open container with a handle for carrying water",
-    "adds": 3,
-    "insertIndexes": [
-      2,
-      3,
-      4
-    ],
-    "insertPattern": "middle",
-    "difficulty": "hard",
-    "difficultyScore": 6,
-    "difficultyReasons": [
-      "3 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "BUT",
-    "l": "BUSTED",
-    "c1": "Word introducing a contrast",
-    "c2": "Caught or broken",
-    "adds": 3,
-    "insertIndexes": [
-      2,
-      4,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 8.65,
-    "difficultyReasons": [
-      "3 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots",
-      "broader clue"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "BUT",
-    "l": "BUTTON",
-    "c1": "Word introducing a contrast",
-    "c2": "Small fastener pushed through a hole in clothing",
-    "adds": 3,
-    "insertIndexes": [
-      3,
-      4,
-      5
-    ],
-    "insertPattern": "end",
-    "difficulty": "hard",
-    "difficultyScore": 6,
-    "difficultyReasons": [
-      "3 added letters"
-    ],
-    "insertionGroups": 1
   },
   {
     "s": "BUY",
@@ -43921,6 +41389,26 @@
       "less familiar vocabulary"
     ],
     "insertionGroups": 1
+  },
+  {
+    "s": "CAR",
+    "l": "CHARGE",
+    "c1": "Road vehicle with four wheels",
+    "c2": "Demand payment",
+    "adds": 3,
+    "insertIndexes": [
+      1,
+      4,
+      5
+    ],
+    "insertPattern": "split",
+    "difficulty": "hard",
+    "difficultyScore": 6.75,
+    "difficultyReasons": [
+      "3 added letters",
+      "separate insertion slots"
+    ],
+    "insertionGroups": 2
   },
   {
     "s": "CAR",
@@ -44890,28 +42378,6 @@
   },
   {
     "s": "CLOSE",
-    "l": "CLOSEOUT",
-    "c1": "Near or shut",
-    "c2": "Sale to clear stock",
-    "adds": 3,
-    "insertIndexes": [
-      5,
-      6,
-      7
-    ],
-    "insertPattern": "end",
-    "difficulty": "hard",
-    "difficultyScore": 8.9,
-    "difficultyReasons": [
-      "3 added letters",
-      "less familiar vocabulary",
-      "longer answer",
-      "broader clue"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "CLOSE",
     "l": "ENCLOSED",
     "c1": "Near or shut",
     "c2": "Sealed in",
@@ -44931,26 +42397,6 @@
       "broader clue"
     ],
     "insertionGroups": 2
-  },
-  {
-    "s": "CLOSET",
-    "l": "CLOSEOUT",
-    "c1": "Small storage cupboard",
-    "c2": "Sale to clear stock",
-    "adds": 2,
-    "insertIndexes": [
-      5,
-      6
-    ],
-    "insertPattern": "middle",
-    "difficulty": "hard",
-    "difficultyScore": 6.5,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "longer answer"
-    ],
-    "insertionGroups": 1
   },
   {
     "s": "CLUE",
@@ -46923,46 +44369,6 @@
     "insertionGroups": 2
   },
   {
-    "s": "DID",
-    "l": "EDITED",
-    "c1": "Performed an action in the past",
-    "c2": "Revised text",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      3,
-      4
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "DID",
-    "l": "MADRID",
-    "c1": "Performed an action in the past",
-    "c2": "Capital of Spain",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      1,
-      3
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
     "s": "DIG",
     "l": "CODING",
     "c1": "Make a hole in the ground",
@@ -48209,25 +45615,6 @@
   },
   {
     "s": "ELF",
-    "l": "ITSELF",
-    "c1": "Small magical creature in a story",
-    "c2": "That same thing",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      1,
-      2
-    ],
-    "insertPattern": "start",
-    "difficulty": "hard",
-    "difficultyScore": 6,
-    "difficultyReasons": [
-      "3 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "ELF",
     "l": "RELIEF",
     "c1": "Small magical creature in a story",
     "c2": "Alleviation of pain or anxiety",
@@ -48575,7 +45962,7 @@
     "s": "ERA",
     "l": "HERALD",
     "c1": "Distinct period of history",
-    "c2": "Messenger or newspaper",
+    "c2": "Messenger announcing important news",
     "adds": 3,
     "insertIndexes": [
       0,
@@ -48584,11 +45971,10 @@
     ],
     "insertPattern": "split",
     "difficulty": "hard",
-    "difficultyScore": 7.4,
+    "difficultyScore": 6.75,
     "difficultyReasons": [
       "3 added letters",
-      "separate insertion slots",
-      "broader clue"
+      "separate insertion slots"
     ],
     "insertionGroups": 2
   },
@@ -48879,6 +46265,27 @@
     "difficultyReasons": [
       "3 added letters",
       "longer answer",
+      "separate insertion slots"
+    ],
+    "insertionGroups": 2
+  },
+  {
+    "s": "EWE",
+    "l": "BEWARE",
+    "c1": "A female sheep",
+    "c2": "Be cautious",
+    "adds": 3,
+    "insertIndexes": [
+      0,
+      3,
+      4
+    ],
+    "insertPattern": "split",
+    "difficulty": "hard",
+    "difficultyScore": 8,
+    "difficultyReasons": [
+      "3 added letters",
+      "less familiar vocabulary",
       "separate insertion slots"
     ],
     "insertionGroups": 2
@@ -50363,223 +47770,6 @@
     "insertionGroups": 2
   },
   {
-    "s": "FOR",
-    "l": "BEFORE",
-    "c1": "In support of",
-    "c2": "Earlier in time",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      1,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "FOR",
-    "l": "EFFORT",
-    "c1": "In support of",
-    "c2": "Energy spent on a task",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      2,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 3
-  },
-  {
-    "s": "FOR",
-    "l": "FACTOR",
-    "c1": "In support of",
-    "c2": "Contributing part",
-    "adds": 3,
-    "insertIndexes": [
-      1,
-      2,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "hard",
-    "difficultyScore": 6,
-    "difficultyReasons": [
-      "3 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "FOR",
-    "l": "FOOTER",
-    "c1": "In support of",
-    "c2": "Bottom note",
-    "adds": 3,
-    "insertIndexes": [
-      2,
-      3,
-      4
-    ],
-    "insertPattern": "middle",
-    "difficulty": "hard",
-    "difficultyScore": 7.25,
-    "difficultyReasons": [
-      "3 added letters",
-      "less familiar vocabulary"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "FOR",
-    "l": "FORGET",
-    "c1": "In support of",
-    "c2": "Fail to remember",
-    "adds": 3,
-    "insertIndexes": [
-      3,
-      4,
-      5
-    ],
-    "insertPattern": "end",
-    "difficulty": "hard",
-    "difficultyScore": 6,
-    "difficultyReasons": [
-      "3 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "FOR",
-    "l": "FORGOT",
-    "c1": "In support of",
-    "c2": "Failed to remember",
-    "adds": 3,
-    "insertIndexes": [
-      3,
-      4,
-      5
-    ],
-    "insertPattern": "end",
-    "difficulty": "hard",
-    "difficultyScore": 6,
-    "difficultyReasons": [
-      "3 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "FOR",
-    "l": "FORMAL",
-    "c1": "In support of",
-    "c2": "Official or stiff",
-    "adds": 3,
-    "insertIndexes": [
-      3,
-      4,
-      5
-    ],
-    "insertPattern": "end",
-    "difficulty": "hard",
-    "difficultyScore": 6.65,
-    "difficultyReasons": [
-      "3 added letters",
-      "broader clue"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "FOR",
-    "l": "FORMED",
-    "c1": "In support of",
-    "c2": "Shaped or created",
-    "adds": 3,
-    "insertIndexes": [
-      3,
-      4,
-      5
-    ],
-    "insertPattern": "end",
-    "difficulty": "hard",
-    "difficultyScore": 6.65,
-    "difficultyReasons": [
-      "3 added letters",
-      "broader clue"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "FOR",
-    "l": "FOURTH",
-    "c1": "In support of",
-    "c2": "Number after third",
-    "adds": 3,
-    "insertIndexes": [
-      2,
-      4,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "FOR",
-    "l": "INFORM",
-    "c1": "In support of",
-    "c2": "Tell facts",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      1,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "FOR",
-    "l": "REFORM",
-    "c1": "In support of",
-    "c2": "Improve by change",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      1,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
     "s": "FORGE",
     "l": "FORGIVE",
     "c1": "Make fake or blacksmith shop",
@@ -50893,6 +48083,26 @@
   },
   {
     "s": "GET",
+    "l": "FORGET",
+    "c1": "Receive or obtain",
+    "c2": "Fail to remember",
+    "adds": 3,
+    "insertIndexes": [
+      0,
+      1,
+      2
+    ],
+    "insertPattern": "start",
+    "difficulty": "hard",
+    "difficultyScore": 6.65,
+    "difficultyReasons": [
+      "3 added letters",
+      "broader clue"
+    ],
+    "insertionGroups": 1
+  },
+  {
+    "s": "GET",
     "l": "REGENT",
     "c1": "Receive or obtain",
     "c2": "Person ruling for a monarch",
@@ -51057,6 +48267,26 @@
   },
   {
     "s": "GOT",
+    "l": "FORGOT",
+    "c1": "Received or obtained",
+    "c2": "Failed to remember",
+    "adds": 3,
+    "insertIndexes": [
+      0,
+      1,
+      2
+    ],
+    "insertPattern": "start",
+    "difficulty": "hard",
+    "difficultyScore": 6.65,
+    "difficultyReasons": [
+      "3 added letters",
+      "broader clue"
+    ],
+    "insertionGroups": 1
+  },
+  {
+    "s": "GOT",
     "l": "GROWTH",
     "c1": "Received or obtained",
     "c2": "Increase",
@@ -51179,227 +48409,6 @@
       "2 added letters",
       "less familiar vocabulary",
       "longer answer",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "HAD",
-    "l": "HANDED",
-    "c1": "Possessed in the past",
-    "c2": "Passed over",
-    "adds": 3,
-    "insertIndexes": [
-      2,
-      4,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "HAD",
-    "l": "HANDLE",
-    "c1": "Possessed in the past",
-    "c2": "Part you hold",
-    "adds": 3,
-    "insertIndexes": [
-      2,
-      4,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "HAD",
-    "l": "HARDER",
-    "c1": "Possessed in the past",
-    "c2": "More difficult",
-    "adds": 3,
-    "insertIndexes": [
-      2,
-      4,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "HAD",
-    "l": "HATRED",
-    "c1": "Possessed in the past",
-    "c2": "Deep dislike",
-    "adds": 3,
-    "insertIndexes": [
-      2,
-      3,
-      4
-    ],
-    "insertPattern": "middle",
-    "difficulty": "hard",
-    "difficultyScore": 7.25,
-    "difficultyReasons": [
-      "3 added letters",
-      "less familiar vocabulary"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "HAD",
-    "l": "HEADER",
-    "c1": "Possessed in the past",
-    "c2": "Text at the top of a page",
-    "adds": 3,
-    "insertIndexes": [
-      1,
-      4,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "HAD",
-    "l": "SHADED",
-    "c1": "Possessed in the past",
-    "c2": "Protected from direct light",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      4,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 8,
-    "difficultyReasons": [
-      "3 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "HAD",
-    "l": "SHADOW",
-    "c1": "Possessed in the past",
-    "c2": "Dark shape cast by light",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      4,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "HAD",
-    "l": "SHAPED",
-    "c1": "Possessed in the past",
-    "c2": "Formed",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      3,
-      4
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "HAD",
-    "l": "SHARED",
-    "c1": "Possessed in the past",
-    "c2": "Used jointly",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      3,
-      4
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "HAD",
-    "l": "SHAVED",
-    "c1": "Possessed in the past",
-    "c2": "Removed hair",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      3,
-      4
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "HAD",
-    "l": "THREAD",
-    "c1": "Possessed in the past",
-    "c2": "Fine strand for sewing",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      2,
-      3
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
       "separate insertion slots"
     ],
     "insertionGroups": 2
@@ -51640,7 +48649,7 @@
     "s": "HARE",
     "l": "SHARPER",
     "c1": "Fast-running animal",
-    "c2": "More keen or a cheating thief",
+    "c2": "Having a finer cutting edge",
     "adds": 3,
     "insertIndexes": [
       0,
@@ -51649,13 +48658,12 @@
     ],
     "insertPattern": "split",
     "difficulty": "hard",
-    "difficultyScore": 10.4,
+    "difficultyScore": 8.5,
     "difficultyReasons": [
       "3 added letters",
       "less familiar vocabulary",
       "longer answer",
-      "separate insertion slots",
-      "broader clue"
+      "separate insertion slots"
     ],
     "insertionGroups": 3
   },
@@ -51663,7 +48671,7 @@
     "s": "HARP",
     "l": "SHARPER",
     "c1": "Large musical instrument with many strings",
-    "c2": "More keen or a cheating thief",
+    "c2": "Having a finer cutting edge",
     "adds": 3,
     "insertIndexes": [
       0,
@@ -51672,35 +48680,13 @@
     ],
     "insertPattern": "split",
     "difficulty": "hard",
-    "difficultyScore": 9.15,
+    "difficultyScore": 7.25,
     "difficultyReasons": [
       "3 added letters",
-      "less familiar vocabulary",
       "longer answer",
-      "separate insertion slots",
-      "broader clue"
+      "separate insertion slots"
     ],
     "insertionGroups": 2
-  },
-  {
-    "s": "HAS",
-    "l": "HASTEN",
-    "c1": "Possesses at the present time",
-    "c2": "Move or act more quickly",
-    "adds": 3,
-    "insertIndexes": [
-      3,
-      4,
-      5
-    ],
-    "insertPattern": "end",
-    "difficulty": "hard",
-    "difficultyScore": 6.65,
-    "difficultyReasons": [
-      "3 added letters",
-      "broader clue"
-    ],
-    "insertionGroups": 1
   },
   {
     "s": "HAT",
@@ -51986,263 +48972,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "HER",
-    "l": "CHEERY",
-    "c1": "Belonging to a female person",
-    "c2": "Happy and bright",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      3,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 3
-  },
-  {
-    "s": "HER",
-    "l": "HAMMER",
-    "c1": "Belonging to a female person",
-    "c2": "Tool with a heavy head used to strike nails",
-    "adds": 3,
-    "insertIndexes": [
-      1,
-      2,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "hard",
-    "difficultyScore": 6,
-    "difficultyReasons": [
-      "3 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "HER",
-    "l": "HANGER",
-    "c1": "Belonging to a female person",
-    "c2": "Shaped support used to hold clothes in a wardrobe",
-    "adds": 3,
-    "insertIndexes": [
-      1,
-      2,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "hard",
-    "difficultyScore": 6,
-    "difficultyReasons": [
-      "3 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "HER",
-    "l": "HARDER",
-    "c1": "Belonging to a female person",
-    "c2": "More difficult",
-    "adds": 3,
-    "insertIndexes": [
-      1,
-      2,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "hard",
-    "difficultyScore": 6,
-    "difficultyReasons": [
-      "3 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "HER",
-    "l": "HEADER",
-    "c1": "Belonging to a female person",
-    "c2": "Text at the top of a page",
-    "adds": 3,
-    "insertIndexes": [
-      2,
-      3,
-      4
-    ],
-    "insertPattern": "middle",
-    "difficulty": "hard",
-    "difficultyScore": 6,
-    "difficultyReasons": [
-      "3 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "HER",
-    "l": "HEREBY",
-    "c1": "Belonging to a female person",
-    "c2": "By this means (formal)",
-    "adds": 3,
-    "insertIndexes": [
-      3,
-      4,
-      5
-    ],
-    "insertPattern": "end",
-    "difficulty": "hard",
-    "difficultyScore": 6,
-    "difficultyReasons": [
-      "3 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "HER",
-    "l": "HOLDER",
-    "c1": "Belonging to a female person",
-    "c2": "Something that keeps an object in place",
-    "adds": 3,
-    "insertIndexes": [
-      1,
-      2,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "hard",
-    "difficultyScore": 6,
-    "difficultyReasons": [
-      "3 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "HER",
-    "l": "HUNGER",
-    "c1": "Belonging to a female person",
-    "c2": "Desire for food",
-    "adds": 3,
-    "insertIndexes": [
-      1,
-      2,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "hard",
-    "difficultyScore": 6,
-    "difficultyReasons": [
-      "3 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "HER",
-    "l": "SHOWER",
-    "c1": "Belonging to a female person",
-    "c2": "Rain lightly or bathing unit",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      2,
-      3
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 7.4,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots",
-      "broader clue"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "HER",
-    "l": "THEORY",
-    "c1": "Belonging to a female person",
-    "c2": "An idea that explains how something works",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      3,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 3
-  },
-  {
-    "s": "HERB",
-    "l": "THEREBY",
-    "c1": "Plant used in cooking",
-    "c2": "As a result of that",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      4,
-      6
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 7.25,
-    "difficultyReasons": [
-      "3 added letters",
-      "longer answer",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 3
-  },
-  {
-    "s": "HERE",
-    "l": "THEREBY",
-    "c1": "In this place",
-    "c2": "As a result of that",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      5,
-      6
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 7.25,
-    "difficultyReasons": [
-      "3 added letters",
-      "longer answer",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "HERE",
-    "l": "THEREOF",
-    "c1": "In this place",
-    "c2": "Of that",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      5,
-      6
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 7.25,
-    "difficultyReasons": [
-      "3 added letters",
-      "longer answer",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
     "s": "HID",
     "l": "BEHIND",
     "c1": "Kept out of sight",
@@ -52300,27 +49029,6 @@
       "separate insertion slots"
     ],
     "insertionGroups": 2
-  },
-  {
-    "s": "HIM",
-    "l": "SHRIMP",
-    "c1": "Pronoun referring to a male person",
-    "c2": "Small pink seafood",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      2,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 8,
-    "difficultyReasons": [
-      "3 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 3
   },
   {
     "s": "HIP",
@@ -52566,26 +49274,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "HOG",
-    "l": "THOUGH",
-    "c1": "A large pig",
-    "c2": "Even if",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      3,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 3
-  },
-  {
     "s": "HOPED",
     "l": "CHOPPED",
     "c1": "Wished for",
@@ -52668,87 +49356,6 @@
     "insertionGroups": 3
   },
   {
-    "s": "HOW",
-    "l": "SHADOW",
-    "c1": "In what way",
-    "c2": "Dark shape cast by light",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      2,
-      3
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "HOW",
-    "l": "SHOWED",
-    "c1": "In what way",
-    "c2": "Demonstrated",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      4,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "HOW",
-    "l": "SHOWER",
-    "c1": "In what way",
-    "c2": "Rain lightly or bathing unit",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      4,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 7.4,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots",
-      "broader clue"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "HOW",
-    "l": "THROWN",
-    "c1": "In what way",
-    "c2": "Past participle of throw",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      2,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 3
-  },
-  {
     "s": "HUE",
     "l": "HUNGER",
     "c1": "A particular shade",
@@ -52787,26 +49394,6 @@
       "separate insertion slots"
     ],
     "insertionGroups": 2
-  },
-  {
-    "s": "HUG",
-    "l": "THOUGH",
-    "c1": "Hold someone closely in your arms",
-    "c2": "Even if",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      2,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 3
   },
   {
     "s": "ICE",
@@ -53332,25 +49919,6 @@
       "separate insertion slots"
     ],
     "insertionGroups": 2
-  },
-  {
-    "s": "ITS",
-    "l": "ITSELF",
-    "c1": "Belonging to a thing",
-    "c2": "That same thing",
-    "adds": 3,
-    "insertIndexes": [
-      3,
-      4,
-      5
-    ],
-    "insertPattern": "end",
-    "difficulty": "hard",
-    "difficultyScore": 6,
-    "difficultyReasons": [
-      "3 added letters"
-    ],
-    "insertionGroups": 1
   },
   {
     "s": "JET",
@@ -55257,7 +51825,7 @@
     "s": "LIKING",
     "l": "CLICKING",
     "c1": "Enjoying",
-    "c2": "Making a sharp mouse sound",
+    "c2": "Pressing a computer mouse button",
     "adds": 2,
     "insertIndexes": [
       0,
@@ -56253,7 +52821,7 @@
     "s": "MAN",
     "l": "MANTLE",
     "c1": "An adult male person",
-    "c2": "Cloak or shelf over a fireplace",
+    "c2": "Loose sleeveless cloak",
     "adds": 3,
     "insertIndexes": [
       3,
@@ -56262,11 +52830,9 @@
     ],
     "insertPattern": "end",
     "difficulty": "hard",
-    "difficultyScore": 7.9,
+    "difficultyScore": 6,
     "difficultyReasons": [
-      "3 added letters",
-      "less familiar vocabulary",
-      "broader clue"
+      "3 added letters"
     ],
     "insertionGroups": 1
   },
@@ -56539,7 +53105,7 @@
     "s": "MAT",
     "l": "MANTLE",
     "c1": "Small covering placed on a floor",
-    "c2": "Cloak or shelf over a fireplace",
+    "c2": "Loose sleeveless cloak",
     "adds": 3,
     "insertIndexes": [
       2,
@@ -56548,12 +53114,10 @@
     ],
     "insertPattern": "split",
     "difficulty": "hard",
-    "difficultyScore": 8.65,
+    "difficultyScore": 6.75,
     "difficultyReasons": [
       "3 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots",
-      "broader clue"
+      "separate insertion slots"
     ],
     "insertionGroups": 2
   },
@@ -56562,46 +53126,6 @@
     "l": "MARKET",
     "c1": "Small covering placed on a floor",
     "c2": "Place to buy and sell",
-    "adds": 3,
-    "insertIndexes": [
-      2,
-      3,
-      4
-    ],
-    "insertPattern": "middle",
-    "difficulty": "hard",
-    "difficultyScore": 6,
-    "difficultyReasons": [
-      "3 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "MATE",
-    "l": "MANTLE",
-    "c1": "Friend",
-    "c2": "Cloak or shelf over a fireplace",
-    "adds": 2,
-    "insertIndexes": [
-      2,
-      4
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 5.65,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots",
-      "broader clue"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "MAY",
-    "l": "MAINLY",
-    "c1": "Be allowed to",
-    "c2": "Mostly",
     "adds": 3,
     "insertIndexes": [
       2,
@@ -56702,7 +53226,7 @@
   {
     "s": "MERE",
     "l": "EMERGE",
-    "c1": "Only or small lake",
+    "c1": "Nothing more than",
     "c2": "Come out or appear",
     "adds": 2,
     "insertIndexes": [
@@ -56797,6 +53321,25 @@
       "separate insertion slots"
     ],
     "insertionGroups": 2
+  },
+  {
+    "s": "MID",
+    "l": "MADRID",
+    "c1": "In the middle of",
+    "c2": "Capital of Spain",
+    "adds": 3,
+    "insertIndexes": [
+      1,
+      2,
+      3
+    ],
+    "insertPattern": "middle",
+    "difficulty": "hard",
+    "difficultyScore": 6,
+    "difficultyReasons": [
+      "3 added letters"
+    ],
+    "insertionGroups": 1
   },
   {
     "s": "MID",
@@ -57290,85 +53833,6 @@
     "insertionGroups": 2
   },
   {
-    "s": "NOR",
-    "l": "INFORM",
-    "c1": "Word paired with neither",
-    "c2": "Tell facts",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      2,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 3
-  },
-  {
-    "s": "NOR",
-    "l": "NORMAL",
-    "c1": "Word paired with neither",
-    "c2": "Usual",
-    "adds": 3,
-    "insertIndexes": [
-      3,
-      4,
-      5
-    ],
-    "insertPattern": "end",
-    "difficulty": "hard",
-    "difficultyScore": 6,
-    "difficultyReasons": [
-      "3 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "NOT",
-    "l": "NOTICE",
-    "c1": "Word that makes a statement negative",
-    "c2": "Become aware of",
-    "adds": 3,
-    "insertIndexes": [
-      3,
-      4,
-      5
-    ],
-    "insertPattern": "end",
-    "difficulty": "hard",
-    "difficultyScore": 6,
-    "difficultyReasons": [
-      "3 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "NOTE",
-    "l": "ANOTHER",
-    "c1": "A short written message",
-    "c2": "One more",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      4,
-      6
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 7.25,
-    "difficultyReasons": [
-      "3 added letters",
-      "longer answer",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 3
-  },
-  {
     "s": "NOTE",
     "l": "NOTICED",
     "c1": "A short written message",
@@ -57467,6 +53931,27 @@
       "less familiar vocabulary",
       "separate insertion slots",
       "broader clue"
+    ],
+    "insertionGroups": 2
+  },
+  {
+    "s": "OAR",
+    "l": "COARSE",
+    "c1": "Long paddle used to move a boat",
+    "c2": "Rough-textured",
+    "adds": 3,
+    "insertIndexes": [
+      0,
+      4,
+      5
+    ],
+    "insertPattern": "split",
+    "difficulty": "hard",
+    "difficultyScore": 8,
+    "difficultyReasons": [
+      "3 added letters",
+      "less familiar vocabulary",
+      "separate insertion slots"
     ],
     "insertionGroups": 2
   },
@@ -57937,26 +54422,6 @@
       "3 added letters",
       "separate insertion slots",
       "broader clue"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "OLD",
-    "l": "SHOULD",
-    "c1": "Having existed for a long time",
-    "c2": "Ought to",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      1,
-      3
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
     ],
     "insertionGroups": 2
   },
@@ -58576,67 +55041,6 @@
     "insertionGroups": 3
   },
   {
-    "s": "OUR",
-    "l": "COURSE",
-    "c1": "Belonging to us",
-    "c2": "Route or class",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      4,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 7.4,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots",
-      "broader clue"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "OUR",
-    "l": "FOURTH",
-    "c1": "Belonging to us",
-    "c2": "Number after third",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      4,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "OUR",
-    "l": "SOURCE",
-    "c1": "Belonging to us",
-    "c2": "Where something originates",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      4,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
     "s": "OUT",
     "l": "AMOUNT",
     "c1": "Away from the inside",
@@ -58675,6 +55079,26 @@
       "less familiar vocabulary",
       "separate insertion slots",
       "broader clue"
+    ],
+    "insertionGroups": 3
+  },
+  {
+    "s": "OUT",
+    "l": "FOURTH",
+    "c1": "Away from the inside",
+    "c2": "Number after third",
+    "adds": 3,
+    "insertIndexes": [
+      0,
+      3,
+      5
+    ],
+    "insertPattern": "split",
+    "difficulty": "hard",
+    "difficultyScore": 6.75,
+    "difficultyReasons": [
+      "3 added letters",
+      "separate insertion slots"
     ],
     "insertionGroups": 3
   },
@@ -63043,6 +59467,27 @@
   },
   {
     "s": "RED",
+    "l": "CARVED",
+    "c1": "The shade of a ripe tomato",
+    "c2": "Cut into shape",
+    "adds": 3,
+    "insertIndexes": [
+      0,
+      1,
+      3
+    ],
+    "insertPattern": "split",
+    "difficulty": "hard",
+    "difficultyScore": 8,
+    "difficultyReasons": [
+      "3 added letters",
+      "less familiar vocabulary",
+      "separate insertion slots"
+    ],
+    "insertionGroups": 2
+  },
+  {
+    "s": "RED",
     "l": "CURSED",
     "c1": "The shade of a ripe tomato",
     "c2": "Under a bad spell",
@@ -63079,27 +59524,6 @@
     "difficultyReasons": [
       "3 added letters",
       "less familiar vocabulary",
-      "separate insertion slots",
-      "broader clue"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "RED",
-    "l": "FORMED",
-    "c1": "The shade of a ripe tomato",
-    "c2": "Shaped or created",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      1,
-      3
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 7.4,
-    "difficultyReasons": [
-      "3 added letters",
       "separate insertion slots",
       "broader clue"
     ],
@@ -65365,6 +61789,26 @@
     "insertionGroups": 1
   },
   {
+    "s": "ROT",
+    "l": "THROAT",
+    "c1": "Decay and become spoiled",
+    "c2": "Part of the neck",
+    "adds": 3,
+    "insertIndexes": [
+      0,
+      1,
+      4
+    ],
+    "insertPattern": "split",
+    "difficulty": "hard",
+    "difficultyScore": 6.75,
+    "difficultyReasons": [
+      "3 added letters",
+      "separate insertion slots"
+    ],
+    "insertionGroups": 2
+  },
+  {
     "s": "ROVE",
     "l": "GROOVE",
     "c1": "Wander",
@@ -67106,130 +63550,6 @@
     "insertionGroups": 2
   },
   {
-    "s": "SHARE",
-    "l": "SHARPER",
-    "c1": "Part owned or divide with others",
-    "c2": "More keen or a cheating thief",
-    "adds": 2,
-    "insertIndexes": [
-      4,
-      6
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.15,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "longer answer",
-      "separate insertion slots",
-      "broader clue"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "SHE",
-    "l": "PUSHED",
-    "c1": "Pronoun referring to a female person",
-    "c2": "Pressed forward",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      1,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "SHE",
-    "l": "SHADED",
-    "c1": "Pronoun referring to a female person",
-    "c2": "Protected from direct light",
-    "adds": 3,
-    "insertIndexes": [
-      2,
-      3,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 8,
-    "difficultyReasons": [
-      "3 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "SHE",
-    "l": "SHIELD",
-    "c1": "Pronoun referring to a female person",
-    "c2": "Protective barrier",
-    "adds": 3,
-    "insertIndexes": [
-      2,
-      4,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "SHE",
-    "l": "SHOVEL",
-    "c1": "Pronoun referring to a female person",
-    "c2": "Long-handled tool used for lifting earth",
-    "adds": 3,
-    "insertIndexes": [
-      2,
-      3,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "SHE",
-    "l": "WISHED",
-    "c1": "Pronoun referring to a female person",
-    "c2": "Desired",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      1,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 8,
-    "difficultyReasons": [
-      "3 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
     "s": "SHIN",
     "l": "CUSHION",
     "c1": "Front part of the lower leg",
@@ -67334,26 +63654,6 @@
       "separate insertion slots"
     ],
     "insertionGroups": 2
-  },
-  {
-    "s": "SHOW",
-    "l": "SOMEHOW",
-    "c1": "Display",
-    "c2": "In some way",
-    "adds": 3,
-    "insertIndexes": [
-      1,
-      2,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "hard",
-    "difficultyScore": 6.5,
-    "difficultyReasons": [
-      "3 added letters",
-      "longer answer"
-    ],
-    "insertionGroups": 1
   },
   {
     "s": "SIGH",
@@ -67648,6 +63948,27 @@
       "longer answer"
     ],
     "insertionGroups": 1
+  },
+  {
+    "s": "SIP",
+    "l": "SHRIMP",
+    "c1": "Drink a little at a time",
+    "c2": "Small pink seafood",
+    "adds": 3,
+    "insertIndexes": [
+      1,
+      2,
+      4
+    ],
+    "insertPattern": "split",
+    "difficulty": "hard",
+    "difficultyScore": 8,
+    "difficultyReasons": [
+      "3 added letters",
+      "less familiar vocabulary",
+      "separate insertion slots"
+    ],
+    "insertionGroups": 2
   },
   {
     "s": "SIP",
@@ -68634,6 +64955,66 @@
       "broader clue"
     ],
     "insertionGroups": 1
+  },
+  {
+    "s": "SOW",
+    "l": "SHADOW",
+    "c1": "Plant seeds in the ground",
+    "c2": "Dark shape cast by light",
+    "adds": 3,
+    "insertIndexes": [
+      1,
+      2,
+      3
+    ],
+    "insertPattern": "middle",
+    "difficulty": "hard",
+    "difficultyScore": 6,
+    "difficultyReasons": [
+      "3 added letters"
+    ],
+    "insertionGroups": 1
+  },
+  {
+    "s": "SOW",
+    "l": "SHOWED",
+    "c1": "Plant seeds in the ground",
+    "c2": "Demonstrated",
+    "adds": 3,
+    "insertIndexes": [
+      1,
+      4,
+      5
+    ],
+    "insertPattern": "split",
+    "difficulty": "hard",
+    "difficultyScore": 6.75,
+    "difficultyReasons": [
+      "3 added letters",
+      "separate insertion slots"
+    ],
+    "insertionGroups": 2
+  },
+  {
+    "s": "SOW",
+    "l": "SHOWER",
+    "c1": "Plant seeds in the ground",
+    "c2": "Rain lightly or bathing unit",
+    "adds": 3,
+    "insertIndexes": [
+      1,
+      4,
+      5
+    ],
+    "insertPattern": "split",
+    "difficulty": "hard",
+    "difficultyScore": 7.4,
+    "difficultyReasons": [
+      "3 added letters",
+      "separate insertion slots",
+      "broader clue"
+    ],
+    "insertionGroups": 2
   },
   {
     "s": "SOY",
@@ -69730,6 +66111,26 @@
   },
   {
     "s": "SUE",
+    "l": "SOURCE",
+    "c1": "Take legal action against someone",
+    "c2": "Where something originates",
+    "adds": 3,
+    "insertIndexes": [
+      1,
+      3,
+      4
+    ],
+    "insertPattern": "split",
+    "difficulty": "hard",
+    "difficultyScore": 6.75,
+    "difficultyReasons": [
+      "3 added letters",
+      "separate insertion slots"
+    ],
+    "insertionGroups": 2
+  },
+  {
+    "s": "SUE",
     "l": "SQUARE",
     "c1": "Take legal action against someone",
     "c2": "Four-equal-sides shape",
@@ -70750,167 +67151,6 @@
     "insertionGroups": 2
   },
   {
-    "s": "THE",
-    "l": "ANTHEM",
-    "c1": "Word introducing a specific thing",
-    "c2": "National song",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      1,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 8,
-    "difficultyReasons": [
-      "3 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "THE",
-    "l": "FATHER",
-    "c1": "Word introducing a specific thing",
-    "c2": "Male parent",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      1,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "THE",
-    "l": "MOTHER",
-    "c1": "Word introducing a specific thing",
-    "c2": "Female parent",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      1,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "THE",
-    "l": "RATHER",
-    "c1": "Word introducing a specific thing",
-    "c2": "Quite; instead",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      1,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "THE",
-    "l": "THEORY",
-    "c1": "Word introducing a specific thing",
-    "c2": "An idea that explains how something works",
-    "adds": 3,
-    "insertIndexes": [
-      3,
-      4,
-      5
-    ],
-    "insertPattern": "end",
-    "difficulty": "hard",
-    "difficultyScore": 6,
-    "difficultyReasons": [
-      "3 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "THE",
-    "l": "THREAD",
-    "c1": "Word introducing a specific thing",
-    "c2": "Fine strand for sewing",
-    "adds": 3,
-    "insertIndexes": [
-      2,
-      4,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "THERE",
-    "l": "GATHERED",
-    "c1": "In that place",
-    "c2": "Collected together",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      1,
-      7
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 7.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "longer answer",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "THEY",
-    "l": "THEREBY",
-    "c1": "Those people",
-    "c2": "As a result of that",
-    "adds": 3,
-    "insertIndexes": [
-      3,
-      4,
-      5
-    ],
-    "insertPattern": "middle",
-    "difficulty": "hard",
-    "difficultyScore": 6.5,
-    "difficultyReasons": [
-      "3 added letters",
-      "longer answer"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "THREE",
     "l": "THREADED",
     "c1": "Number after two",
@@ -71331,26 +67571,6 @@
       "broader clue"
     ],
     "insertionGroups": 2
-  },
-  {
-    "s": "TIME",
-    "l": "ANYTIME",
-    "c1": "What clocks measure",
-    "c2": "Whenever you like",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      1,
-      2
-    ],
-    "insertPattern": "start",
-    "difficulty": "hard",
-    "difficultyScore": 6.5,
-    "difficultyReasons": [
-      "3 added letters",
-      "longer answer"
-    ],
-    "insertionGroups": 1
   },
   {
     "s": "TIME",
@@ -72231,7 +68451,7 @@
     "s": "TROT",
     "l": "TURNOUT",
     "c1": "Move at a steady pace between walking and running",
-    "c2": "Attendance or knob",
+    "c2": "Number of people attending an event",
     "adds": 3,
     "insertIndexes": [
       1,
@@ -72240,37 +68460,13 @@
     ],
     "insertPattern": "split",
     "difficulty": "hard",
-    "difficultyScore": 9.15,
+    "difficultyScore": 7.25,
     "difficultyReasons": [
       "3 added letters",
-      "less familiar vocabulary",
       "longer answer",
-      "separate insertion slots",
-      "broader clue"
+      "separate insertion slots"
     ],
     "insertionGroups": 3
-  },
-  {
-    "s": "TROUT",
-    "l": "TURNOUT",
-    "c1": "Fish",
-    "c2": "Attendance or knob",
-    "adds": 2,
-    "insertIndexes": [
-      1,
-      3
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.15,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "longer answer",
-      "separate insertion slots",
-      "broader clue"
-    ],
-    "insertionGroups": 2
   },
   {
     "s": "TRY",
@@ -72375,26 +68571,6 @@
   },
   {
     "s": "TUG",
-    "l": "THOUGH",
-    "c1": "Pull suddenly and firmly",
-    "c2": "Even if",
-    "adds": 3,
-    "insertIndexes": [
-      1,
-      2,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "TUG",
     "l": "TUNING",
     "c1": "Pull suddenly and firmly",
     "c2": "Adjusting pitch",
@@ -72437,7 +68613,7 @@
     "s": "TURN",
     "l": "TURNOUT",
     "c1": "Rotating",
-    "c2": "Attendance or knob",
+    "c2": "Number of people attending an event",
     "adds": 3,
     "insertIndexes": [
       4,
@@ -72446,12 +68622,10 @@
     ],
     "insertPattern": "end",
     "difficulty": "hard",
-    "difficultyScore": 8.4,
+    "difficultyScore": 6.5,
     "difficultyReasons": [
       "3 added letters",
-      "less familiar vocabulary",
-      "longer answer",
-      "broader clue"
+      "longer answer"
     ],
     "insertionGroups": 1
   },
@@ -72705,6 +68879,27 @@
   },
   {
     "s": "USE",
+    "l": "COURSE",
+    "c1": "Put something to work",
+    "c2": "Route or class",
+    "adds": 3,
+    "insertIndexes": [
+      0,
+      1,
+      3
+    ],
+    "insertPattern": "split",
+    "difficulty": "hard",
+    "difficultyScore": 7.4,
+    "difficultyReasons": [
+      "3 added letters",
+      "separate insertion slots",
+      "broader clue"
+    ],
+    "insertionGroups": 2
+  },
+  {
+    "s": "USE",
     "l": "CRUISE",
     "c1": "Put something to work",
     "c2": "Holiday on a ship",
@@ -72949,65 +69144,6 @@
       "broader clue"
     ],
     "insertionGroups": 1
-  },
-  {
-    "s": "VIA",
-    "l": "VIABLE",
-    "c1": "By way of",
-    "c2": "Capable of working",
-    "adds": 3,
-    "insertIndexes": [
-      3,
-      4,
-      5
-    ],
-    "insertPattern": "end",
-    "difficulty": "hard",
-    "difficultyScore": 7.25,
-    "difficultyReasons": [
-      "3 added letters",
-      "less familiar vocabulary"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "VIA",
-    "l": "VIENNA",
-    "c1": "By way of",
-    "c2": "Capital of Austria",
-    "adds": 3,
-    "insertIndexes": [
-      2,
-      3,
-      4
-    ],
-    "insertPattern": "middle",
-    "difficulty": "hard",
-    "difficultyScore": 6,
-    "difficultyReasons": [
-      "3 added letters"
-    ],
-    "insertionGroups": 1
-  },
-  {
-    "s": "VIA",
-    "l": "VISUAL",
-    "c1": "By way of",
-    "c2": "Related to sight",
-    "adds": 3,
-    "insertIndexes": [
-      2,
-      3,
-      5
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "3 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
   },
   {
     "s": "VIABLE",
@@ -73290,28 +69426,6 @@
     "insertionGroups": 2
   },
   {
-    "s": "WARE",
-    "l": "AWARDED",
-    "c1": "Goods or aware",
-    "c2": "Granted as a prize",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      4,
-      6
-    ],
-    "insertPattern": "split",
-    "difficulty": "hard",
-    "difficultyScore": 7.9,
-    "difficultyReasons": [
-      "3 added letters",
-      "longer answer",
-      "separate insertion slots",
-      "broader clue"
-    ],
-    "insertionGroups": 3
-  },
-  {
     "s": "WATER",
     "l": "SWEATER",
     "c1": "Clear liquid essential for life",
@@ -73352,25 +69466,6 @@
       "broader clue"
     ],
     "insertionGroups": 2
-  },
-  {
-    "s": "WAY",
-    "l": "ANYWAY",
-    "c1": "A route to somewhere",
-    "c2": "Despite that",
-    "adds": 3,
-    "insertIndexes": [
-      0,
-      1,
-      2
-    ],
-    "insertPattern": "start",
-    "difficulty": "hard",
-    "difficultyScore": 6,
-    "difficultyReasons": [
-      "3 added letters"
-    ],
-    "insertionGroups": 1
   },
   {
     "s": "WEAR",
@@ -73651,25 +69746,6 @@
       "separate insertion slots"
     ],
     "insertionGroups": 2
-  },
-  {
-    "s": "WHY",
-    "l": "WORTHY",
-    "c1": "For what reason",
-    "c2": "Deserving",
-    "adds": 3,
-    "insertIndexes": [
-      1,
-      2,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "hard",
-    "difficultyScore": 6,
-    "difficultyReasons": [
-      "3 added letters"
-    ],
-    "insertionGroups": 1
   },
   {
     "s": "WIG",
