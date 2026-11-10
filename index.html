@@ -241,6 +241,8 @@
 <script src="sound.js"></script>
 <script src="social.js"></script>
 <script src="install.js"></script>
+<script src="vocabulary.js"></script>
+<script src="celebration.js"></script>
 <script>
 (()=>{
   const $=id=>document.getElementById(id);
@@ -455,6 +457,7 @@ function renderResultDetails({perfect,newBest,newAchievements,correctCount,newFi
 
 let revealQueue=[];
 let revealIndex=0;
+let pendingPerfectCelebration=false;
 
 function renderNextFinish(parent){
   if(mode==='tutorial') return;
@@ -514,7 +517,17 @@ function advanceUnlockReveal(equip){
 function finishUnlockReveals(){
   soundEngine?.stop({event:'unlock',fade:.018});
   revealQueue=[];revealIndex=0;hideDialog($('unlockModal'));
-  showDialog($('modal'),'#close');
+  presentResults('#close');
+}
+
+function presentResults(focus='#again'){
+  showDialog($('modal'),focus);
+  if(!pendingPerfectCelebration)return;
+  pendingPerfectCelebration=false;
+  $('modal').classList.add('perfectResult');
+  sfx('complete');
+  perfectEffects.start({chill:mode==='chill'});
+  [...$('mgrid').children].forEach((stamp,i)=>motion.animate(stamp,[{opacity:.35,transform:'scale(.8)'},{opacity:1,transform:'scale(1.12)',offset:.6},{opacity:1,transform:'scale(1)'}],{duration:260,delay:i*45,easing:'ease-out'},'perfect'));
 }
 
 function saveResultCard(){
@@ -614,7 +627,7 @@ function ensureAudio(){
 }
 function sfx(kind,options={}){
   if(!soundOn||document.hidden)return;
-  ensureAudio()?.play(kind,options);
+  ensureAudio()?.play(kind,{soft:mode==='chill',...options});
 }
 function haptic(pattern){
   if(!soundOn||prefersReducedMotion()||!navigator.vibrate)return;
@@ -682,7 +695,7 @@ function comp(p){
   const insertPattern=(p.insertPattern||derivePattern(xs,l.length)).toLowerCase();
   const suppliedDiff=(p.difficulty||p.d||'').toLowerCase();
   const d=['easy','medium','hard'].includes(suppliedDiff) ? suppliedDiff : autoDiff(s,l,adds);
-  const ok = !!xs && xs.length===adds && !!c1 && !!c2;
+  const ok = !!xs && xs.length===adds && !!c1 && !!c2 && AddOneVocabulary.allows(s,l);
   return {s,l,c1,c2,d,xs,x:xs?xs[0]:null,adds,insertPattern,quality:p.difficultyScore||0,sl:s.length,ll:l.length,ok};
 }
 
@@ -727,6 +740,7 @@ function pick(list,n){
   // -------------------- UI bits --------------------
   const prefersReducedMotion=()=>window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const motion=AddOneMotion.createController({reduced:prefersReducedMotion});
+  const perfectEffects=AddOneCelebration.create({root:$('conf'),reduced:prefersReducedMotion});
   const MOTION=AddOneMotion.timing;
   const fb=(msg,cls='')=>{const el=$('fb'); if(!el) return; el.className='feedback'+(cls?' '+cls:''); el.textContent=msg;};
   function replayClass(el,cls,duration=700){
@@ -853,68 +867,6 @@ function updateStreakMarker(bump=false){
     const el=document.querySelector(`.key[data-key="${k}"]`);
     if(!el) return;
     replayClass(el,'hit',190);
-  }
-
-  function confetti(count=26, burst=false){
-    const root=$('conf');
-    if(!root || prefersReducedMotion()) return;
-    if(root._raf) cancelAnimationFrame(root._raf);
-    root.classList.remove('hidden');
-    root.innerHTML='<canvas aria-hidden="true"></canvas>';
-    const canvas=root.firstElementChild;
-    const ctx=canvas.getContext('2d');
-    const dpr=Math.min(2,window.devicePixelRatio||1);
-    const width=window.innerWidth, height=window.innerHeight;
-    canvas.width=Math.round(width*dpr);
-    canvas.height=Math.round(height*dpr);
-    ctx.scale(dpr,dpr);
-    const colours=['#a4dbc0','#f6b48b','#f1ecdf'];
-    const originX=width/2;
-    const originY=Math.min(height*.38,330);
-    const particles=Array.from({length:count},(_,i)=>{
-      const angle=(-Math.PI*.88)+(Math.random()*Math.PI*.76);
-      const speed=burst ? 5.2+Math.random()*7.8 : 3.5+Math.random()*5;
-      return {
-        x:burst?originX:(width*(.16+Math.random()*.68)),
-        y:burst?originY:-16-Math.random()*80,
-        vx:burst?Math.cos(angle)*speed:(Math.random()-.5)*2.2,
-        vy:burst?Math.sin(angle)*speed:2+Math.random()*2.5,
-        gravity:.19+Math.random()*.08,
-        drag:.992,
-        spin:(Math.random()-.5)*.28,
-        rotation:Math.random()*Math.PI,
-        width:5+Math.random()*6,
-        height:8+Math.random()*8,
-        colour:colours[i%colours.length],
-        life:burst?76+Math.random()*30:90+Math.random()*35
-      };
-    });
-    let frame=0;
-    const draw=()=>{
-      frame++;
-      ctx.clearRect(0,0,width,height);
-      let alive=false;
-      particles.forEach(p=>{
-        if(frame>p.life) return;
-        alive=true;
-        p.vx*=p.drag; p.vy+=p.gravity; p.x+=p.vx; p.y+=p.vy; p.rotation+=p.spin;
-        const fade=Math.min(1,(p.life-frame)/18);
-        ctx.save();
-        ctx.globalAlpha=Math.max(0,fade);
-        ctx.translate(p.x,p.y);
-        ctx.rotate(p.rotation);
-        ctx.fillStyle=p.colour;
-        ctx.fillRect(-p.width/2,-p.height/2,p.width,p.height);
-        ctx.restore();
-      });
-      if(alive) root._raf=requestAnimationFrame(draw);
-      else{
-        root._raf=0;
-        root.classList.add('hidden');
-        root.innerHTML='';
-      }
-    };
-    root._raf=requestAnimationFrame(draw);
   }
 
   function scorePop(text){
@@ -1608,6 +1560,7 @@ function tick(){
     if(!pz||nexting||sChars.some(c=>!c)) return;
     if(sChars.join('')!==pz.s){
       markRowWrong('row1');
+      markWrongLetters('row1',pz.s,sChars);
       sfx('wrong');
       fb('Word 1 is not quite right yet.','warn');
       aw=0;
@@ -1686,15 +1639,16 @@ function animateRevelation(pz,{timedOut=false,replay=false}={}){
   },prefersReducedMotion()?0:240);
   rewardAfter(()=>{
     lChars=pz.l.split('');tiles($('t2'),pz.ll,lChars,pz.xs,1);
-    pz.xs.forEach(i=>$('t2').children[i]?.classList.add('reveal-added'));
+    pz.xs.forEach((i,step)=>{const tile=$('t2').children[i];if(tile){tile.classList.add('reveal-added');tile.style.animationDelay=(prefersReducedMotion()?0:step*90)+'ms';}sfx('revealStep',{delay:prefersReducedMotion()?0:step*.09});});
     const letters=pz.xs.map(i=>pz.l[i]);
     set('revelationText','Add '+letters.join(' + ')+' to '+pz.s+' to make '+pz.l+'.');
     fb('');
-    sfx('revealEnd');
+    sfx('revealEnd',{delay:prefersReducedMotion()?0:pz.xs.length*.09});
   },prefersReducedMotion()?0:620);
 }
 
 function clearRewards(){
+  perfectEffects.stop();
   motion.cancel();
   soundEngine?.stop({group:'reward',fade:.012});
   soundEngine?.stop({group:'interaction',fade:.012});
@@ -1710,7 +1664,7 @@ function clearRewards(){
 }
 function rewardAfter(fn,ms){rewardTimers.push(setTimeout(fn,ms));}
 function celebrate(got,streakMult=1,clutch=false,autoCompleted=false,fast=false){
-  const milestone=streak===5||streak===10||(streak>10&&streak%10===0);
+  const milestone=streak===3||streak===5||streak===10||(streak>10&&streak%10===0);
   canAdvanceAt=0;
   if(!autoCompleted&&!wordOneLocked)slide();
   const wait=prefersReducedMotion()?0:motion.accelerate('carry');
@@ -1721,8 +1675,9 @@ function celebrate(got,streakMult=1,clutch=false,autoCompleted=false,fast=false)
   rewardAfter(()=>sfx('stamp'),wait+MOTION.stamp);
   rewardAfter(()=>haptic(milestone?[12,30,16]:10),wait+MOTION.stamp);
   rewardAfter(()=>scorePop('+'+got),wait+MOTION.score);
-  rewardAfter(()=>updateStreakMarker(true),wait+MOTION.stamp);
-  sfx(milestone?'milestone':'solve',{delay:wait/1000});
+  rewardAfter(()=>{updateStreakMarker(true);if(milestone)replayClass($('streakMeter'),streak>=5?'streak-flourish':'streak-rise',800);},wait+MOTION.stamp);
+  const cue=usedHintThisPuzzle?'hinted':streak===3?'streak3':streak>=5&&milestone?'streak5':'solve';
+  sfx(cue,{delay:wait/1000});
   const detail=clutch?'Just in time.':fast?'Quick solve.':streak>=3?'You’re finding your flow.':'Solved.';
   fb(detail,'good');
 }
@@ -2126,6 +2081,7 @@ function showDialog(dialog,preferredSelector='button'){
 
 function hideDialog(dialog){
   if(!dialog) return;
+  if(dialog.id==='modal'){perfectEffects.stop();soundEngine?.stop({event:'complete',fade:.025});motion.cancel('perfect');}
   dialog.classList.add('hidden');
   dialog.setAttribute('aria-hidden','true');
   const target=dialogReturnFocus;
@@ -2193,6 +2149,7 @@ function hideDialog(dialog){
   }
 
 function openEndModal(){
+  $('modal').classList.remove('perfectResult');
   set('shareStatus','');
   $('cardPreview')?.remove();
   $('shareFallback').classList.add('hidden');
@@ -2254,9 +2211,9 @@ function openEndModal(){
       award.classList.toggle('hidden', !awardParts.length);
       award.textContent=awardParts.join(' + ');
     }
-    if(!newFinishes.length && (perfect||newBest)){
-      sfx(perfect?'complete':'best');
-      if(perfect)confetti(24,true);
+    pendingPerfectCelebration=perfect;
+    if(!newFinishes.length && newBest && !perfect){
+      sfx('best');
       haptic(perfect?[14,30,18]:10);
     }
 
@@ -2269,7 +2226,7 @@ function openEndModal(){
     shown.forEach((r,i)=>{const d=document.createElement('div');d.className='mini '+(r.correct?'good':'bad');d.title='Puzzle '+(i+1)+': '+(r.correct?'solved':'revealed');g.appendChild(d);});
 
     if(newFinishes.length) showUnlockReveals(newFinishes);
-    else showDialog($('modal'),'#again');
+    else presentResults();
 
 if(dailyOutcome.milestone){
   set('shareStatus',dailyOutcome.streak+'-day Daily streak.');

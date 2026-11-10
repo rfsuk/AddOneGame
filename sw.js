@@ -1,4 +1,4 @@
-const CACHE_NAME='add-one-v9-collection-layout';
+const CACHE_NAME='add-one-v10-celebrations';
 const CORE_ASSETS=[
   './',
   './index.html',
@@ -12,6 +12,8 @@ const CORE_ASSETS=[
   './sound.js',
   './social.js',
   './install.js',
+  './vocabulary.js',
+  './celebration.js',
   './master-bank.json',
   './manifest.webmanifest',
   './icon.svg'

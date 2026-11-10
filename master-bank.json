@@ -10751,25 +10751,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "MRNA",
-    "l": "MARINA",
-    "c1": "Genetic messenger molecule",
-    "c2": "Harbor for yachts",
-    "adds": 2,
-    "insertIndexes": [
-      1,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 3.75,
-    "difficultyReasons": [
-      "2 added letters",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
     "s": "SATIN",
     "l": "SEATING",
     "c1": "Smooth glossy fabric",
@@ -11870,26 +11851,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "SENT",
-    "l": "USENET",
-    "c1": "Dispatched",
-    "c2": "Old online discussion system",
-    "adds": 2,
-    "insertIndexes": [
-      0,
-      4
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 5,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
     "s": "ALLY",
     "l": "VALLEY",
     "c1": "Supporter",
@@ -12089,26 +12050,6 @@
     "insertionGroups": 2
   },
   {
-    "s": "DUAL",
-    "l": "DRUPAL",
-    "c1": "Two-part",
-    "c2": "Website software platform",
-    "adds": 2,
-    "insertIndexes": [
-      1,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 5,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
     "s": "FLED",
     "l": "FILLED",
     "c1": "Ran away",
@@ -12193,26 +12134,6 @@
     "l": "MATRIX",
     "c1": "Karl ___",
     "c2": "Rectangular array",
-    "adds": 2,
-    "insertIndexes": [
-      2,
-      4
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 5,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "PERL",
-    "l": "PETROL",
-    "c1": "Programming language",
-    "c2": "Gasoline",
     "adds": 2,
     "insertIndexes": [
       2,
@@ -13156,26 +13077,6 @@
       "broader clue"
     ],
     "insertionGroups": 1
-  },
-  {
-    "s": "DAMN",
-    "l": "DAEMON",
-    "c1": "Curse word",
-    "c2": "Background process",
-    "adds": 2,
-    "insertIndexes": [
-      2,
-      4
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 5,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
   },
   {
     "s": "DECREE",
@@ -14322,26 +14223,6 @@
     "insertionGroups": 1
   },
   {
-    "s": "BITE",
-    "l": "BIBTEX",
-    "c1": "Nibble",
-    "c2": "LaTeX reference format",
-    "adds": 2,
-    "insertIndexes": [
-      2,
-      5
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 5,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
     "s": "BOING",
     "l": "BOATING",
     "c1": "Springy sound",
@@ -14408,26 +14289,6 @@
     "adds": 2,
     "insertIndexes": [
       1,
-      5
-    ],
-    "insertPattern": "middle",
-    "difficulty": "medium",
-    "difficultyScore": 5,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "COTE",
-    "l": "COATED",
-    "c1": "Shelter for animals",
-    "c2": "Covered with a layer",
-    "adds": 2,
-    "insertIndexes": [
-      2,
       5
     ],
     "insertPattern": "middle",
@@ -17716,27 +17577,6 @@
     "insertionGroups": 2
   },
   {
-    "s": "CHASE",
-    "l": "CHARSET",
-    "c1": "Pursue",
-    "c2": "Character set in computing",
-    "adds": 2,
-    "insertIndexes": [
-      3,
-      6
-    ],
-    "insertPattern": "middle",
-    "difficulty": "hard",
-    "difficultyScore": 5.5,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "longer answer",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
     "s": "CHIT",
     "l": "CHRIST",
     "c1": "Short note or voucher",
@@ -18262,27 +18102,6 @@
       "less familiar vocabulary",
       "separate insertion slots",
       "broader clue"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "COPIER",
-    "l": "COMPILER",
-    "c1": "Copy machine",
-    "c2": "Program translator",
-    "adds": 2,
-    "insertIndexes": [
-      2,
-      5
-    ],
-    "insertPattern": "middle",
-    "difficulty": "hard",
-    "difficultyScore": 6,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "longer answer",
-      "separate insertion slots"
     ],
     "insertionGroups": 2
   },
@@ -18858,27 +18677,6 @@
     "insertionGroups": 2
   },
   {
-    "s": "SCION",
-    "l": "SECTION",
-    "c1": "Heir",
-    "c2": "Part of a whole",
-    "adds": 2,
-    "insertIndexes": [
-      1,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "hard",
-    "difficultyScore": 5.5,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "longer answer",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
     "s": "SKIING",
     "l": "SKIPPING",
     "c1": "Sliding on snow",
@@ -19007,27 +18805,6 @@
     "insertionGroups": 2
   },
   {
-    "s": "CATION",
-    "l": "CITATION",
-    "c1": "Positively charged ion",
-    "c2": "Reference or formal mention",
-    "adds": 2,
-    "insertIndexes": [
-      1,
-      2
-    ],
-    "insertPattern": "middle",
-    "difficulty": "hard",
-    "difficultyScore": 5.9,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "longer answer",
-      "broader clue"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "CORN",
     "l": "CORONA",
     "c1": "Grain on cob",
@@ -19087,28 +18864,6 @@
       "less familiar vocabulary",
       "longer answer",
       "separate insertion slots"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "ENGAGE",
-    "l": "ENGADGET",
-    "c1": "Involve or promise to marry",
-    "c2": "Tech news site",
-    "adds": 2,
-    "insertIndexes": [
-      4,
-      7
-    ],
-    "insertPattern": "middle",
-    "difficulty": "hard",
-    "difficultyScore": 6.65,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "longer answer",
-      "separate insertion slots",
-      "broader clue"
     ],
     "insertionGroups": 2
   },
@@ -19449,26 +19204,6 @@
       "less familiar vocabulary",
       "separate insertion slots",
       "broader clue"
-    ],
-    "insertionGroups": 2
-  },
-  {
-    "s": "GAGE",
-    "l": "GRANGE",
-    "c1": "Measuring device",
-    "c2": "Country house",
-    "adds": 2,
-    "insertIndexes": [
-      1,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "hard",
-    "difficultyScore": 6.25,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots"
     ],
     "insertionGroups": 2
   },
@@ -20036,27 +19771,6 @@
       "broader clue"
     ],
     "insertionGroups": 1
-  },
-  {
-    "s": "GAGE",
-    "l": "GADGET",
-    "c1": "Pledge or measure",
-    "c2": "Small useful device",
-    "adds": 2,
-    "insertIndexes": [
-      2,
-      5
-    ],
-    "insertPattern": "middle",
-    "difficulty": "hard",
-    "difficultyScore": 6.9,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "separate insertion slots",
-      "broader clue"
-    ],
-    "insertionGroups": 2
   },
   {
     "s": "PET",
@@ -21132,26 +20846,6 @@
     "insertionGroups": 2
   },
   {
-    "s": "LISTER",
-    "l": "LISTENER",
-    "c1": "One who makes a list",
-    "c2": "One who hears attentively",
-    "adds": 2,
-    "insertIndexes": [
-      5,
-      6
-    ],
-    "insertPattern": "middle",
-    "difficulty": "hard",
-    "difficultyScore": 6.5,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "longer answer"
-    ],
-    "insertionGroups": 1
-  },
-  {
     "s": "LOSER",
     "l": "LOBSTER",
     "c1": "One who fails to win",
@@ -22174,27 +21868,6 @@
       "longer answer"
     ],
     "insertionGroups": 1
-  },
-  {
-    "s": "SCION",
-    "l": "SUCTION",
-    "c1": "Heir",
-    "c2": "Pulling by vacuum",
-    "adds": 2,
-    "insertIndexes": [
-      1,
-      3
-    ],
-    "insertPattern": "middle",
-    "difficulty": "hard",
-    "difficultyScore": 6.75,
-    "difficultyReasons": [
-      "2 added letters",
-      "less familiar vocabulary",
-      "longer answer",
-      "separate insertion slots"
-    ],
-    "insertionGroups": 2
   },
   {
     "s": "BARD",

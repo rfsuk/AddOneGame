@@ -9,7 +9,7 @@
 @keyframes keyPress{0%,45%{transform:translateY(1px)}100%{transform:translateY(0)}}
 .tile.insert-land{animation:insertSettle 240ms cubic-bezier(.2,.8,.25,1) both}
 .tile.word-settle{animation:referenceSettle 180ms ease-out both}
-@keyframes insertSettle{0%{transform:translateY(-3px)}58%{transform:translateY(1px)}100%{transform:translateY(0)}}
+@keyframes insertSettle{0%{transform:translateY(-6px) scale(1.04)}58%{transform:translateY(2px) scale(.98)}100%{transform:translateY(0) scale(1)}}
 @keyframes referenceSettle{0%{transform:translateY(0)}42%{transform:translateY(1px)}100%{transform:translateY(0)}}
 #t2.word-resolved::after{animation:wordResolve 320ms ease-out 100ms both;background:linear-gradient(110deg,transparent 35%,#ffffff30 49%,transparent 63%);background-size:250% 100%}
 .pip.stamped{animation:pressedStamp 200ms cubic-bezier(.2,.8,.25,1) calc(120ms + var(--stamp-offset,0ms)) both}
@@ -30,4 +30,15 @@
 .transformRail.hot span{animation:none;color:var(--g)}
 .streakMeter.bump{animation:streakSettle 200ms ease-out}
 @keyframes streakSettle{0%{opacity:.65;transform:translateY(1px)}100%{opacity:1;transform:translateY(0)}}
+.tile.miss{animation:wrongLetter 240ms ease-out!important}
+@keyframes wrongLetter{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px)}65%{transform:translateX(2px)}}
+.streakMeter.streak-rise{animation:streakRise 380ms ease-out}
+.streakMeter.streak-flourish{animation:streakFlourish 750ms ease-out}
+@keyframes streakRise{45%{transform:translateY(-2px);filter:brightness(1.25)}}
+@keyframes streakFlourish{35%{box-shadow:0 0 0 7px #a4dbc018;filter:brightness(1.35)}100%{box-shadow:0 0 0 15px transparent}}
+.milestone-solve #t2.word-resolved::after{animation-duration:550ms}
+.perfectResult #mscore{color:var(--g);text-shadow:0 0 24px #a4dbc028}
+.perfectResult #resultTitle{animation:perfectArrive 650ms ease-out}
+@keyframes perfectArrive{from{opacity:.5;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.tile.miss,.streakMeter.streak-rise,.streakMeter.streak-flourish,.perfectResult #resultTitle{animation:none!important}.word-resolved::after{animation:none!important;opacity:0!important}.perfectResult #mscore{text-shadow:none}}
 @media(prefers-reduced-motion:reduce){.tile,.key.hit,.pip.stamped,.revealTile,.revealTile::after,.streakMeter.bump,#game.puzzle-in,#game.puzzle-out{animation:none!important;transition:none!important}.solveGain{display:none!important}.tile.transfer-source{color:var(--skin-ink)!important}}
