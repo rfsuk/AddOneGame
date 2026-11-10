@@ -1,4 +1,4 @@
-const CACHE_NAME='add-one-v10-celebrations';
+const CACHE_NAME='add-one-v11-everyday-bank';
 const CORE_ASSETS=[
   './',
   './index.html',

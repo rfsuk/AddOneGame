@@ -272,7 +272,7 @@ const LSK_PUZZLE_PERF='aol_puzzle_performance_v1';
   const FALLBACK=[
     {s:'FOUR',l:'FLOUR',c1:'After three',c2:'Bread ingredient',adds:1,insertPattern:'middle',difficulty:'medium'},
     {s:'CAT',l:'CHAT',c1:'Pet that purrs',c2:'Talk casually',adds:1,insertPattern:'middle',difficulty:'easy'},
-    {s:'ROE',l:'ROME',c1:'Fish eggs',c2:'Capital of Italy',adds:1,insertPattern:'end',difficulty:'easy'},
+    {s:'HAT',l:'HEAT',c1:'Headwear',c2:'Warmth',adds:1,insertPattern:'middle',difficulty:'easy'},
     {s:'SCARE',l:'SCARCE',c1:'Frighten',c2:'In short supply',adds:1,insertPattern:'middle',difficulty:'hard'},
   ];
 
@@ -695,7 +695,7 @@ function comp(p){
   const insertPattern=(p.insertPattern||derivePattern(xs,l.length)).toLowerCase();
   const suppliedDiff=(p.difficulty||p.d||'').toLowerCase();
   const d=['easy','medium','hard'].includes(suppliedDiff) ? suppliedDiff : autoDiff(s,l,adds);
-  const ok = !!xs && xs.length===adds && !!c1 && !!c2 && AddOneVocabulary.allows(s,l);
+  const ok = !!xs && xs.length===adds && !!c1 && !!c2 && AddOneVocabulary.allows(s,l,c1,c2);
   return {s,l,c1,c2,d,xs,x:xs?xs[0]:null,adds,insertPattern,quality:p.difficultyScore||0,sl:s.length,ll:l.length,ok};
 }
 
@@ -901,7 +901,7 @@ function updateStreakMarker(bump=false){
         if(!Array.isArray(data)) throw new Error('Not an array');
         const fetched = data.map(comp).filter(p=>p.ok);
         if(fetched.length){
-          store.set(LSK_PUZ, JSON.stringify(fetched.map(p=>({s:p.s,l:p.l,c1:p.c1,c2:p.c2,adds:p.adds,insertIndexes:p.xs,insertPattern:p.insertPattern,difficulty:p.d}))));
+          store.set(LSK_PUZ, JSON.stringify(fetched.map(p=>({s:p.s,l:p.l,c1:p.c1,c2:p.c2,adds:p.adds,insertIndexes:p.xs,insertPattern:p.insertPattern,difficulty:p.d,difficultyScore:p.quality}))));
           all = fetched;
           loadedFullBank = fetched.length > FALLBACK.length;
           return;
