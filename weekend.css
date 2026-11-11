@@ -1,0 +1,42 @@
+.weekendLead {
+  margin-bottom: 18px;
+  padding: clamp(20px, 5vw, 32px);
+  border: 1px solid var(--a);
+  border-radius: 20px;
+  background: var(--panel2);
+}
+.weekendLead h1 {
+  margin: 8px 0;
+  font: 400 clamp(32px, 8vw, 50px)/1.05 Georgia, serif;
+}
+.weekendLead p {
+  margin: 0 0 18px;
+  color: var(--m);
+  line-height: 1.45;
+}
+.weekendLead button { width: 100%; }
+.homeCard:has(.weekendLead:not(.hidden)) .hero { display: none; }
+[data-mode="weekend"] .clue:has(#cl1),
+[data-mode="weekend"] .clue .badge,
+[data-mode="weekend"] .krow,
+[data-mode="weekend"] .kbwrap:has(#next.hidden) { display: none; }
+[data-mode="weekend"] .clue { grid-template-columns: 1fr; }
+[data-mode="weekend"] #row1 { cursor: default; }
+.weekendAnswerForm { display: grid; gap: 8px; }
+.weekendAnswerForm label { font-size: 13px; }
+.weekendAnswerRow { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+.weekendAnswerRow input {
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 44px;
+  font-size: 16px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.weekendAnswerRow button { min-height: 44px; }
+#weekendHint:empty { display: none; }
+.weekendArchiveRows { display: grid; gap: 8px; }
+.weekendArchiveRows button { text-align: left; }
+.weekendResultLinks { padding-left: 1.5em; }
+.weekendResultLinks li { padding: 8px 0; border-bottom: 1px solid var(--b); }
+.weekendResultLinks small { display: block; color: var(--m); margin-top: 4px; }

@@ -1,4 +1,4 @@
-const CACHE_NAME='add-one-v12-clearer-clues';
+const CACHE_NAME='add-one-v15-weekend-progress';
 const CORE_ASSETS=[
   './',
   './index.html',
@@ -14,6 +14,8 @@ const CORE_ASSETS=[
   './install.js',
   './vocabulary.js',
   './celebration.js',
+  './weekend.js',
+  './weekend.css',
   './master-bank.json',
   './manifest.webmanifest',
   './icon.svg'

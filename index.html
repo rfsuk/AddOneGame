@@ -71,6 +71,7 @@
 <link rel="stylesheet" href="feel.css" />
 <link rel="stylesheet" href="chill.css" />
 <link rel="stylesheet" href="motion.css" />
+<link rel="stylesheet" href="weekend.css" />
 
 
 </head>
@@ -110,6 +111,12 @@
   <div id="dailyStatus" class="dailyStatus hidden"></div>
   <button id="how" class="ghost">How to play ↗</button>
 </div>
+<section id="weekendLead" class="weekendLead hidden" aria-labelledby="weekendTitle">
+  <div class="eyebrow">Saturday &amp; Sunday</div>
+  <h1 id="weekendTitle">Weekend Chain</h1>
+  <p id="weekendDescription"></p>
+  <button id="playWeekend" class="primary">Play chain →</button>
+</section>
 <div class="hero">
   <div class="eyebrow">A word game with a twist.</div>
   <h1>Small addition.<br><em>New possibilities.</em></h1>
@@ -137,7 +144,7 @@
   <button id="startSelected" class="primary">Play today’s puzzle →</button>
 </div>
 <div id="challengeInvitation" class="challengeInvitation hidden" role="status"></div>
-<div class="homeLinks"><button id="practice" class="ghost">Try a practice puzzle</button><button id="archiveBtn" class="ghost">Daily archive</button><button id="statsBtn" class="ghost">Your progress</button><button id="leader" class="ghost">Local scores</button></div>
+<div class="homeLinks"><button id="practice" class="ghost">Try a practice puzzle</button><button id="archiveBtn" class="ghost">Archive</button><button id="statsBtn" class="ghost">Your progress</button><button id="leader" class="ghost">Local scores</button></div>
 <button id="openCollection" class="collectionLaunch ghost"><span class="collectionLaunchTiles" aria-hidden="true"><i>A</i><i>+</i><i>B</i></span><span><b>Tile collection</b><small id="equippedFinish">Paper equipped</small></span><span class="collectionLaunchCount"><b id="collectionCount"></b><small>Explore →</small></span></button>
 <div class="installHome"><button id="installGame" class="installGame hidden" aria-describedby="installNote">↓ Install Add One</button><span id="installNote" class="hidden">Your home screen. One tap to play.</span><p id="installHelp" class="hidden" role="status" aria-live="polite"></p></div>
 <p class="homeNote">ONE WORD. A FEW LETTERS. A NEW PERSPECTIVE.</p>
@@ -178,9 +185,17 @@
         <div class="clue"><span class="badge">2</span><span id="cl2"></span></div>
       </div>
       <div class="board">
-        <div class="rowb" id="row1"><div class="lbl"><span>Word 1</span><span class="hint" id="h1"></span></div><div id="t1" class="tiles"></div></div>
+        <div class="rowb" id="row1"><div class="lbl"><span id="wordOneLabel">Word 1</span><span class="hint" id="h1"></span></div><div id="t1" class="tiles"></div></div>
         <div class="transformRail" id="transformRail"><span id="puzzleMeta">Puzzle 1/10</span></div>
         <div class="rowb" id="row2"><div class="lbl"><span>Word 2</span><span class="hint" id="h2"></span></div><div id="t2" class="tiles"></div></div>
+        <form id="weekendAnswerForm" class="weekendAnswerForm hidden">
+          <label for="weekendAnswer">Type the whole word</label>
+          <div class="weekendAnswerRow">
+            <input id="weekendAnswer" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-describedby="cl2 puzzleMeta weekendHint">
+            <button class="primary" type="submit">Check</button>
+          </div>
+          <p id="weekendHint" class="sub" aria-live="polite"></p>
+        </form>
       </div>
       <div id="playTip" class="playTip hidden">Solve Word 1 first, then complete Word 2 using the + slots.</div>
       <div id="revelation" class="revelation hidden"><div><span class="eyebrow">THE CONNECTION</span><p id="revelationText" role="status" aria-live="polite" aria-atomic="true"></p></div><button id="replayRevelation" class="ghost" aria-label="Replay the answer transformation">Replay ↻</button></div>
@@ -192,6 +207,14 @@
   </div>
 
   <div class="kbwrap"><div class="kb"><div class="krow" id="kr1"></div><div class="krow" id="kr2"></div><div class="krow" id="kr3"></div><button id="next" class="primary contextualNext hidden" disabled>Next →</button></div></div>
+</div>
+
+<div id="weekendResult" class="modal hidden" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="weekendResultTitle">
+  <div class="sheet" tabindex="-1">
+    <div class="row"><h2 id="weekendResultTitle">Weekend Chain</h2><button id="weekendResultClose" class="ghost">Close</button></div>
+    <p id="weekendResultSummary"></p>
+    <ol id="weekendResultLinks" class="weekendResultLinks"></ol>
+  </div>
 </div>
 
 <div id="conf" class="confetti hidden" aria-hidden="true"></div>
@@ -243,6 +266,7 @@
 <script src="install.js"></script>
 <script src="vocabulary.js"></script>
 <script src="celebration.js"></script>
+<script src="weekend.js"></script>
 <script>
 (()=>{
   const $=id=>document.getElementById(id);
@@ -251,6 +275,8 @@
     get:k=>{try{return localStorage?localStorage.getItem(k):mem[k]??null}catch{return mem[k]??null}},
     set:(k,v)=>{try{localStorage?localStorage.setItem(k,v):mem[k]=v}catch{mem[k]=v}}
   };
+  let weekendChain=null;
+  let weekendProgress=null;
 
   // -------------------- Config --------------------
   const ROUND_RUN=60000;
@@ -696,7 +722,7 @@ function comp(p){
   const suppliedDiff=(p.difficulty||p.d||'').toLowerCase();
   const d=['easy','medium','hard'].includes(suppliedDiff) ? suppliedDiff : autoDiff(s,l,adds);
   const ok = !!xs && xs.length===adds && !!c1 && !!c2 && AddOneVocabulary.allows(s,l,c1,c2);
-  return {s,l,c1,c2,d,xs,x:xs?xs[0]:null,adds,insertPattern,quality:p.difficultyScore||0,sl:s.length,ll:l.length,ok};
+  return {s,l,c1,c2,d,xs,x:xs?xs[0]:null,adds,insertPattern,quality:p.difficultyScore||0,daily:p.daily===true,sl:s.length,ll:l.length,ok};
 }
 
 const escapeHtml=s=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
@@ -761,6 +787,12 @@ function pick(list,n){
 function updateHintButton(){
   const btn = $('hintBtn');
   if(!btn) return;
+
+  if(mode==='weekend'){
+    btn.textContent=usedHintThisPuzzle?'Position shown':'Show a position';
+    btn.disabled=!inRun||nexting||usedHintThisPuzzle;
+    return;
+  }
 
   btn.textContent = mode==='chill'?'Hint':usedHintThisPuzzle ? `Hint (${hintsLeft})` : 'Hint';
   btn.disabled = !inRun || nexting || (usedHintThisPuzzle && hintsLeft <= 0);
@@ -901,7 +933,7 @@ function updateStreakMarker(bump=false){
         if(!Array.isArray(data)) throw new Error('Not an array');
         const fetched = data.map(comp).filter(p=>p.ok);
         if(fetched.length){
-          store.set(LSK_PUZ, JSON.stringify(fetched.map(p=>({s:p.s,l:p.l,c1:p.c1,c2:p.c2,adds:p.adds,insertIndexes:p.xs,insertPattern:p.insertPattern,difficulty:p.d,difficultyScore:p.quality}))));
+          store.set(LSK_PUZ, JSON.stringify(fetched.map(p=>({s:p.s,l:p.l,c1:p.c1,c2:p.c2,adds:p.adds,insertIndexes:p.xs,insertPattern:p.insertPattern,difficulty:p.d,difficultyScore:p.quality,daily:p.daily}))));
           all = fetched;
           loadedFullBank = fetched.length > FALLBACK.length;
           return;
@@ -1091,93 +1123,6 @@ function addHistory(entry){
   setHistory(hist);
 }
 
-function getTimeBucket(hour){
-  if(hour < 6) return 'Night';
-  if(hour < 12) return 'Morning';
-  if(hour < 18) return 'Afternoon';
-  return 'Evening';
-}
-
-function bucketShortLabel(bucket){
-  if(bucket === 'Night') return '🌙 0–6';
-  if(bucket === 'Morning') return '🌅 6–12';
-  if(bucket === 'Afternoon') return '☀️ 12–18';
-  return '🌆 18–24';
-}
-function getDailyTimeInsights(){
-  const hist = getHistory().filter(x =>
-    x &&
-    x.mode === 'daily' &&
-    x.totalPuzzles === 10 &&
-    typeof x.score === 'number' &&
-    typeof x.playedHourLocal === 'number'
-  );
-
-  const buckets = [
-    { key:'Night', runs:0, total:0, avg:0, heat:0 },
-    { key:'Morning', runs:0, total:0, avg:0, heat:0 },
-    { key:'Afternoon', runs:0, total:0, avg:0, heat:0 },
-    { key:'Evening', runs:0, total:0, avg:0, heat:0 }
-  ];
-
-  hist.forEach(h=>{
-    const key = getTimeBucket(h.playedHourLocal);
-    const slot = buckets.find(b => b.key === key);
-    if(slot){
-      slot.runs++;
-      slot.total += h.score;
-    }
-  });
-
-  buckets.forEach(b=>{
-    b.avg = b.runs ? Math.round(b.total / b.runs) : 0;
-  });
-
-  const used = buckets.filter(b=>b.runs > 0);
-
-  if(!used.length){
-    return {
-      buckets,
-      best:null,
-      totalRuns:0,
-      insight:'Not enough Daily data yet to suggest a best time.'
-    };
-  }
-
-  const max = Math.max(...used.map(b=>b.avg));
-  const min = Math.min(...used.map(b=>b.avg));
-
-  buckets.forEach(b=>{
-    if(!b.runs){
-      b.heat = 0;
-    }else if(max === min){
-      b.heat = 2;
-    }else{
-      const t = (b.avg - min) / (max - min);
-      b.heat = Math.max(1, Math.min(4, Math.round(t * 3) + 1));
-    }
-  });
-
-  const best = used.slice().sort((a,b)=>b.avg-a.avg)[0];
-  const overallAvg = Math.round(
-    used.reduce((n,b)=>n+b.total,0) / used.reduce((n,b)=>n+b.runs,0)
-  );
-  const diffPct = overallAvg ? Math.round(((best.avg - overallAvg) / overallAvg) * 100) : 0;
-
-  let insight = `You tend to score highest in the ${best.key.toLowerCase()}.`;
-  if(best.runs < 3){
-    insight = `Early signal: your ${best.key.toLowerCase()} runs look strongest so far.`;
-  }else if(diffPct > 0){
-    insight = `You tend to score highest in the ${best.key.toLowerCase()} (${diffPct}% above your average).`;
-  }
-
-  return {
-    buckets,
-    best,
-    totalRuns: hist.length,
-    insight
-  };
-}
   function updateDailyStreak(){
     const st=getStats();
     const today=todayLondon();
@@ -1329,7 +1274,7 @@ let hintStage=0;
 
 let aw=0, sChars=[], lChars=[];
 
-  function isUntimed(){return mode==='chill'||mode==='tutorial';}
+  function isUntimed(){return mode==='chill'||mode==='tutorial'||mode==='weekend';}
   function roundLimit(){ return isUntimed()?Infinity:mode==='sudden' ? ROUND_SUDDEN : ROUND_RUN; }
   function elapsedPuzzleMs(){
     const now=pausedAt||Date.now();
@@ -1438,7 +1383,7 @@ function tick(){
         const d=document.createElement('div');
         d.dataset.index=i;
         d.onclick=()=>{
-          if(!inRun||nexting) return;
+          if(!inRun||nexting||mode==='weekend') return;
           if(wordOneLocked && (word===0 || !run[idx].xs.includes(Number(d.dataset.index)))) return;
           aw=word;
           const target=(word===0)?sChars:lChars;
@@ -1741,14 +1686,15 @@ set('puzzleMeta', 'Add '+pz.adds+' '+(pz.adds===1?'letter':'letters'));
     $('t2').innerHTML='';
     fitTiles(pz);
     tiles($('t1'),pz.sl,sChars,null,0);
-    tiles($('t2'),pz.ll,lChars,pz.xs||pz.x,1);
+    if(mode==='weekend') prepareWeekendLink(pz);
+    else tiles($('t2'),pz.ll,lChars,pz.xs||pz.x,1);
     clearTileEffects();
 
     const gc=$('game');
     gc.classList.remove('puzzle-out','puzzle-in','flash');
     requestAnimationFrame(()=>gc.classList.add('puzzle-in'));
     setTimeout(()=>gc.classList.remove('puzzle-in'),340);
-    fb(mode==='sudden' ? `Sudden Death — Puzzle ${idx+1}` : mode==='chill'?`Puzzle ${idx+1}/${size} · Take your time.`:`Puzzle ${idx+1}/${size} — go!`);
+    fb(mode==='weekend' ? '' : mode==='sudden' ? `Sudden Death — Puzzle ${idx+1}` : mode==='chill'?`Puzzle ${idx+1}/${size} · Take your time.`:`Puzzle ${idx+1}/${size} — go!`);
 
     statsHeader();
     renderProg();
@@ -1765,6 +1711,16 @@ set('puzzleMeta', 'Add '+pz.adds+' '+(pz.adds===1?'letter':'letters'));
 function useHint(){
   const pz = run[idx];
   if(!inRun || nexting || !pz) return;
+  if(mode==='weekend'){
+    if(usedHintThisPuzzle) return;
+    usedHintThisPuzzle=true;
+    weekendProgress.hinted=true;
+    saveWeekendProgress();
+    showWeekendHint(pz);
+    updateHintButton();
+    sfx('hint');
+    return;
+  }
   if(usedHintThisPuzzle && hintsLeft <= 0) return;
 
   const firstHint=!usedHintThisPuzzle;
@@ -1984,6 +1940,10 @@ function ensureSuddenBuffer(){
     const complete=!sChars.some(c=>!c)&&!lChars.some(c=>!c);
     const correct=!timedOut&&!giveUp&&!failed&&complete&&sChars.join('')===pz.s&&lChars.join('')===pz.l;
 
+if(mode==='weekend'){
+  $('weekendAnswerForm').classList.add('hidden');
+  $('row2').classList.remove('hidden');
+}
 if(correct) reveal(pz);
 $('row1').classList.remove('row-locked');
 $('row2').classList.remove('row-locked');
@@ -2019,6 +1979,12 @@ total += got;
 recordPuzzlePerformance(pz,{correct,ms,giveUp,timedOut});
 
 res.push({correct,points:got,ms,short:pz.s,long:pz.l,adds:pz.adds,hinted:usedHintThisPuzzle,mult,clutch});
+if(mode==='weekend'){
+  weekendProgress.draft='';
+  weekendProgress.hinted=false;
+  if(res.length===size) weekendProgress.completedAt=new Date().toISOString();
+  saveWeekendProgress();
+}
 statsHeader();
 renderProg();
 
@@ -2056,6 +2022,10 @@ function endRun(){
 
   updateHintButton(); // 👈 ADD THIS LINE
 
+  if(mode==='weekend'){
+    showHome();
+    return showWeekendResult(weekendChain,weekendProgress);
+  }
   openEndModal();
 }
 
@@ -2277,6 +2247,120 @@ if(dailyOutcome.milestone){
     box.append(copy,play,dismiss);
   }
 
+  function readWeekendProgress(chain){
+    try{
+      const saved=JSON.parse(store.get('aol_weekend_'+chain.date));
+      if(saved?.words===chain.words.join(' ') && Array.isArray(saved.results) &&
+        saved.results.length<chain.words.length) return saved;
+    }catch{}
+    return {words:chain.words.join(' '),results:[],draft:'',hinted:false,started:false};
+  }
+
+  function saveWeekendProgress(){
+    store.set('aol_weekend_'+weekendChain.date,JSON.stringify(weekendProgress));
+  }
+
+  function updateWeekendLead(){
+    const chain=AddOneWeekend.current(todayLondon());
+    const available=chain && AddOneWeekend.resolve(chain,all);
+    const progress=available ? readWeekendProgress(chain) : null;
+    const played=progress?.results.length||0;
+    $('weekendLead').classList.toggle('hidden',!available||played===available.length);
+    if(!available||played===available.length) return;
+    set('weekendDescription',played
+      ? `${played} of ${available.length} links played. Pick up where you left off.`
+      : `${available.length} linked solves. Work out where the new letters fit.`);
+    set('playWeekend',progress.started?'Continue chain →':'Play chain →');
+  }
+
+  function prepareWeekendLink(puzzle){
+    sChars=puzzle.s.split('');
+    aw=1;
+    tiles($('t1'),puzzle.sl,sChars,null,0);
+    $('row1').classList.add('row-locked');
+    $('row2').classList.add('hidden');
+    $('weekendAnswerForm').classList.remove('hidden');
+    const input=$('weekendAnswer');
+    input.maxLength=puzzle.ll;
+    input.value=weekendProgress.draft||'';
+    usedHintThisPuzzle=weekendProgress.hinted===true;
+    showWeekendHint(puzzle);
+    updateHintButton();
+  }
+
+  function showWeekendHint(puzzle){
+    set('weekendHint',usedHintThisPuzzle
+      ? `One new letter goes in position ${puzzle.xs[0]+1}, counting from the left.`
+      : '');
+  }
+
+  function readWeekendAnswer(){
+    if(!inRun||mode!=='weekend'||nexting||puzzleTransitioning) return;
+    const puzzle=run[idx];
+    const input=$('weekendAnswer');
+    const answer=input.value.toUpperCase().replace(/[^A-Z]/g,'').slice(0,puzzle.ll);
+    if(input.value!==answer) input.value=answer;
+    weekendProgress.draft=answer;
+    if(answer===puzzle.l){
+      lChars=answer.split('');
+      finish({});
+    }else{
+      saveWeekendProgress();
+      fb('');
+    }
+  }
+
+  function checkWeekendAnswer(){
+    readWeekendAnswer();
+    if(nexting||!inRun||mode!=='weekend'||puzzleTransitioning) return;
+    const answer=$('weekendAnswer').value;
+    fb(answer.length===run[idx].ll?'Try another word. Keep the starting letters in order.':'Type the full answer.','warn');
+    if(answer.length===run[idx].ll) sfx('wrong');
+  }
+
+  function showWeekendResult(chain,progress){
+    const solved=progress.results.filter(result=>result.correct).length;
+    const clean=progress.results.filter(result=>result.correct&&!result.hinted).length;
+    set('weekendResultSummary',`${solved} of ${progress.results.length} links solved · ${clean} without a hint`);
+    const list=$('weekendResultLinks');
+    list.replaceChildren();
+    progress.results.forEach((result,index)=>{
+      const row=document.createElement('li');
+      row.textContent=chain.words[index]+' → '+chain.words[index+1];
+      const status=document.createElement('small');
+      status.textContent=!result.correct?'Revealed':result.hinted?'Solved with a position hint':'Solved';
+      row.appendChild(status);
+      list.appendChild(row);
+    });
+    showDialog($('weekendResult'),'#weekendResultClose');
+  }
+
+  function renderWeekendArchive(dialog){
+    let section=$('weekendArchive');
+    if(!section){
+      section=document.createElement('section');
+      section.id='weekendArchive';
+      section.innerHTML='<h3>Weekend Chain</h3><div id="weekendArchiveRows" class="weekendArchiveRows"></div>';
+      dialog.querySelector('.sheet').appendChild(section);
+    }
+    const today=todayLondon();
+    const chains=AddOneWeekend.season.filter(chain=>chain.date<=today&&AddOneWeekend.resolve(chain,all));
+    section.classList.toggle('hidden',!chains.length);
+    const list=$('weekendArchiveRows');
+    list.replaceChildren();
+    const dates=new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'});
+    chains.reverse().forEach(chain=>{
+      const progress=readWeekendProgress(chain);
+      const complete=progress.results.length===chain.words.length-1;
+      const button=document.createElement('button');
+      button.className='ghost';
+      const action=complete?'View result':progress.started?'Continue chain':'Play chain';
+      button.textContent=dates.format(new Date(chain.date))+' · '+action;
+      button.onclick=()=>{hideDialog(dialog);startMode('weekend',chain);};
+      list.appendChild(button);
+    });
+  }
+
   function openArchive(){
     let dialog=$('archiveModal');
     if(!dialog){
@@ -2296,6 +2380,7 @@ if(dailyOutcome.milestone){
     const list=$('archiveHistory');list.replaceChildren();
     if(!history.length) list.textContent='Your Daily and archive results will appear here.';
     for(const r of history){const row=document.createElement('p');row.className='archiveResult';row.textContent=(r.dailyDate||r.completedAt.slice(0,10))+' · '+prettyDiffLabel(r.diff)+' · '+(r.totalPuzzles===5?'Quick':'Full')+' · '+r.correct+'/'+r.totalPuzzles+' · '+r.score.toLocaleString()+' pts'+(r.mode==='archive'?' · Archive':'');list.appendChild(row);}
+    renderWeekendArchive(dialog);
     showDialog(dialog,'#archiveDate');
   }
 
@@ -2358,9 +2443,9 @@ if(dailyOutcome.milestone){
     m.setAttribute('aria-hidden','true');
     m.innerHTML=`
       <div class="sheet" tabindex="-1">
-        <div class="row"><h2 id="statsTitle" style="margin:0">Stats & Insights</h2><button id="statsClose" class="ghost">Close</button></div>
+        <div class="row"><h2 id="statsTitle" style="margin:0">Your progress</h2><button id="statsClose" class="ghost">Close</button></div>
         <div class="sub" style="margin-top:6px">Your stats are saved on this device.</div>
-        <div id="statsBody" style="margin-top:12px"></div>
+        <div id="statsBody"></div>
         <div class="actions" style="margin-top:12px">
           <button id="statsReset" class="ghost">Reset stats</button>
         </div>
@@ -2371,6 +2456,8 @@ if(dailyOutcome.milestone){
   if(confirm('Reset all stats on this device?')){
     setStats({});
     setHistory([]);
+    for(const chain of AddOneWeekend.season) store.set('aol_weekend_'+chain.date,'');
+    updateWeekendLead();
     store.set(LSK_ACHIEVEMENTS,'{}');
     store.set(LSK_PUZZLE_PERF,'{}');
     store.set('aol_finishes_v1','{}');
@@ -2394,106 +2481,79 @@ function renderStats(){
     diff:'',
     mode:(st.suddenBestSolved||0)>=10?'sudden':''
   });
-  const body=$('statsBody');
-  const ti=getDailyTimeInsights();
-
-  const ds=st.dailyStreak||0;
-  const dl=st.dailyLongestStreak||0;
-
-  const runPlayed=st.runsPlayed||0;
-  const runBest=st.bestRunScore||0;
-  const runAvgScore=runPlayed?Math.round((st.totalRunScore||0)/runPlayed):0;
-  const runAvgTime=runPlayed?fmtSec((st.totalRunTimeMs||0)/runPlayed):'—';
-  const runAcc=fmtPct(st.totalRunCorrect||0, st.totalRunPuzzles||0);
-
-  const dPlayed=st.dailiesPlayed||0;
-  const dBest=st.bestDailyScore||0;
-  const dAvgScore=dPlayed?Math.round((st.totalDailyScore||0)/dPlayed):0;
-  const dAvgTime=dPlayed?fmtSec((st.totalDailyTimeMs||0)/dPlayed):'—';
-  const dAcc=fmtPct(st.totalDailyCorrect||0, st.totalDailyPuzzles||0);
-
-  const sPlayed=st.suddenPlayed||0;
-  const sBestSolved=st.suddenBestSolved||0;
-  const sBestScore=st.suddenBestScore||0;
-
-  const bestTimeLabel = ti.best ? ti.best.key : '—';
-
-const heatHtml = ti.buckets.map(b => {
-  const isBest = ti.best && ti.best.key === b.key;
-
-  return `
-    <div class="heatSlot heat${b.heat || 0} ${isBest ? 'bestSlot' : ''}">
-      <small>${b.runs || 0}</small>
-      <span>${escapeHtml(bucketShortLabel(b.key))}</span>
-      ${isBest ? '<div class="bestTag">BEST</div>' : ''}
-    </div>
-  `;
-}).join('');
-
   const unlocked=getAchievements();
-  const achievementHtml=ACHIEVEMENTS.map(item=>`
-    <div class="achievement ${unlocked[item.id]?'unlocked':''}">
-      <b>${unlocked[item.id]?'✓ ':'○ '}${escapeHtml(item.name)}</b>
-      <span>${escapeHtml(item.desc)}</span>
+  const history=getHistory();
+  const weekends=AddOneWeekend.season.flatMap(chain=>{
+    const saved=readWeekendProgress(chain);
+    if(saved.results.length!==chain.words.length-1) return [];
+    return [{mode:'weekend',completedAt:saved.completedAt||chain.date,
+      correct:saved.results.filter(result=>result.correct).length,totalPuzzles:saved.results.length}];
+  });
+  const modes={daily:'Daily',archive:'Archive',run:'Classic',chill:'Chill',sudden:'Sudden Death',weekend:'Weekend Chain'};
+  const recent=[...history,...weekends].filter(row=>row&&Object.hasOwn(modes,row.mode)&&Number.isFinite(Date.parse(row.completedAt)))
+    .sort((a,b)=>Date.parse(b.completedAt)-Date.parse(a.completedAt)).slice(0,5);
+  const dateFormat=new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',timeZone:'Europe/London'});
+  const activeStreak=[todayLondon(),ydayLondon()].includes(st.lastDailyDate)?st.dailyStreak||0:0;
+  const bestStreak=Math.max(st.dailyLongestStreak||0,st.dailyStreak||0);
+  const total=AddOneFinishes.metrics(st,unlocked,history).solved+weekends.reduce((sum,row)=>sum+row.correct,0);
+  const format=value=>Math.round(Number(value||0)).toLocaleString();
+  const row=(label,value)=>`<li><span>${label}</span><strong>${value}</strong></li>`;
+  const score=(played,value)=>played?`${format(value)} pts`:'—';
+  const full=st.dailiesPlayed||0, classic=st.runsPlayed||0;
+  const count=ACHIEVEMENTS.filter(item=>unlocked[item.id]).length;
+  const next=ACHIEVEMENTS.find(item=>!unlocked[item.id]);
+  $('statsBody').innerHTML=`
+    <div class="progressOverview">
+      <div class="progressStreak"><strong>${format(activeStreak)} ${activeStreak===1?'day':'days'}</strong><span>Daily streak</span></div>
+      <div><strong>${format(bestStreak)}</strong><span>Longest Daily streak</span></div>
+      <div><strong>${format(total)}</strong><span>Puzzles solved</span></div>
     </div>
-  `).join('');
-
-  body.innerHTML=`
-    <div class="statsGrid">
-      <div class="modeStatsCard"><div class="modeCardTitle">Quick Daily & archive</div><p>${st.quickDailiesPlayed||0} Quick Dailies · Best ${st.bestQuickDailyScore||0} points</p><p>${st.archivesPlayed||0} archive runs · ${st.totalArchiveCorrect||0} archive solves</p><small>Quick and full Daily scores are recorded separately. Five puzzles counts towards your Daily streak.</small></div>
-
-      <div class="statsHero">
-        <div class="statChip">
-          <div class="bigNum">${ds}</div>
-          <div class="smallLbl">Current streak</div>
-        </div>
-        <div class="statChip">
-          <div class="bigNum">${dl}</div>
-          <div class="smallLbl">Best streak</div>
-        </div>
-        <div class="statChip">
-          <div class="bigNum">${escapeHtml(bestTimeLabel)}</div>
-          <div class="smallLbl">Best time</div>
-        </div>
-      </div>
-
-      <div class="insightCard">
-        <div class="insightTitle">Best time to play</div>
-        <div class="timeHeat">${heatHtml}</div>
-        <div class="insightText">${escapeHtml(ti.insight)}</div>
-        <div class="insightMeta">Based on ${ti.totalRuns} Daily run${ti.totalRuns===1?'':'s'} • number in corner = runs in that slot</div>
-      </div>
-
-      <div class="modeCard">
-        <div class="modeCardTitle">Daily</div>
-        <div class="modeRows">
-          <div class="sub">Played: ${dPlayed} • Best: ${dBest} • Avg score: ${dAvgScore}</div>
-          <div class="sub">Avg time: ${dAvgTime} • Accuracy: ${dAcc}</div>
-        </div>
-      </div>
-
-      <div class="modeCard">
-        <div class="modeCardTitle">Classic</div>
-        <div class="modeRows">
-          <div class="sub">Played: ${runPlayed} • Best: ${runBest} • Avg score: ${runAvgScore}</div>
-          <div class="sub">Avg time: ${runAvgTime} • Accuracy: ${runAcc}</div>
-        </div>
-      </div>
-
-      <div class="modeCard">
-        <div class="modeCardTitle">Sudden Death</div>
-        <div class="modeRows">
-          <div class="sub">Played: ${sPlayed} • Best solved: ${sBestSolved}</div>
-          <div class="sub">Best score: ${sBestScore}</div>
-        </div>
-      </div>
-
-      <div class="modeCard"><div class="modeCardTitle">Chill</div><div class="modeRows"><div class="sub">Played: ${st.chillPlayed||0} · Solved: ${st.totalChillCorrect||0}</div><div class="sub">Accuracy: ${fmtPct(st.totalChillCorrect||0,st.totalChillPuzzles||0)} · No timer</div></div></div>
-      <div class="sectionTitle">Achievements</div>
-      <div class="achievementGrid">${achievementHtml}</div>
-
-    </div>
-  `;
+    <section class="progressSection">
+      <h3>Recent play</h3>
+      ${recent.length?`<ul class="progressRows">${recent.map(item=>row(
+        `${item.mode==='daily'&&item.totalPuzzles===5?'Quick Daily':modes[item.mode]}<small>${dateFormat.format(new Date(item.completedAt))}</small>`,
+        `${format(item.correct)}/${format(item.totalPuzzles)} solved`
+      )).join('')}</ul>`:'<p class="sub">Your completed games will appear here.</p>'}
+    </section>
+    <section class="progressSection">
+      <h3>Personal bests</h3>
+      <ul class="progressRows">
+        ${row('Full Daily',score(full,st.bestDailyScore))}
+        ${row('Quick Daily',score(st.quickDailiesPlayed,st.bestQuickDailyScore))}
+        ${row('Classic',score(classic,st.bestRunScore))}
+        ${row('Sudden Death',st.suddenPlayed?`${format(st.suddenBestSolved)} solved`:'—')}
+        ${row('Chill',`${format(st.totalChillCorrect)} solved`)}
+      </ul>
+      <details class="progressDetails">
+        <summary>More stats</summary>
+        <ul class="progressRows">
+          ${row('Full Daily runs',format(full))}
+          ${row('Full Daily average score',score(full,full?(st.totalDailyScore||0)/full:0))}
+          ${row('Full Daily average time',full?fmtSec((st.totalDailyTimeMs||0)/full):'—')}
+          ${row('Daily accuracy',fmtPct(st.totalDailyCorrect||0,st.totalDailyPuzzles||0))}
+          ${row('Classic runs',format(classic))}
+          ${row('Classic average score',score(classic,classic?(st.totalRunScore||0)/classic:0))}
+          ${row('Classic average time',classic?fmtSec((st.totalRunTimeMs||0)/classic):'—')}
+          ${row('Classic accuracy',fmtPct(st.totalRunCorrect||0,st.totalRunPuzzles||0))}
+          ${row('Sudden Death best score',score(st.suddenPlayed,st.suddenBestScore))}
+          ${row('Chill accuracy',fmtPct(st.totalChillCorrect||0,st.totalChillPuzzles||0))}
+          ${row('Archive solves',format(st.totalArchiveCorrect))}
+        </ul>
+      </details>
+    </section>
+    <section class="progressSection">
+      <div class="row"><h3>Achievements</h3><span class="sub">${count} of ${ACHIEVEMENTS.length} earned</span></div>
+      <progress class="achievementProgress" value="${count}" max="${ACHIEVEMENTS.length}" aria-label="Achievements earned"></progress>
+      ${next?`<p class="progressGoal"><strong>Up next · ${escapeHtml(next.name)}</strong><small>${escapeHtml(next.desc)}</small></p>`:''}
+      <details class="progressDetails">
+        <summary>All achievements</summary>
+        <ul class="progressRows">${ACHIEVEMENTS.map(item=>row(
+          `${escapeHtml(item.name)}<small>${escapeHtml(item.desc)}</small>`,unlocked[item.id]?'Earned':'Locked'
+        )).join('')}</ul>
+      </details>
+      <button id="progressCollection" class="ghost">Open tile collection →</button>
+    </section>`;
+  $('progressCollection').onclick=()=>{hideDialog($('statsModal'));openCollection();};
 }
 
   function openStats(){ renderStats(); showDialog($('statsModal'),'#statsClose'); }
@@ -2588,12 +2648,17 @@ function showHome(){
 
   updateHintButton();
   updateModeUI();
+  updateWeekendLead();
 }
 
 function showGame(){
   document.body.classList.add('game-active');
   document.body.dataset.mode=mode;
-  $('modeTag').classList.toggle('hidden',mode!=='chill');
+  $('modeTag').textContent=mode==='weekend'?'Weekend Chain':'Chill';
+  $('modeTag').classList.toggle('hidden',mode!=='chill'&&mode!=='weekend');
+  set('wordOneLabel',mode==='weekend'?'Starting word':'Word 1');
+  $('row2').classList.remove('hidden');
+  $('weekendAnswerForm').classList.add('hidden');
   $('home').classList.add('hidden');
   $('game').classList.remove('hidden');
   $('homeIcon').classList.remove('hidden');
@@ -2642,7 +2707,18 @@ function startGuidedPuzzle(){
     return Array.from(m.values());
   }
 
-function startMode(which){
+function startMode(which,chain=null){
+  const chainLinks=which==='weekend'&&chain?AddOneWeekend.resolve(chain,all):null;
+  if(which==='weekend'&&!chainLinks) return;
+  if(chainLinks){
+    weekendChain=chain;
+    weekendProgress=readWeekendProgress(chain);
+    if(weekendProgress.results.length===chainLinks.length){
+      return showWeekendResult(chain,weekendProgress);
+    }
+    weekendProgress.started=true;
+    saveWeekendProgress();
+  }
   finishedDuration=0;
   runFailed=false;
   mode=which;
@@ -2665,11 +2741,21 @@ hintStage = 0;
   if(pool.length<10) pool = all;
 
 
-  if(mode==='daily'||mode==='archive'){
+  if(mode==='weekend'){
+    run=chainLinks;
+    res=weekendProgress.results;
+    total=res.reduce((sum,result)=>sum+result.points,0);
+    for(const result of res){
+      streak=result.correct&&!result.hinted?streak+1:0;
+      runBestStreak=Math.max(runBestStreak,streak);
+    }
+  }else if(mode==='daily'||mode==='archive'){
     if(mode==='daily' && isDailyDone(currentDiff)){
       const ok=confirm(`You’ve already completed today’s Daily (${todayLondon()}) for ${currentDiff}. Replay anyway?`);
       if(!ok) return;
     }
+    const curated=pool.filter(p=>p.daily);
+    if(curated.length>=10) pool=curated;
     size=Math.min(10, pool.length);
     const seedBase=`aol|${runDate}|${currentDiff}`;
     run = buildRun(pool, size, seedBase);
@@ -2688,7 +2774,7 @@ hintStage = 0;
   showGame();
   renderProg();
   $('give').disabled=false;
-  setPuzzle(0);
+  setPuzzle(mode==='weekend'?res.length:0);
 }
   // Expose minimal API for inline fallback
   window.__AOL_START = function(which){
@@ -2699,7 +2785,7 @@ hintStage = 0;
 
   function homeHandler(force=false){
     closeModal(); closeLead();
-    if(inRun && !force){
+    if(inRun && !force && mode!=='weekend'){
       const ok=confirm('Return to Home? Your current game will end.');
       if(!ok) return;
     }
@@ -2779,7 +2865,7 @@ hintStage = 0;
         else if(openDialog.id==='collectionModal') closeCollection();
         else if(openDialog.id==='unlockModal') finishUnlockReveals();
         else if(openDialog.id==='checkpointModal') {hideDialog(openDialog);checkpointPassed=true;nextWord(true);}
-        else if(openDialog.id==='archiveModal') hideDialog(openDialog);
+        else if(openDialog.id==='archiveModal'||openDialog.id==='weekendResult') hideDialog(openDialog);
         else closeModal();
         return;
       }
@@ -2796,6 +2882,18 @@ hintStage = 0;
     }
     const k=e.key;
     if(!inRun || /^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName) || e.ctrlKey || e.metaKey || e.altKey) return;
+    if(mode==='weekend'){
+      if(k==='Enter'&&e.target.tagName==='BUTTON') return;
+      if(!nexting){
+        if(k==='Enter'){e.preventDefault();return checkWeekendAnswer();}
+        if(k!=='Backspace'&&!/^[a-zA-Z]$/.test(k)) return;
+        e.preventDefault();
+        const input=$('weekendAnswer');
+        input.focus();
+        input.value=k==='Backspace'?input.value.slice(0,-1):input.value+k;
+        return readWeekendAnswer();
+      }
+    }
     if(k==='Enter'){e.preventDefault();return key('ENTER');}
     if(k==='Backspace'){e.preventDefault();return key('DEL');}
     if(/^[a-zA-Z]$/.test(k)) return key(k.toUpperCase());
@@ -2803,7 +2901,10 @@ hintStage = 0;
 
   document.addEventListener('visibilitychange',()=>{
     if(document.hidden){soundEngine?.stop({fade:.018});soundEngine?.setVolume(0);pauseForInterruption();}
-    else resumeFromInterruption();
+    else {
+      resumeFromInterruption();
+      if(!$('home').classList.contains('hidden')) updateWeekendLead();
+    }
   });
 
   window.addEventListener('resize',()=>{
@@ -2821,6 +2922,20 @@ hintStage = 0;
   on('openCollection',()=>openCollection());
   on('practice', startGuidedPuzzle);
   on('archiveBtn',openArchive);
+  on('playWeekend',()=>{
+    const chain=AddOneWeekend.current(todayLondon());
+    if(chain) startMode('weekend',chain);
+    else updateWeekendLead();
+  });
+  on('weekendResultClose',()=>hideDialog($('weekendResult')));
+  $('weekendAnswer').addEventListener('input',event=>{
+    if(!event.isComposing) readWeekendAnswer();
+  });
+  $('weekendAnswer').addEventListener('compositionend',readWeekendAnswer);
+  $('weekendAnswerForm').addEventListener('submit',event=>{
+    event.preventDefault();
+    checkWeekendAnswer();
+  });
   on('copyText',async()=>{
     try{await navigator.clipboard.writeText($('shareText').value);set('shareStatus','Results copied. Ready to paste.');}
     catch{$('shareText').focus();$('shareText').select();set('shareStatus','Your text is selected. Copy it using your device’s copy command.');}

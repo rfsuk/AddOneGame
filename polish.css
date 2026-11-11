@@ -64,3 +64,52 @@ body[data-finish="mint"]{--tile:#cce7da}body[data-finish="rose"]{--tile:#f1d2c7}
 .homeCard .modeDesc{font-weight:400}.statsGrid .modeCard{min-height:0;display:block;background:var(--panel2)!important}
 @media(max-width:520px){.hero{padding:18px 0}.hero h1{font-size:44px;margin:10px 0}.heroMachine{margin:20px 0 14px;height:54px}.hero p{font-size:12px}.dailyInvitation{margin-bottom:12px}.homeCard .actions.homeActions{margin-top:12px;gap:12px}.difficultyRow>span{font-size:10px}.game-active .key:focus-visible{outline-offset:1px}.homeLinks{gap:0}.homeLinks button{font-size:10px!important;padding:5px 8px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.fly,.scorePop,.confetti{display:none!important}}
+#statsModal .sheet { box-sizing: border-box; }
+#statsBody { display: grid; gap: 24px; margin-top: 18px; }
+.progressOverview {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.progressOverview > div {
+  display: grid;
+  gap: 4px;
+  padding: 12px;
+  background: var(--panel2);
+  border: 1px solid var(--b);
+  border-radius: 12px;
+}
+.progressOverview .progressStreak {
+  grid-column: 1 / -1;
+  padding: 16px;
+  border-color: var(--a);
+}
+.progressOverview strong {
+  font: 400 30px/1.1 Georgia, serif;
+  font-variant-numeric: tabular-nums;
+}
+.progressStreak strong { font-size: 42px; }
+.progressOverview span, .progressRows small, .progressGoal small {
+  display: block;
+  color: var(--m);
+  font-size: 12px;
+}
+.progressSection h3 { margin: 0 0 8px; font-size: 16px; }
+.progressSection .row h3 { margin: 0; }
+.progressRows { margin: 0; padding: 0; list-style: none; }
+.progressRows li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--b);
+  font-size: 13px;
+}
+.progressRows strong { text-align: right; flex-shrink: 0; }
+.progressRows small, .progressGoal small { margin-top: 4px; }
+.progressDetails { margin: 10px 0; }
+.progressDetails summary { cursor: pointer; padding: 6px 0; font-size: 13px; }
+.achievementProgress { display: block; width: 100%; height: 8px; margin: 10px 0; accent-color: var(--g); }
+.progressGoal { margin: 12px 0; font-size: 13px; }
+#progressCollection { margin-top: 6px; }

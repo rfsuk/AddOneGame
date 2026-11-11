@@ -5,8 +5,8 @@
   const names=['IMAC','ARIAL','MARX','HEBREW','AFRICA','EUROPA','EUROPEAN','CAYMAN','BELFAST','SLOVAK','RIVIERA','SATURDAY','EASTER','ORIENTAL','ALPINE','CHRIST','STAN','TURNER'];
   const additional=['ARIA','MAESTRO','TECHNO','SHEA','GLEN','ARSENAL','MATRIX','VECTOR','CONVEX','NOTATION','BLOND','BOWMAN','FINDER','ORACLE','ADWARE','SPYWARE','MALWARE','SELECTOR','BULLOCK','GOTH','DECAL','MATTE','MATT','COBALT','CYAN','VOLT','PRENATAL','SPINDLE','FORE'];
   // These answers produce grammatical descriptions rather than satisfying clues.
-  const vague=['THE','ARE','ITS','YOUR','NOR','THAT','SHE','HIM','HER','HIS','OUR','THEY','YOU','WHO','BUT','FOR','VIA','UPON','THOUGH','THEN','THERE','HERE','WHERE','WHY','HOW','TOO','NOT','SINCE','THEREOF','HEREBY','THEREBY','COULD','SHOULD','MAY','WAS','BEEN','DID','HAS','HAD','HAVING','BEING','ANYONE','ANYBODY','ITSELF','EACH','EVERY','ANOTHER','OTHER','ANYWAY','ANYTIME','SOMEHOW'];
-  const editorial=['WARE','CLOSEOUT'];
+  const vague=['THE','ARE','ITS','YOUR','NOR','THAT','SHE','HIM','HER','HIS','OUR','THEY','YOU','WHO','BUT','FOR','VIA','UPON','THOUGH','THEN','THERE','HERE','WHERE','WHY','HOW','TOO','NOT','SINCE','THEREOF','DURING','HEREBY','THEREBY','COULD','SHOULD','MAY','WAS','BEEN','DID','HAS','HAD','HAVING','BEING','ANYONE','ANYBODY','ITSELF','EACH','EVERY','ANOTHER','OTHER','ANYWAY','ANYTIME','SOMEHOW'];
+  const editorial=['WARE','CLOSEOUT','RIPPER'];
   const excluded=Object.freeze([...new Set([...specialist,...regional,...names,...additional,...vague,...editorial])]);
   const words=new Set(excluded);
   const geographicalNames=Object.freeze(['FRANCE','SWEDEN','PRAGUE','PORTUGAL','BAHRAIN','ARMENIA','OMAN','PANAMA','SPAIN','BENIN','ROME','LIMA','RIGA','CUBA','CHAD','IRAN','IRAQ','INDIA','IRELAND','TIRANA','ROMANIA','TUNIS','TUNISIA','CHILE','CHINA','MALI','MALTA','NEPAL','PARIS','LONDON','TOKYO','SEOUL','MADRID','VIENNA','LISBON','OSLO','PERU']);
